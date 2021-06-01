@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/marchbox/monorail.git"
+  },
+  "author": "zacky@marchbox.com",
+  "bugs": {
+    "url": "https://github.com/marchbox/monorail/issues"
+  },
+  "homepage": "https://marchbox.com"
+}
