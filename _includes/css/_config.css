@@ -1,0 +1,58 @@
+@custom-media --md (width >= 64rem);
+@custom-media --nav (width >= 45rem);
+@custom-media --motion (prefers-reduced-motion: no-preference);
+@custom-media --dark (prefers-color-scheme: dark);
+
+html {
+  --type-body-family: 'source sans pro', sans-serif;
+  --type-body-size: 1rem; /* 18px */
+  --type-body-weight: 400;
+  --type-body-lh: 1.5;
+  @media (--md) {
+    --type-body-size: 1.125rem;
+  }
+
+  --type-heading-family: 'source serif pro', serif;
+
+  --type-title-size: 2.8rem;
+  --type-title-lh: 1.2;
+  --type-title-weight: 900;
+  @media (--md) {
+    --type-title-size: 4rem;
+  }
+
+  --type-h2-size: 1.6rem;
+  --type-h2-lh: 1.25;
+  --type-h2-weight: 700;
+  @media (--md) {
+    --type-h2-size: 2rem;
+  }
+
+  --type-h3-size: 1.2rem;
+  --type-h3-lh: 1.167;
+  --type-h3-weight: 700;
+  @media (--md) {
+    --type-h3-size: 1.5rem;
+  }
+
+  --type-caption-size: .875rem;
+  --type-caption-lh: 1.2857;
+
+  --type-code-family: 'monolisa', monospace;
+  --type-code-size: .9rem;
+  --type-code-weight: 600;
+  --type-code-block-size: .8rem;
+  --type-code-block-lh: 1.4;
+  --type-code-block-weight: var(--type-body-weight);
+
+  --type-actionable-weight: 600;
+
+
+  --color-bg: hsl(0 0% 96%);
+  --color-fg: hsl(0 0% 16%);
+  --color-accent-1: hsl(203deg 100% 90%);
+  --color-accent-2: hsl(140deg 67% 84%);
+  --color-accent-3: hsl(3deg 98% 90%);
+  --color-bg-code: hsl(0 0% 92%);
+  --color-fg-code: hsl(278deg 57% 32%);
+}

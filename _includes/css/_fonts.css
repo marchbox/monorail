@@ -1,0 +1,31 @@
+@font-face {
+  font-family: monolisa;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('MonoLisa Regular'), local('MonoLisa-Regular'), url(/assets/fonts/monolisa-regular.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('MonoLisa Regular Italic'), local('MonoLisa-RegularItalic'), url(/assets/fonts/monolisa-regularitalic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('MonoLisa Bold'), local('MonoLisa-Bold'), url(/assets/fonts/monolisa-bold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local('MonoLisa Bold Italic'), local('MonoLisa-BoldItalic'), url(/assets/fonts/monolisa-bolditalic.woff2) format('woff2');
+}

@@ -1,0 +1,320 @@
+/* Layout */
+
+body {
+  --page-padding: 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  min-block-size: 100vh;
+}
+
+_::-webkit-full-page-media, /* Hack targeting iOS Safari only. */
+body {
+  min-block-size: 100vh;
+  min-block-size: -webkit-fill-available; /* Adjust for iOS small screens. */
+}
+
+body.masked {
+  overflow: hidden;
+}
+
+main,
+.header,
+.footer {
+  @media (--md) {
+    display: grid;
+    gap: 1.25rem;
+    grid-template-columns: 1fr repeat(12, minmax(0, 3.75rem)) 1fr;
+  }
+}
+
+.fenced {
+  grid-column: 2 / -2;
+}
+
+
+/* Header */
+
+@keyframes monorail-docking {
+  from {
+    transform: translatex(100vw);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+.header {
+  --horizon-offset: .375rem;
+
+  padding: var(--page-padding) var(--page-padding) var(--horizon-offset);
+  position: relative;
+
+  &::after {
+    border-block-start: .125rem solid currentcolor;
+    block-size: var(--horizon-offset);
+    content: '';
+    inset: auto 0 0;
+    position: absolute;
+  }
+
+  & .fenced {
+    position: relative;
+
+    @media (--nav) {
+      align-items: flex-end;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &::after {
+      background-color: var(--color-accent-1);
+      block-size: 1rem;
+      content: '';
+      display: block;
+      inset: auto calc(-1 * var(--page-padding)) calc(-1 * var(--horizon-offset));
+      position: absolute;
+      z-index: -1;
+
+      @media (--nav) {
+        inset-inline: calc(-.5 * var(--page-padding));
+      }
+    }
+  }
+}
+
+.logo {
+  flex-shrink: 0;
+
+  &,
+  & img {
+    display: block;
+  }
+
+  & img {
+    block-size: 4rem;
+
+    @media (--md) {
+      block-size: 7.5rem;
+    }
+  }
+}
+
+.nav {
+  --monorail-height: 1.75rem;
+  --monorail-car-gap: .125rem;
+  --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
+
+  background-color: transparent;
+  border: 0;
+  margin: 0 calc(-1 * var(--page-padding)) .15rem;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+
+  @media (--nav) {
+    margin-inline: 0;
+    overflow: initial;
+  }
+
+  & ul {
+    --padding-inline: var(--page-padding);
+    --padding-block-end: 2rem;
+
+    display: flex;
+    list-style: none;
+    margin: 0 0 calc(.25rem - var(--padding-block-end));
+    overflow: auto;
+    padding: 1rem 0 var(--padding-block-end);
+    animation: monorail-docking .72s cubic-bezier(.15,.76,.32,.89);
+
+    @media (--nav) {
+      --padding-inline: 0rem;
+
+      overflow: initial;
+      padding: 0;
+      margin-block-end: .125rem;
+    }
+
+    &::before,
+    &::after {
+      --fill-offset: .1875rem;
+      --block-size: calc(var(--monorail-height) + var(--fill-offset));
+
+      background: url(/assets/decors/monorail.svg) no-repeat left bottom;
+      background-size: 9.875rem var(--block-size);
+      block-size: var(--block-size);
+      box-sizing: content-box;
+      content: '';
+      flex-shrink: 0;
+      margin-block-end: calc(-1 * var(--fill-offset));
+    }
+
+    &::before {
+      inline-size: calc(4.875rem + var(--padding-inline));
+      background-position: var(--padding-inline) top;
+    }
+
+    &::after {
+      inline-size: calc(4.9375rem + var(--padding-inline));
+      background-position: right var(--padding-inline) top;
+      margin-inline-start: var(--monorail-car-gap);
+    }
+  }
+
+  & li {
+    margin: 0 var(--monorail-car-gap);
+    position: relative;
+  }
+
+  & li::marker {
+    content: none;
+  }
+
+  & .active {
+    &::before {
+      border-block-start: .125rem solid currentcolor;
+      content: '';
+      inset: -.25rem 0 auto;
+      position: absolute;
+
+      @media (--motion) {
+        transition: var(--monorail-car-bounce);
+        transition-delay: .12s;
+      }
+    }
+
+    &:hover::before,
+    &:focus-within::before {
+      transform: translatey(-.25rem);
+    }
+  }
+}
+
+.nav-link {
+  align-items: center;
+  background: transparent;
+  block-size: var(--monorail-height);
+  display: flex;
+  color: var(--color-fg);
+  font-size: 1rem;
+  padding: 0 .5rem;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-shadow: .125rem .0625rem 0 var(--color-bg);
+  text-transform: uppercase;
+
+  @media (--motion) {
+    transition: var(--monorail-car-bounce);
+  }
+
+  &:hover,
+  &:focus {
+    transform: translatey(-.25rem);
+  }
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+  }
+
+  &::before {
+    border: .125rem solid currentcolor;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  &::after {
+    --monorail-car-paint: var(--color-accent-2);
+
+    background-color: var(--monorail-car-paint);
+    content: '';
+    inset: .25rem -.1rem -.15rem .25rem;
+    position: absolute;
+    z-index: -1;
+  }
+
+  @nest .nav .active & {
+    font-weight: 900;
+
+    &::after {
+      --monorail-car-paint: var(--color-accent-3);
+    }
+  }
+}
+
+
+/* Footer */
+
+.footer {
+  @media (--md) {
+    min-block-size: 10rem;
+  }
+
+  & .fenced {
+    align-self: end;
+    margin-inline: var(--page-padding);
+    padding-block-end: var(--page-padding);
+    text-align: center;
+  }
+}
+
+.footer .fenced,
+.footer-sidewalk:first-child,
+.footer-sidewalk:last-child {
+  grid-row: 1 / -1;
+}
+
+.footer-sidewalk {
+  &:first-child {
+    background:
+      var(--bg) no-repeat right bottom / 74px 102px,
+      var(--bg) no-repeat right 49px bottom / 89px 122px;
+    grid-column: 1 / 3;
+  }
+
+  &:last-child {
+    background:
+      var(--bg) no-repeat left bottom / 52px 72px,
+      var(--bg) no-repeat 77px bottom / 44px 61px,
+      var(--bg) no-repeat 95px bottom / 88px 122px;
+    grid-column: -3 / -1;
+  }
+}
+
+
+
+/* Main */
+
+main {
+  flex-grow: 1;
+  padding: 2rem var(--page-padding);
+
+  @media (--md) {
+    padding-block: 4.5rem;
+  }
+
+  & .fenced {
+    grid-column: 4 / -4;
+  }
+}
+
+main .fenced > :first-child,
+article > :first-child,
+article > header :first-child {
+  margin-block-start: 0;
+}
+
+main .fenced > :last-child,
+article > :last-child,
+article > header :last-child {
+  margin-block-end: 0;
+}
+
+main h1:first-of-type {
+  text-align: center;
+}
