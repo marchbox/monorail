@@ -1,3 +1,3 @@
 # marchbox.com
 
-Dumplings, pixels, & the mounse
+Dumplings, pixels, & the mouse
