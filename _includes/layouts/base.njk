@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<title>{{title + " – " if title}}{{metadata.title}}</title>
+{% if intro or page.url|url === '/' %}
+  <meta name="description" content="{{intro if page.url|url !== '/' else metadata.description}}">
+{% endif %}
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="canonical" content="{{metadata.host + page.url|url}}">
+<link href="{{fonts.google|getFontUrl|safe}}" rel="stylesheet"> 
+<link rel="stylesheet" href="{{'/css/default.css'|url}}">
+</head>
+
+<body>
+
+<header class="header">
+  <div class="fenced" role="presentation">
+    <a class="logo" href="{{'/'|url}}" title="Return to the entrance">
+      <img src="{{'/assets/logo.svg'|url}}" alt="{{metadata.title}}">
+    </a>
+    <nav class="nav" is="land-monorail">
+      <ul>
+        {% for entry in collections.all|eleventyNavigation %}
+          {% set isActive = entry.url == page.url or entry|isParent(page) %}
+          <li{% if isActive %} class="active"{% endif %}>
+            <a href="{{entry.url | url}}" class="nav-link">{{entry.title}}</a>
+          </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>{{content|safe}}</main>
+
+<footer class="footer">
+  <div class="footer-sidewalk" aria-hidden="true" style="--bg: url({{'/assets/decors/tree.svg'|url}})"></div>
+  <div class="fenced" role="presentation">
+    <a href="https://creativecommons.org/licenses/by-sa/4.0/"
+        title="Creative Commons Attribution-ShareAlike 4.0 International license">
+      CC-BY-SA-4.0
+    </a>
+  </div>
+  <div class="footer-sidewalk" aria-hidden="true" style="--bg: url({{'/assets/decors/tree.svg'|url}})"></div>
+</footer>
+
+<script src="{{'/js/main.js' | url}}" async defer></script>
+
+</body>
+
+</html>

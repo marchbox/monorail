@@ -3,4 +3,5 @@ node_modules/
 .eslintcache
 .env
 .env.test
-dist
+.*.swp
+_site/

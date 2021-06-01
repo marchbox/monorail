@@ -1,0 +1,7 @@
+.entrance {
+  grid-column: 2 / -2;
+
+  & h1:first-of-type {
+    text-align: initial;
+  }
+}
