@@ -72,6 +72,7 @@ main,
     &::after {
       background-color: var(--color-accent-1);
       block-size: 1rem;
+      border-block-start: .125rem solid var(--color-accent-1-darker);
       content: '';
       display: block;
       inset: auto calc(-1 * var(--page-padding)) calc(-1 * var(--horizon-offset));

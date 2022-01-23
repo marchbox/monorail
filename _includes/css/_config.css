@@ -51,6 +51,7 @@ html {
   --color-bg: hsl(0 0% 96%);
   --color-fg: hsl(0 0% 16%);
   --color-accent-1: hsl(203deg 100% 90%);
+  --color-accent-1-darker: hsl(203deg 100% 72%);
   --color-accent-2: hsl(140deg 67% 84%);
   --color-accent-3: hsl(3deg 98% 90%);
   --color-bg-code: hsl(0 0% 92%);
