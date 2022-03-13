@@ -154,6 +154,7 @@ main,
     &:is(.page-out *) {
       animation-name: monorail-departing;
       animation-timing-function: cubic-bezier(.6,-.01,1,.37);
+      overflow: initial;
     }
 
     &::before,
