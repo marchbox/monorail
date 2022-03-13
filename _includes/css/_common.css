@@ -10,8 +10,7 @@ body {
 
 _::-webkit-full-page-media, /* Hack targeting iOS Safari only. */
 body {
-  min-block-size: 100vh;
-  min-block-size: -webkit-fill-available; /* Adjust for iOS small screens. */
+  block-size: 100vh;
 }
 
 body.masked {
@@ -35,13 +34,23 @@ main,
 
 /* Header */
 
-@keyframes monorail-docking {
+@keyframes monorail-arriving {
   from {
     transform: translatex(100vw);
   }
 
   to {
     transform: none;
+  }
+}
+
+@keyframes monorail-departing {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: translatex(-100vw);
   }
 }
 
@@ -129,7 +138,7 @@ main,
     margin: 0 0 calc(.25rem - var(--padding-block-end));
     overflow: auto;
     padding: 1rem 0 var(--padding-block-end);
-    animation: monorail-docking .72s cubic-bezier(.15,.76,.32,.89);
+    animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
 
     @media (--nav) {
       --padding-inline: 0rem;
@@ -137,6 +146,11 @@ main,
       overflow: initial;
       padding: 0;
       margin-block-end: .125rem;
+    }
+
+    &:is(.page-out *) {
+      animation-name: monorail-departing;
+      animation-timing-function: cubic-bezier(.6,-.01,1,.37);
     }
 
     &::before,
