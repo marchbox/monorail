@@ -1,9 +1,10 @@
 import * as Turbo from '@hotwired/turbo';
 
-const PAGE_OUT_CLASSNAME = 'page-out';
-let willNavigateAway = true;
-
 export class Monorail extends HTMLElement {
+  static ClassName = {
+    ACTIVE: 'active',
+    PAGE_OUT: 'page-out',
+  };
   static willNavigateAway = true;
 
   #shouldAnimate = true;
@@ -22,7 +23,7 @@ export class Monorail extends HTMLElement {
     document.documentElement.addEventListener('turbo:before-visit', evt => {
       if (this.constructor.willNavigateAway && this.#shouldAnimate) {
         evt.preventDefault();
-        document.body.classList.add(PAGE_OUT_CLASSNAME);
+        document.body.classList.add(this.constructor.ClassName.PAGE_OUT);
         this.querySelector('ul').addEventListener('animationend', () => {
           this.constructor.willNavigateAway = false;
           Turbo.visit(evt.detail.url);
@@ -31,7 +32,7 @@ export class Monorail extends HTMLElement {
     });
 
     document.documentElement.addEventListener('turbo:visit', () => {
-      document.body.classList.remove(PAGE_OUT_CLASSNAME);
+      document.body.classList.remove(this.constructor.ClassName.PAGE_OUT);
       this.constructor.willNavigateAway = true;
     });
   }
