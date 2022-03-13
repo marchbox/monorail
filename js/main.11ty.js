@@ -10,8 +10,7 @@ const BABEL_CONFIG = {
     ['@babel/preset-env', {modules: false}],
   ],
   plugins: [
-    // Disabled these as they are not playing well with
-    // @ungap/custom-elements-builtin
+    // Disabled these as they don't play well with @ungap/custom-elements-builtin.
     // ['@babel/plugin-proposal-class-properties', {loose: true}],
     // ['@babel/plugin-proposal-private-methods', {loose: true}],
   ],

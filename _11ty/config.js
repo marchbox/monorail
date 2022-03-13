@@ -49,6 +49,8 @@ module.exports = function(eleventyConfig) {
 
   // Browsersync Overrides
   eleventyConfig.setBrowserSyncConfig({
+    // Disable live load since it doesn’t work well with Turbo.
+    snippet: false,
     callbacks: {
       ready: function(err, browserSync) {
         const content_404 = fs.readFileSync('_site/404.html');
