@@ -21,7 +21,9 @@ export class Monorail extends HTMLElement {
     this.#intersectObserver.observe(this);
 
     document.documentElement.addEventListener('turbo:before-visit', evt => {
-      if (this.constructor.willNavigateAway && this.#shouldAnimate) {
+      if (this.constructor.willNavigateAway &&
+          this.#shouldAnimate &&
+          evt.detail.url !== window.location.href) {
         evt.preventDefault();
         document.body.classList.add(this.constructor.ClassName.PAGE_OUT);
         this.querySelector('ul').addEventListener('animationend', () => {
