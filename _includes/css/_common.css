@@ -69,14 +69,13 @@ main,
   }
 
   & .fenced {
-    display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
     position: relative;
 
     @media (--nav) {
       align-items: flex-end;
-      display: flex;
       flex-direction: row;
       justify-content: space-between;
     }
@@ -101,8 +100,6 @@ main,
 .logo {
   justify-self: center;
   flex-shrink: 0;
-  grid-column: 1 / -1;
-  grid-row: 1 / -1;
 
   &,
   & img {
@@ -110,13 +107,10 @@ main,
   }
 
   & img {
-    block-size: 10rem;
-    inline-size: 13rem;
-    object-fit: cover;
-    object-position: top center;
+    max-block-size: 6rem;
 
     @media (--nav) {
-      block-size: 7.5rem;
+      max-block-size: 7.5rem;
     }
   }
 }
@@ -128,10 +122,6 @@ main,
 
   background-color: transparent;
   border: 0;
-  display: flex;
-  grid-column: 1 / -1;
-  grid-row: 2 / -1;
-  justify-content: center;
   margin: 0 calc(-1 * var(--page-padding)) .15rem;
   max-inline-size: 100vw;
   overflow: hidden;
