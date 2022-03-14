@@ -19,7 +19,7 @@
 
 <header class="header">
   <div class="fenced" role="presentation">
-    <a class="logo" href="{{'/'|url}}" title="Return to the entrance">
+    <a class="logo" href="{{'/'|url}}" title="Return to the entrance" data-turbo-permenant>
       <img src="{{'/assets/logo.svg'|url}}" alt="{{metadata.title}}">
     </a>
     <nav class="nav" is="land-monorail">
@@ -37,7 +37,7 @@
 
 <main>{{content|safe}}</main>
 
-<footer class="footer">
+<footer class="footer" data-turbo-permenant>
   <div class="footer-sidewalk" aria-hidden="true" style="--bg: url({{'/assets/decors/tree.svg'|url}})"></div>
   <div class="fenced" role="presentation">
     <a href="https://creativecommons.org/licenses/by-sa/4.0/"
