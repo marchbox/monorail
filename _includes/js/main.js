@@ -17,7 +17,7 @@ document.documentElement.addEventListener('turbo:before-visit', evt => {
 
 document.documentElement.addEventListener('turbo:load', () => {
   // Remove and use CSS once `text-underline-offset` is supported in Chromium.
-  [...document.querySelectorAll('h1,h2,h3')].forEach(h => {
+  [...document.querySelectorAll(':is(h1,h2,h3):not(.plain)')].forEach(h => {
     const shadow = h.attachShadow({mode: 'open'});
     shadow.innerHTML = '<span part="text" role="presentation"><slot></slot></span>';
   });
