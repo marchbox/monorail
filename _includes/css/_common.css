@@ -69,13 +69,14 @@ main,
   }
 
   & .fenced {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
     position: relative;
 
     @media (--nav) {
       align-items: flex-end;
+      display: flex;
       flex-direction: row;
       justify-content: space-between;
     }
@@ -98,7 +99,10 @@ main,
 }
 
 .logo {
+  justify-self: center;
   flex-shrink: 0;
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
 
   &,
   & img {
@@ -106,7 +110,10 @@ main,
   }
 
   & img {
-    block-size: 4rem;
+    block-size: 10rem;
+    inline-size: 13rem;
+    object-fit: cover;
+    object-position: top center;
 
     @media (--nav) {
       block-size: 7.5rem;
@@ -121,6 +128,10 @@ main,
 
   background-color: transparent;
   border: 0;
+  display: flex;
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+  justify-content: center;
   margin: 0 calc(-1 * var(--page-padding)) .15rem;
   max-inline-size: 100vw;
   overflow: hidden;
@@ -140,7 +151,7 @@ main,
     list-style: none;
     margin: 0 0 calc(.25rem - var(--padding-block-end));
     overflow: auto;
-    padding: 1rem 0 var(--padding-block-end);
+    padding: .5rem 0 var(--padding-block-end);
     animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
 
     @media (--nav) {
@@ -152,8 +163,7 @@ main,
     }
 
     &:is(.page-out *) {
-      animation-name: monorail-departing;
-      animation-timing-function: cubic-bezier(.6,-.01,1,.37);
+      animation: monorail-departing .48s cubic-bezier(.6,-.01,1,.37);
       overflow: initial;
     }
 

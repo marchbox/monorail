@@ -9,6 +9,12 @@ if ('customElements' in window) {
   customElements.define('land-monorail', Monorail, {extends: 'nav'});
 }
 
+document.documentElement.addEventListener('turbo:before-visit', evt => {
+  if (evt.detail.url === window.location.href) {
+    evt.preventDefault();
+  }
+});
+
 document.documentElement.addEventListener('turbo:load', () => {
   // Remove and use CSS once `text-underline-offset` is supported in Chromium.
   [...document.querySelectorAll('h1,h2,h3')].forEach(h => {
