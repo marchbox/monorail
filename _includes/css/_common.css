@@ -77,6 +77,8 @@ main,
     @media (--nav) {
       align-items: flex-end;
       flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0 2rem;
       justify-content: space-between;
     }
 
@@ -150,7 +152,7 @@ main,
       --padding-inline: 0rem;
 
       overflow: initial;
-      padding: 0;
+      padding-block-end: 0;
       margin-block-end: .125rem;
     }
 
