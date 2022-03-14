@@ -1,7 +1,15 @@
 .entrance {
   grid-column: 2 / -2;
 
-  & h1:first-of-type {
-    text-align: initial;
+  & .intro {
+    background: hsl(0 0% 92%);
+    border-radius: 1rem;
+    margin-block-end: 4rem;
+    padding: 2rem;
+
+    & h1 {
+      margin-block-end: 0;
+      text-align: initial;
+    }
   }
 }

@@ -5,9 +5,11 @@ eleventyNavigation:
   order: 1
 ---
 
-<div class="entrance margin-trim">
-  <h1>{{metadata.title}}</h1>
-  <p>{{metadata.description}}</p>
+<div class="entrance margin-trim" role="none">
+  <article class="intro">
+    <h1 class="plain">{{metadata.title}}</h1>
+    <p>{{metadata.description}}</p>
+  </article>
 
   {% include "_includes/layouts/article-list.njk" %}
 </div>
