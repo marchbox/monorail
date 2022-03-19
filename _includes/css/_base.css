@@ -149,29 +149,3 @@ figure {
     }
   }
 }
-
-.margin-trim {
-  & > :first-child {
-    margin-block-start: 0;
-  }
-
-  & > :last-child {
-    margin-block-end: 0;
-  }
-}
-
-.article-list {
-  & article h2 {
-    margin-block-end: 0;
-
-    & a {
-      text-decoration: none;
-    }
-  }
-}
-
-.readmore {
-  &::after {
-    content: ' →';
-  }
-}

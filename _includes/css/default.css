@@ -1,6 +1,7 @@
 @import '_fonts';
 @import '_config';
 @import '_base';
+@import '_layout';
 @import '_common';
 
 @import '_entrance';
