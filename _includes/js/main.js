@@ -1,14 +1,14 @@
 import 'regenerator-runtime/runtime';
+import '@ungap/custom-elements-builtin';
 import * as Turbo from '@hotwired/turbo';
-import iterator from '@ungap/custom-elements-builtin';
 
 import {Monorail} from './monorail.js';
-import {whenDocumentReady} from './utils.js';
 
 if ('customElements' in window) {
   customElements.define('land-monorail', Monorail, {extends: 'nav'});
 }
 
+// Don’t navigate if the destination is the current page.
 document.documentElement.addEventListener('turbo:before-visit', evt => {
   if (evt.detail.url === window.location.href) {
     evt.preventDefault();
