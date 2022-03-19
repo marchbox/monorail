@@ -34,26 +34,6 @@ main,
 
 /* Header */
 
-@keyframes monorail-arriving {
-  from {
-    transform: translatex(100vw);
-  }
-
-  to {
-    transform: none;
-  }
-}
-
-@keyframes monorail-departing {
-  from {
-    transform: none;
-  }
-
-  to {
-    transform: translatex(-100vw);
-  }
-}
-
 .header {
   --horizon-offset: .375rem;
 
@@ -74,7 +54,7 @@ main,
     flex-direction: column;
     position: relative;
 
-    @media (--nav) {
+    @media (--nav-md) {
       align-items: flex-end;
       flex-direction: row;
       flex-wrap: wrap;
@@ -92,7 +72,7 @@ main,
       position: absolute;
       z-index: -1;
 
-      @media (--nav) {
+      @media (--nav-md) {
         inset-inline: calc(-.5 * var(--page-padding));
       }
     }
@@ -113,9 +93,29 @@ main,
   & img {
     max-block-size: 6rem;
 
-    @media (--nav) {
+    @media (--nav-md) {
       max-block-size: 7.5rem;
     }
+  }
+}
+
+@keyframes monorail-arriving {
+  from {
+    transform: translatex(100vw);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes monorail-departing {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: translatex(-100vw);
   }
 }
 
@@ -132,7 +132,7 @@ main,
   position: relative;
   z-index: var(--zindex-nav);
 
-  @media (--nav) {
+  @media (--nav-md) {
     margin-inline: 0;
     overflow: initial;
   }
@@ -144,21 +144,27 @@ main,
     display: flex;
     list-style: none;
     margin: 0 0 calc(.25rem - var(--padding-block-end));
-    overflow: auto;
     padding: .5rem 0 var(--padding-block-end);
-    animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
 
-    @media (--nav) {
+    @media (--nav-sm) {
+      overflow: auto;
+    }
+
+    @media (--nav-md) {
       --padding-inline: 0rem;
 
-      overflow: initial;
       padding-block-end: 0;
       margin-block-end: .125rem;
     }
 
+    @media (--nav-md) and (--motion) {
+      animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
+    }
+
     &:is(.page-out *) {
-      animation: monorail-departing .48s cubic-bezier(.6,-.01,1,.37);
-      overflow: initial;
+      @media (--nav-md) and (--motion) {
+        animation: monorail-departing .48s cubic-bezier(.6,-.01,1,.37);
+      }
     }
 
     &::before,

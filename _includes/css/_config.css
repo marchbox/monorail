@@ -1,5 +1,6 @@
 @custom-media --md (width >= 64rem);
-@custom-media --nav (width >= 45rem);
+@custom-media --nav-sm (width < 45rem);
+@custom-media --nav-md (width >= 45rem);
 @custom-media --motion (prefers-reduced-motion: no-preference);
 @custom-media --dark (prefers-color-scheme: dark);
 
