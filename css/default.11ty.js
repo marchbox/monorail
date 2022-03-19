@@ -19,6 +19,7 @@ const POSTCSS_PRESET_ENV_CONFIG = {
     'overflow-property': true,
     'place-properties': true,
     'nesting-rules': true,
+    'not-pseudo-class': true,
   },
 };
 
