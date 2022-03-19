@@ -1,4 +1,5 @@
 import * as Turbo from '@hotwired/turbo';
+import {whenElementAnimationEnd} from './utils';
 
 export class Monorail extends HTMLElement {
   static ClassName = {
@@ -26,10 +27,11 @@ export class Monorail extends HTMLElement {
           evt.detail.url !== window.location.href) {
         evt.preventDefault();
         document.body.classList.add(this.constructor.ClassName.PAGE_OUT);
-        this.querySelector('ul').addEventListener('animationend', () => {
-          this.constructor.willNavigateAway = false;
-          Turbo.visit(evt.detail.url);
-        });
+        whenElementAnimationEnd(this.querySelector('ul'))
+            .then(() => {
+              this.constructor.willNavigateAway = false;
+              Turbo.visit(evt.detail.url);
+            });
       }
     });
 
