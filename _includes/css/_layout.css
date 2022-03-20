@@ -212,7 +212,7 @@ main,
       margin-inline-start: var(--monorail-car-gap);
     }
 
-    &:is(.operate *):not(.misaligned *) {
+    &:is(.operate *) {
       @media (--nav-sm) and (--motion) {
         --padding-inline: 100vw;
       }
