@@ -56,22 +56,12 @@ export default class extends HTMLElement {
   }
 
   observeResize() {
-    let isCentered = false;
     this.resizeObserver = new ResizeObserver(([entry]) => {
       if (entry.target.scrollWidth > entry.contentRect.width) {
         this.centerActiveCar();
-        isCentered = true;
       }
     });
     this.resizeObserver.observe(this.monorailEl);
-
-    if (this.animationMode === 'scroll') {
-      setTimeout(() => {
-        if (!isCentered) {
-          this.classList.add(ClassName.MISALIGNED);
-        }
-      }, 1000);
-    }
   }
 
   listenToClicks() {
@@ -116,9 +106,16 @@ export default class extends HTMLElement {
     const rootMarginInline = this.getBoundingClientRect().width / 2 -
         activeCarEl.getBoundingClientRect().width / 2;
 
+    const timeout = setTimeout(() => {
+      if (!this.classList.contains(ClassName.ARRIVE)) {
+        this.classList.add(ClassName.MISALIGNED);
+      }
+    }, 1000);
+
     this.arrivalObserver = new IntersectionObserver(([entry], observer) => {
       if (entry.isIntersecting) {
         this.classList.add(ClassName.ARRIVE);
+        clearTimeout(timeout);
         observer.disconnect();
       }
     }, {
