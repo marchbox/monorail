@@ -4,10 +4,10 @@
     "node": "17"
   },
   "scripts": {
-    "start": "eleventy --serve --config=./_11ty/config.js",
-    "build": "eleventy --config=./_11ty/config.js",
-    "build:prod": "eleventy --config=./_11ty/config.js",
-    "debug": "DEBUG=* eleventy"
+    "start": "npx @11ty/eleventy --serve --config=./_11ty/config.js",
+    "build": "npx @11ty/eleventy --config=./_11ty/config.js",
+    "build:prod": "npx @11ty/eleventy --config=./_11ty/config.js",
+    "debug": "DEBUG=* npx @11ty/eleventy"
   },
   "repository": {
     "type": "git",
