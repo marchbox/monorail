@@ -11,7 +11,6 @@
 <meta name="canonical" content="{{metadata.host + page.url|url}}">
 <link href="{{fonts.google|getFontUrl|safe}}" rel="stylesheet"> 
 <link rel="stylesheet" href="{{'/css/default.css'|url}}">
-
 <script src="{{'/js/main.js' | url}}" async defer></script>
 </head>
 
@@ -19,7 +18,7 @@
 
 <header class="header">
   <div class="fenced" role="none">
-    <a class="logo" href="{{'/'|url}}" title="Return to the entrance" data-turbo-permenant>
+    <a class="logo" href="{{'/'|url}}" title="Return to the entrance">
       <img src="{{'/assets/logo.svg'|url}}" alt="{{metadata.title}}">
     </a>
     <nav class="nav" is="land-monorail">
@@ -37,7 +36,7 @@
 
 <main>{{content|safe}}</main>
 
-<footer class="footer" data-turbo-permenant>
+<footer class="footer">
   <div class="footer-sidewalk" aria-hidden="true" style="--bg: url({{'/assets/decors/tree.svg'|url}})"></div>
   <div class="fenced" role="none">
     <a href="https://creativecommons.org/licenses/by-sa/4.0/"
