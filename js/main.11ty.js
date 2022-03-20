@@ -19,7 +19,7 @@ const BABEL_CONFIG = {
 
 module.exports = class {
   async data() {
-    const rawFilePath = path.join(__dirname, `../_includes/js/main.js`);
+    const rawFilePath = path.join(__dirname, `../_src/js/main.js`);
     return {
       permalink: `js/main.js`,
       rawCode: fs.readFileSync(rawFilePath, 'utf8'),
