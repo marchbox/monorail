@@ -5,6 +5,7 @@ const ClassName = {
   ARRIVE: 'arrive',
   DEPART: 'depart',
   OPERATE: 'operate',
+  MISALIGNED: 'misaligned',
 };
 
 export default class extends HTMLElement {
@@ -55,12 +56,22 @@ export default class extends HTMLElement {
   }
 
   observeResize() {
+    let isCentered = false;
     this.resizeObserver = new ResizeObserver(([entry]) => {
       if (entry.target.scrollWidth > entry.contentRect.width) {
         this.centerActiveCar();
+        isCentered = true;
       }
     });
     this.resizeObserver.observe(this.monorailEl);
+
+    if (this.animationMode === 'scroll') {
+      setTimeout(() => {
+        if (!isCentered) {
+          this.classList.add(ClassName.MISALIGNED);
+        }
+      }, 1000);
+    }
   }
 
   listenToClicks() {
@@ -119,6 +130,11 @@ export default class extends HTMLElement {
   }
 
   observeDeparture(destination) {
+    if (this.classList.contains(ClassName.MISALIGNED)) {
+      window.location.assign(destination);
+      return;
+    }
+
     this.departureObserver = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         this.isLastCarInitiallyIntersecting = true;
