@@ -1,47 +1,143 @@
-import * as Turbo from '@hotwired/turbo';
 import {whenElementAnimationEnd} from './utils';
 
-export class Monorail extends HTMLElement {
-  static ClassName = {
-    ACTIVE: 'active',
-    PAGE_OUT: 'page-out',
-  };
-  static willNavigateAway = true;
+const ClassName = {
+  ACTIVE: 'active',
+  ARRIVE: 'arrive',
+  DEPART: 'depart',
+  OPERATE: 'operate',
+};
 
-  shouldAnimate = true;
-  intersectObserver;
+export default class extends HTMLElement {
+  monorailEl;
+  isVisible;
+
+  arrivalObserver;
+  departureObserver;
+  resizeObserver;
+  visibilityObserver;
+
+  get animationMode() {
+    return getComputedStyle(this).getPropertyValue('--animation-mode');
+  }
 
   connectedCallback() {
-    this.intersectObserver = new IntersectionObserver(entries => {
-      this.shouldAnimate = entries[0].isIntersecting;
+    if (!('ResizeObserver' in window) ||
+        !('IntersectionObserver' in window)) {
+      return;
+    }
+    this.monorailEl = this.querySelector('ul');
+    this.isVisible = true;
+
+    this.observeVisibility();
+    this.observeResize();
+    this.observeArrival();
+    this.listenToClicks();
+
+    this.classList.add(ClassName.OPERATE);
+  }
+
+  disconnectedCallback() {
+    this.visibilityObserver?.disconnect();
+    this.resizeObserver?.disconnect();
+    this.arrivalObserver?.disconnect();
+    this.departureObserver?.disconnect();
+  }
+
+  observeVisibility() {
+    this.visibilityObserver = new IntersectionObserver(([entry]) => {
+      this.isVisible = entry.isIntersecting;
     }, {
       // Only use page transition animation when at least half of the monorail
       // element is intersecting with the viewport.
       threshold: .5,
     });
-    this.intersectObserver.observe(this);
+    this.visibilityObserver.observe(this);
+  }
 
-    document.documentElement.addEventListener('turbo:before-visit', evt => {
-      if (this.constructor.willNavigateAway &&
-          this.shouldAnimate &&
-          evt.detail.url !== window.location.href) {
-        evt.preventDefault();
-        document.body.classList.add(this.constructor.ClassName.PAGE_OUT);
-        whenElementAnimationEnd(this.querySelector('ul'))
-            .then(() => {
-              this.constructor.willNavigateAway = false;
-              Turbo.visit(evt.detail.url);
-            });
+  observeResize() {
+    this.resizeObserver = new ResizeObserver(([entry]) => {
+      if (entry.target.scrollWidth > entry.contentRect.width) {
+        this.centerActiveCar();
       }
     });
+    this.resizeObserver.observe(this.monorailEl);
+  }
 
-    document.documentElement.addEventListener('turbo:visit', () => {
-      document.body.classList.remove(this.constructor.ClassName.PAGE_OUT);
-      this.constructor.willNavigateAway = true;
+  listenToClicks() {
+    document.body.addEventListener('click', evt => {
+      // Do nothing if the clicked target isn’t an <a> element, or
+      // the <a> element links to an external URL.
+      if (evt.target?.nodeName !== 'A' ||
+          evt.target?.host !== window.location.host ||
+          !this.isVisible) {
+        return;
+      }
+
+      evt.preventDefault();
+      const destUrl = evt.target.href;
+
+      // Do nothing if the <a> element links to the current page.
+      if (destUrl === window.location.href) {
+        return;
+      }
+
+      this.depart(destUrl);
     });
   }
 
-  disconnectCallback() {
-    this.intersectObserver?.disconnect();
+  depart(destination) {
+    this.observeDeparture(destination);
+    this.classList.remove(ClassName.ARRIVE);
+
+    if (this.animationMode === 'transform') {
+      this.classList.add(ClassName.DEPART);
+    } else if (this.animationMode === 'scroll') {
+      this.monorailEl.scrollTo(this.monorailEl.scrollWidth, 0);
+    }
+  }
+
+  observeArrival() {
+    if (this.animationMode !== 'scroll') {
+      return;
+    }
+
+    const activeCarEl = this.querySelector(`.${ClassName.ACTIVE}`);
+    const rootMarginInline = this.getBoundingClientRect().width / 2 -
+        activeCarEl.getBoundingClientRect().width / 2;
+
+    this.arrivalObserver = new IntersectionObserver(([entry], observer) => {
+      if (entry.isIntersecting) {
+        this.classList.add(ClassName.ARRIVE);
+        observer.disconnect();
+      }
+    }, {
+      root: this,
+      rootMargin: `0px -${rootMarginInline}px`,
+      threshold: 1,
+    });
+    this.arrivalObserver.observe(activeCarEl);
+  }
+
+  observeDeparture(destination) {
+    this.departureObserver = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        this.isLastCarInitiallyIntersecting = true;
+      }
+      if (this.isLastCarInitiallyIntersecting && !entry.isIntersecting) {
+        window.location.assign(destination);
+      }
+    }, {
+      root: this,
+    });
+    this.departureObserver.observe(
+        this.monorailEl.querySelector('li:last-child'));
+  }
+
+  centerActiveCar() {
+    if (this.animationMode !== 'scroll') {
+      return;
+    }
+    this.querySelector(`.${ClassName.ACTIVE}`)
+        .scrollIntoView({block: 'end', inline: 'center'});
   }
 }
