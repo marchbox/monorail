@@ -5,7 +5,6 @@ const ClassName = {
   ARRIVE: 'arrive',
   DEPART: 'depart',
   OPERATE: 'operate',
-  MISALIGNED: 'misaligned',
 };
 
 export default class extends HTMLElement {
@@ -102,36 +101,37 @@ export default class extends HTMLElement {
       return;
     }
 
-    const activeCarEl = this.querySelector(`.${ClassName.ACTIVE}`);
-    const rootMarginInline = this.getBoundingClientRect().width / 2 -
-        activeCarEl.getBoundingClientRect().width / 2;
+    let timeout;
 
-    const timeout = setTimeout(() => {
-      if (!this.classList.contains(ClassName.ARRIVE)) {
-        this.classList.add(ClassName.MISALIGNED);
-      }
-    }, 1000);
+    Promise.any([
+      new Promise(resolve => {
+        timeout = setTimeout(() => {
+          resolve();
+        }, 1000);
+      }),
+      new Promise(resolve => {
+        const activeCarEl = this.querySelector(`.${ClassName.ACTIVE}`);
+        const rootMarginInline = this.getBoundingClientRect().width / 2 -
+            activeCarEl.getBoundingClientRect().width / 2;
 
-    this.arrivalObserver = new IntersectionObserver(([entry], observer) => {
-      if (entry.isIntersecting) {
-        this.classList.add(ClassName.ARRIVE);
-        clearTimeout(timeout);
-        observer.disconnect();
-      }
-    }, {
-      root: this,
-      rootMargin: `0px -${rootMarginInline}px`,
-      threshold: 1,
+        this.arrivalObserver = new IntersectionObserver(([entry], observer) => {
+          if (entry.isIntersecting) {
+            resolve();
+          }
+        }, {
+          root: this,
+          rootMargin: `0px -${rootMarginInline}px`,
+          threshold: 1,
+        });
+        this.arrivalObserver.observe(activeCarEl);
+      }),
+    ]).then(() => {
+      this.classList.add(ClassName.ARRIVE);
+      this.arrivalObserver?.disconnect();
     });
-    this.arrivalObserver.observe(activeCarEl);
   }
 
   observeDeparture(destination) {
-    if (this.classList.contains(ClassName.MISALIGNED)) {
-      window.location.assign(destination);
-      return;
-    }
-
     this.departureObserver = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting) {
         this.isLastCarInitiallyIntersecting = true;
