@@ -21,7 +21,7 @@
     <a class="logo" href="{{'/'|url}}" title="Return to the entrance">
       <img src="{{'/assets/logo.svg'|url}}" alt="{{metadata.title}}">
     </a>
-    <nav class="nav" is="land-monorail">
+    <nav class="nav" is="monorail-nav">
       <ul>
         {% for entry in collections.all|eleventyNavigation %}
           {% set isActive = entry.url == page.url or entry|isParent(page) %}

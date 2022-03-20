@@ -5,7 +5,7 @@ import Monorail from './monorail';
 import {whenDocumentReady} from './utils';
 
 if ('customElements' in window) {
-  customElements.define('land-monorail', Monorail, {extends: 'nav'});
+  customElements.define('monorail-nav', Monorail, {extends: 'nav'});
 }
 
 whenDocumentReady().then(() => {
