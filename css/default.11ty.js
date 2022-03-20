@@ -25,7 +25,7 @@ const POSTCSS_PRESET_ENV_CONFIG = {
 
 module.exports = class {
   async data() {
-    const rawFilePath = path.join(__dirname, `../_includes/css/default.css`);
+    const rawFilePath = path.join(__dirname, `../_src/css/default.css`);
     return {
       permalink: `css/${FILE_NAME}`,
       rawFilePath,
