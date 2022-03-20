@@ -45,6 +45,10 @@ h3 {
       repeat
       top left / 100% calc(var(--lh) * 1em);
   }
+
+  & a:any-link {
+    text-decoration: none;
+  }
 }
 
 h1 {
