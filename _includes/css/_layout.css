@@ -213,16 +213,8 @@ main,
     }
 
     &:is(.operate *) {
-      &::before {
-        @media (--nav-sm) and (--motion) {
-          margin-inline-start: 100vw;
-        }
-      }
-
-      &::after {
-        @media (--nav-sm) and (--motion) {
-          margin-inline-end: 100vw;
-        }
+      @media (--nav-sm) and (--motion) {
+        --padding-inline: 100vw;
       }
     }
   }
