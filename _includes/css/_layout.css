@@ -34,26 +34,6 @@ main,
 
 /* Header */
 
-@keyframes monorail-arriving {
-  from {
-    transform: translatex(100vw);
-  }
-
-  to {
-    transform: none;
-  }
-}
-
-@keyframes monorail-departing {
-  from {
-    transform: none;
-  }
-
-  to {
-    transform: translatex(-100vw);
-  }
-}
-
 .header {
   --horizon-offset: .375rem;
 
@@ -74,7 +54,7 @@ main,
     flex-direction: column;
     position: relative;
 
-    @media (--nav) {
+    @media (--nav-md) {
       align-items: flex-end;
       flex-direction: row;
       flex-wrap: wrap;
@@ -92,7 +72,7 @@ main,
       position: absolute;
       z-index: -1;
 
-      @media (--nav) {
+      @media (--nav-md) {
         inset-inline: calc(-.5 * var(--page-padding));
       }
     }
@@ -113,9 +93,29 @@ main,
   & img {
     max-block-size: 6rem;
 
-    @media (--nav) {
+    @media (--nav-md) {
       max-block-size: 7.5rem;
     }
+  }
+}
+
+@keyframes monorail-arriving {
+  from {
+    transform: translatex(100vw);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes monorail-departing {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: translatex(-100vw);
   }
 }
 
@@ -123,18 +123,32 @@ main,
   --monorail-height: 1.75rem;
   --monorail-car-gap: .125rem;
   --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
+  --animation-mode: none;
 
   background-color: transparent;
   border: 0;
   margin: 0 calc(-1 * var(--page-padding)) .15rem;
   max-inline-size: 100vw;
+  opacity: 0;
   overflow: hidden;
   position: relative;
   z-index: var(--zindex-nav);
 
-  @media (--nav) {
+  &.operate {
+    opacity: 1;
+  }
+
+  @media (--nav-md) {
     margin-inline: 0;
     overflow: initial;
+  }
+
+  @media (--nav-sm) and (--motion) {
+    --animation-mode: scroll;
+  }
+
+  @media (--nav-md) and (--motion) {
+    --animation-mode: transform;
   }
 
   & ul {
@@ -144,21 +158,33 @@ main,
     display: flex;
     list-style: none;
     margin: 0 0 calc(.25rem - var(--padding-block-end));
-    overflow: auto;
-    padding: .5rem 0 var(--padding-block-end);
-    animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
+    padding: .8rem 0 var(--padding-block-end);
 
-    @media (--nav) {
+    @media (--nav-sm) {
+      overflow: auto;
+    }
+
+    @media (--nav-sm) and (--motion) {
+      scroll-behavior: smooth;
+      scroll-snap-type: x mandatory;
+    }
+
+    @media (--nav-md) {
       --padding-inline: 0rem;
 
-      overflow: initial;
       padding-block-end: 0;
       margin-block-end: .125rem;
     }
 
-    &:is(.page-out *) {
-      animation: monorail-departing .48s cubic-bezier(.6,-.01,1,.37);
-      overflow: initial;
+    @media (--nav-md) and (--motion) {
+      animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
+    }
+
+    &:is(.depart *) {
+      @media (--nav-md) and (--motion) {
+        animation: monorail-departing .48s cubic-bezier(.6,-.01,1,.37);
+        animation-fill-mode: forwards;
+      }
     }
 
     &::before,
@@ -185,11 +211,21 @@ main,
       background-position: right var(--padding-inline) top;
       margin-inline-start: var(--monorail-car-gap);
     }
+
+    &:is(.operate *) {
+      @media (--nav-sm) and (--motion) {
+        --padding-inline: 100vw;
+      }
+    }
   }
 
   & li {
     margin: 0 var(--monorail-car-gap);
     position: relative;
+
+    &:is(.arrive *) {
+      scroll-snap-align: center;
+    }
   }
 
   & li::marker {

@@ -7,3 +7,20 @@ export function whenDocumentReady() {
     }
   });
 }
+
+export function whenElementAnimationEnd(element) {
+  return new Promise(resolve => {
+    if(element && elementHasAnimation(element)) {
+      element.addEventListener('animationend', () => {
+        resolve();
+      });
+    } else {
+      resolve();
+    }
+  });
+}
+
+export function elementHasAnimation(element) {
+  return element &&
+      getComputedStyle(element).getPropertyValue('animation-name') !== 'none';
+}
