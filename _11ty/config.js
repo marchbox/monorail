@@ -26,6 +26,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('isParent', require('./is-parent.js'));
 
   eleventyConfig.addPassthroughCopy('assets');
+  eleventyConfig.addPassthroughCopy('*.txt');
 
   eleventyConfig.addTransform('htmlmin', function(content, outputPath) {
     if(process.env.WCL_PROD && outputPath && outputPath.endsWith('.html')) {
