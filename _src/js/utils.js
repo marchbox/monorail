@@ -8,12 +8,12 @@ export function whenDocumentReady() {
   });
 }
 
-export function whenElementAnimationEnd(element) {
+export function whenElementAnimationEnd(element, once = false) {
   return new Promise(resolve => {
     if(element && elementHasAnimation(element)) {
       element.addEventListener('animationend', () => {
         resolve();
-      });
+      }, {once});
     } else {
       resolve();
     }

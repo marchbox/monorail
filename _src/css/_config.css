@@ -1,6 +1,6 @@
 @custom-media --md (width >= 64rem);
-@custom-media --nav-sm (width < 45rem);
-@custom-media --nav-md (width >= 45rem);
+@custom-media --nav-sm (width < 48rem);
+@custom-media --nav-md (width >= 48rem);
 @custom-media --motion (prefers-reduced-motion: no-preference);
 @custom-media --dark (prefers-color-scheme: dark);
 
@@ -60,5 +60,6 @@ html {
   --color-border: hsl(0 0% 92%);
 
   --zindex-logo: 10;
-  --zindex-nav: 1;
+  --zindex-monorail: 2;
+  --zindex-rail: -1;
 }
