@@ -35,55 +35,46 @@ main,
 /* Header */
 
 .header {
-  --horizon-offset: .375rem;
+  --monorail-height: 1.75rem;
+  --rail-height: 1rem;
+  --rail-offset: .2rem;
+  --monorail-top: .8rem;
+  --logo-inline-size: 12.75rem;
 
-  padding: var(--page-padding) var(--page-padding) var(--horizon-offset);
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  padding: var(--page-padding) 0 0;
   position: relative;
 
-  &::after {
-    border-block-start: .125rem solid currentcolor;
-    block-size: var(--horizon-offset);
-    content: '';
-    inset: auto 0 0;
-    position: absolute;
+  @media (--nav-md) {
+    display: grid;
+    align-items: end;
+    gap: 0;
+    grid-template-columns:
+        var(--page-padding) var(--logo-inline-size) 1fr var(--page-padding);
   }
 
-  & .fenced {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-
-    @media (--nav-md) {
-      align-items: flex-end;
-      flex-direction: row;
-      flex-wrap: wrap;
-      gap: 0 2rem;
-      justify-content: space-between;
-    }
-
-    &::after {
-      background-color: var(--color-accent-1);
-      block-size: 1rem;
-      border-block-start: .125rem solid var(--color-accent-1-darker);
-      content: '';
-      display: block;
-      inset: auto calc(-1 * var(--page-padding)) calc(-1 * var(--horizon-offset));
-      position: absolute;
-      z-index: -1;
-
-      @media (--nav-md) {
-        inset-inline: calc(-.5 * var(--page-padding));
-      }
-    }
+  @media (--md) {
+    grid-template-columns: 1fr var(--logo-inline-size) 46rem 1fr;
   }
 }
 
+.logo,
+.nav {
+  grid-row: 1 / 2;
+}
+
 .logo {
-  justify-self: center;
   flex-shrink: 0;
   position: relative;
   z-index: var(--zindex-logo);
+
+  @media (--nav-md) {
+    grid-column: 2 / 3;
+    justify-self: center;
+    margin-block-end: var(--rail-height);
+  }
 
   &,
   & img {
@@ -109,7 +100,17 @@ main,
   }
 }
 
-@keyframes monorail-departing {
+@keyframes monorail-departing-sm {
+  from {
+    transform: none;
+  }
+
+  to {
+    transform: translatex(calc(-1 * var(--monorail-length, 100%)));
+  }
+}
+
+@keyframes monorail-departing-md {
   from {
     transform: none;
   }
@@ -120,103 +121,124 @@ main,
 }
 
 .nav {
-  --monorail-height: 1.75rem;
-  --monorail-car-gap: .125rem;
-  --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
-  --animation-mode: none;
-
   background-color: transparent;
-  border: 0;
-  margin: 0 calc(-1 * var(--page-padding)) .15rem;
-  max-inline-size: 100vw;
-  opacity: 0;
+  justify-self: end;
+  inline-size: 100vw;
   overflow: hidden;
   position: relative;
-  z-index: var(--zindex-nav);
+  padding-block-end: calc(var(--rail-height) - var(--rail-offset));
 
-  &.operate {
-    opacity: 1;
+  @media (--nav-sm) {
+    display: flex;
   }
 
   @media (--nav-md) {
-    margin-inline: 0;
-    overflow: initial;
+    /* TODO: replace with `display: subgrid`. */
+    display: grid;
+    gap: inherit;
+    grid-column: 1 / -1;
+    grid: inherit;
   }
 
-  @media (--nav-sm) and (--motion) {
-    --animation-mode: scroll;
-  }
-
-  @media (--nav-md) and (--motion) {
-    --animation-mode: transform;
-  }
-
-  & ul {
-    --padding-inline: var(--page-padding);
-    --padding-block-end: 2rem;
-
-    display: flex;
-    list-style: none;
-    margin: 0 0 calc(.25rem - var(--padding-block-end));
-    padding: .8rem 0 var(--padding-block-end);
-
-    @media (--nav-sm) {
-      overflow: auto;
-    }
-
-    @media (--nav-sm) and (--motion) {
-      scroll-behavior: smooth;
-      scroll-snap-type: x mandatory;
-    }
+  &::after {
+    background-color: var(--color-accent-1);
+    block-size: var(--rail-height);
+    border-block-start: .125rem solid var(--color-accent-1-darker);
+    content: '';
+    display: block;
+    inset: calc(var(--monorail-top) + var(--monorail-height) - var(--rail-offset)) 0 0;
+    position: absolute;
+    z-index: var(--zindex-rail);
 
     @media (--nav-md) {
-      --padding-inline: 0rem;
+      inset-inline: calc(-.5 * var(--page-padding));
+    }
+  }
+}
 
-      padding-block-end: 0;
-      margin-block-end: .125rem;
+.monorail-station {
+  --padding-block-end: 2rem;
+
+  margin: 0 0 calc(.25rem - var(--padding-block-end));
+  position: relative;
+  padding-block-start: var(--monorail-top);
+
+  @media (--nav-sm) {
+    flex-grow: 1;
+    overflow: auto;
+    padding-block-end: var(--padding-block-end);
+    scroll-snap-type: x mandatory;
+    text-align: center;
+  }
+
+  @media (--nav-md) {
+    margin-block-end: .125rem;
+    grid-column: 2 / -2;
+    justify-self: end;
+  }
+
+  @media (--motion) {
+    scroll-behavior: smooth;
+  }
+}
+
+.monorail {
+  --monorail-engine-offset: var(--page-padding);
+  --monorail-car-gap: .125rem;
+  --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
+
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: var(--zindex-monorail);
+
+  @media (--nav-sm) {
+    display: inline-flex;
+  }
+
+  @media (--nav-md) {
+    --monorail-engine-offset: 0rem;
+  }
+
+  @media (--motion) {
+    animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
+  }
+
+  &:is(.depart *) {
+    @media (--motion) {
+      animation: monorail-departing-sm .48s forwards cubic-bezier(.6,-.01,1,.37);
     }
 
     @media (--nav-md) and (--motion) {
-      animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
+      animation-name: monorail-departing-md;
     }
+  }
 
-    &:is(.depart *) {
-      @media (--nav-md) and (--motion) {
-        animation: monorail-departing .48s cubic-bezier(.6,-.01,1,.37);
-        animation-fill-mode: forwards;
-      }
-    }
+  &::before,
+  &::after {
+    --fill-offset: .1875rem;
+    --block-size: calc(var(--monorail-height) + var(--fill-offset));
 
-    &::before,
-    &::after {
-      --fill-offset: .1875rem;
-      --block-size: calc(var(--monorail-height) + var(--fill-offset));
+    background: url(/assets/decors/monorail.svg) no-repeat left bottom;
+    background-size: 9.875rem var(--block-size);
+    block-size: var(--block-size);
+    box-sizing: content-box;
+    content: '';
+    flex-shrink: 0;
+    margin-block-end: calc(-1 * var(--fill-offset));
+  }
 
-      background: url(/assets/decors/monorail.svg) no-repeat left bottom;
-      background-size: 9.875rem var(--block-size);
-      block-size: var(--block-size);
-      box-sizing: content-box;
-      content: '';
-      flex-shrink: 0;
-      margin-block-end: calc(-1 * var(--fill-offset));
-    }
+  &::before {
+    inline-size: calc(4.875rem + var(--monorail-engine-offset));
+    background-position: var(--monorail-engine-offset) top;
+  }
 
-    &::before {
-      inline-size: calc(4.875rem + var(--padding-inline));
-      background-position: var(--padding-inline) top;
-    }
-
-    &::after {
-      inline-size: calc(4.9375rem + var(--padding-inline));
-      background-position: right var(--padding-inline) top;
-      margin-inline-start: var(--monorail-car-gap);
-    }
-
-    &:is(.operate *) {
-      @media (--nav-sm) and (--motion) {
-        --padding-inline: 100vw;
-      }
-    }
+  &::after {
+    inline-size: calc(4.9375rem + var(--monorail-engine-offset));
+    background-position: right var(--monorail-engine-offset) top;
+    margin-inline-start: var(--monorail-car-gap);
   }
 
   & li {
@@ -224,7 +246,9 @@ main,
     position: relative;
 
     &:is(.arrive *) {
-      scroll-snap-align: center;
+      @media (--nav-sm) {
+        scroll-snap-align: center;
+      }
     }
   }
 
