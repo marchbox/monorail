@@ -100,26 +100,6 @@ main,
   }
 }
 
-@keyframes monorail-departing-sm {
-  from {
-    transform: none;
-  }
-
-  to {
-    transform: translatex(calc(-1 * var(--monorail-length, 100%)));
-  }
-}
-
-@keyframes monorail-departing-md {
-  from {
-    transform: none;
-  }
-
-  to {
-    transform: translatex(-100vw);
-  }
-}
-
 .nav {
   background-color: transparent;
   justify-self: end;
@@ -204,15 +184,16 @@ main,
 
   @media (--motion) {
     animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
+    transition: transform .48s cubic-bezier(.6,-.01,1,.37);
   }
 
   &:is(.depart *) {
     @media (--motion) {
-      animation: monorail-departing-sm .48s forwards cubic-bezier(.6,-.01,1,.37);
+      transform: translatex(calc(-1 * var(--monorail-length, 100%)));
     }
 
     @media (--nav-md) and (--motion) {
-      animation-name: monorail-departing-md;
+      transform: translatex(-100vw);
     }
   }
 
