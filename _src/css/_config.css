@@ -63,7 +63,10 @@ html {
     --color-bg: hsl(0 0% 8%);
     --color-fg: hsl(0 0% 96%);
     --color-bg-surface: hsl(0 0% 16%);
-    --color-accent-1: hsl(218deg 64% 32%);
+    --color-accent-1: hsl(270deg 100% 40%);
+    --color-accent-1-darker: hsl(270deg 100% 72%);
+    --color-accent-2: hsl(214deg 100% 50%);
+    --color-accent-3: hsl(312deg 100% 50%);
   }
 
   --zindex-logo: 10;
