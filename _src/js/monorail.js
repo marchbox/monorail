@@ -81,14 +81,13 @@ export default class extends HTMLElement {
     document.body.addEventListener('click', evt => {
       // Do nothing if the clicked target isn’t an <a> element, or
       // the <a> element links to an external URL.
-      if (evt.target?.nodeName !== 'A' ||
-          evt.target?.host !== window.location.host ||
-          !this.isVisible) {
+      const aEl = evt.target?.closest('a');
+      if (!aEl || aEl?.host !== window.location.host || !this.isVisible) {
         return;
       }
 
       evt.preventDefault();
-      const destUrl = evt.target.href;
+      const destUrl = aEl.href;
 
       // Do nothing if the <a> element links to the current page.
       if (destUrl === window.location.href) {
