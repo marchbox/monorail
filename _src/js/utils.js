@@ -8,9 +8,26 @@ export function whenDocumentReady() {
   });
 }
 
+export function whenElementTransitionEnd(element, once = false) {
+  return new Promise(resolve => {
+    if (elementHasTransition(element)) {
+      element.addEventListener('transitionend', () => {
+        resolve();
+      }, {once});
+    } else {
+      resolve();
+    }
+  });
+}
+
+export function elementHasTransition(element) {
+  return element && getComputedStyle(element)
+      .getPropertyValue('transition-duration') !== '0s';
+}
+
 export function whenElementAnimationEnd(element, once = false) {
   return new Promise(resolve => {
-    if(element && elementHasAnimation(element)) {
+    if(elementHasAnimation(element)) {
       element.addEventListener('animationend', () => {
         resolve();
       }, {once});

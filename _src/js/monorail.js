@@ -1,4 +1,7 @@
-import {whenElementAnimationEnd} from './utils';
+import {
+  whenElementAnimationEnd,
+  whenElementTransitionEnd,
+} from './utils';
 
 const ClassName = {
   ACTIVE: 'active',
@@ -15,6 +18,10 @@ export default class extends HTMLElement {
 
   visibilityObserver;
   isVisible;
+
+  get hasScroll() {
+    return this.stationEl?.scrollWidth > this.stationEl?.offsetWidth;
+  }
 
   connectedCallback() {
     if (!('IntersectionObserver' in window)) {
@@ -33,19 +40,25 @@ export default class extends HTMLElement {
     this.style.setProperty('--monorail-length',
         `${this.monorailEl.scrollWidth / 16}rem`);
 
-    this.observeVisibility();
-
     whenElementAnimationEnd(this.monorailEl, true).then(() => {
-      this.activeCarEl.scrollIntoView({
-        behavior: 'smooth',
-        block: 'end',
-        inline: 'center',
-      });
+      let waitBeforeAddArriveClass = 0;
+
+      if (this.hasScroll) {
+        this.activeCarEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end',
+          inline: 'center',
+        });
+        waitBeforeAddArriveClass = 1000;
+      }
+
       // Wait to set `arrive` class to give time for `this.adjust()` to finish
       // scrolling.
-      setTimeout(() => this.classList.add(ClassName.ARRIVE), 1000);
+      setTimeout(() => this.classList.add(ClassName.ARRIVE),
+          waitBeforeAddArriveClass);
     });
 
+    this.observeVisibility();
     this.listenToClicks();
   }
 
@@ -87,14 +100,14 @@ export default class extends HTMLElement {
   }
 
   depart(destination) {
-    whenElementAnimationEnd(this.monorailEl, true).then(() => {
-      window.location.assign(destination);
-      // Restore monorail position so that if user uses browser back button to
-      // go back to the previous page, the navigation will be visible,
-      setTimeout(() => {
+    whenElementTransitionEnd(this.monorailEl, true).then(() => {
+      window.addEventListener('pagehide', () => {
+        // Restore the class names right before page unload so if a user use
+        // browser back/forward cache, the navigation will be there.
         this.classList.remove(ClassName.DEPART);
         this.classList.add(ClassName.ARRIVE);
-      }, 2);
+      });
+      window.location.assign(destination);
     });
     this.classList.remove(ClassName.ARRIVE);
     this.classList.add(ClassName.DEPART);
