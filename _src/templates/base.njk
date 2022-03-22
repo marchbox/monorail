@@ -17,12 +17,12 @@
 <body>
 
 <header class="header">
-  <div class="fenced" role="none">
-    <a class="logo" href="{{'/'|url}}" title="Return to the entrance">
-      <img src="{{'/assets/logo.svg'|url}}" alt="{{metadata.title}}">
-    </a>
-    <nav class="nav" is="monorail-nav">
-      <ul>
+  <a class="logo" href="{{'/'|url}}" title="Return to the entrance">
+    <img src="{{'/assets/logo.svg'|url}}" alt="{{metadata.title}}">
+  </a>
+  <nav class="nav" is="monorail-nav">
+    <div role="none" class="monorail-station">
+      <ul class="monorail">
         {% for entry in collections.all|eleventyNavigation %}
           {% set isActive = entry.url == page.url or entry|isParent(page) %}
           <li{% if isActive %} class="active"{% endif %}>
@@ -30,8 +30,8 @@
           </li>
         {% endfor %}
       </ul>
-    </nav>
-  </div>
+    </div>
+  </nav>
 </header>
 
 <main>{{content|safe}}</main>
