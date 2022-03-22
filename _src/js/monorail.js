@@ -1,66 +1,80 @@
-import {whenElementAnimationEnd} from './utils';
+import {
+  whenElementAnimationEnd,
+  whenElementTransitionEnd,
+} from './utils';
 
 const ClassName = {
   ACTIVE: 'active',
   ARRIVE: 'arrive',
   DEPART: 'depart',
-  OPERATE: 'operate',
+  MONORAIL: 'monorail',
+  STATION: 'monorail-station',
 };
 
 export default class extends HTMLElement {
+  stationEl;
   monorailEl;
+  activeCarEl;
+
+  visibilityObserver;
   isVisible;
 
-  arrivalObserver;
-  departureObserver;
-  resizeObserver;
-  visibilityObserver;
-
-  get animationMode() {
-    return getComputedStyle(this).getPropertyValue('--animation-mode');
+  get hasScroll() {
+    return this.stationEl?.scrollWidth > this.stationEl?.offsetWidth;
   }
 
   connectedCallback() {
-    if (!('ResizeObserver' in window) ||
-        !('IntersectionObserver' in window)) {
+    if (!('IntersectionObserver' in window)) {
       return;
     }
-    this.monorailEl = this.querySelector('ul');
+
+    this.stationEl = this.querySelector(`.${ClassName.STATION}`);
+    this.monorailEl = this.querySelector(`.${ClassName.MONORAIL}`);
+    this.activeCarEl = this.monorailEl?.querySelector(`.${ClassName.ACTIVE}`);
+    if (!this.stationEl || !this.monorailEl) {
+      return;
+    }
+
     this.isVisible = true;
 
-    this.observeVisibility();
-    this.observeResize();
-    this.observeArrival();
-    this.listenToClicks();
+    this.style.setProperty('--monorail-length',
+        `${this.monorailEl.scrollWidth / 16}rem`);
 
-    this.classList.add(ClassName.OPERATE);
+    whenElementAnimationEnd(this.monorailEl, true).then(() => {
+      let waitBeforeAddArriveClass = 0;
+
+      if (this.hasScroll) {
+        this.activeCarEl.scrollIntoView({
+          behavior: 'smooth',
+          block: 'end',
+          inline: 'center',
+        });
+        waitBeforeAddArriveClass = 1000;
+      }
+
+      // Wait to set `arrive` class to give time for `this.adjust()` to finish
+      // scrolling.
+      setTimeout(() => this.classList.add(ClassName.ARRIVE),
+          waitBeforeAddArriveClass);
+    });
+
+    this.observeVisibility();
+    this.listenToClicks();
   }
 
   disconnectedCallback() {
     this.visibilityObserver?.disconnect();
-    this.resizeObserver?.disconnect();
-    this.arrivalObserver?.disconnect();
-    this.departureObserver?.disconnect();
   }
 
+  // Only use page transition animation when at least half of the monorail
+  // element is intersecting with the viewport.
   observeVisibility() {
     this.visibilityObserver = new IntersectionObserver(([entry]) => {
       this.isVisible = entry.isIntersecting;
     }, {
-      // Only use page transition animation when at least half of the monorail
-      // element is intersecting with the viewport.
       threshold: .5,
     });
     this.visibilityObserver.observe(this);
-  }
-
-  observeResize() {
-    this.resizeObserver = new ResizeObserver(([entry]) => {
-      if (entry.target.scrollWidth > entry.contentRect.width) {
-        this.centerActiveCar();
-      }
-    });
-    this.resizeObserver.observe(this.monorailEl);
   }
 
   listenToClicks() {
@@ -86,71 +100,16 @@ export default class extends HTMLElement {
   }
 
   depart(destination) {
-    this.observeDeparture(destination);
+    whenElementTransitionEnd(this.monorailEl, true).then(() => {
+      window.addEventListener('pagehide', () => {
+        // Restore the class names right before page unload so if a user use
+        // browser back/forward cache, the navigation will be there.
+        this.classList.remove(ClassName.DEPART);
+        this.classList.add(ClassName.ARRIVE);
+      });
+      window.location.assign(destination);
+    });
     this.classList.remove(ClassName.ARRIVE);
-
-    if (this.animationMode === 'transform') {
-      this.classList.add(ClassName.DEPART);
-    } else if (this.animationMode === 'scroll') {
-      this.monorailEl.scrollTo(this.monorailEl.scrollWidth, 0);
-    }
-  }
-
-  observeArrival() {
-    if (this.animationMode !== 'scroll') {
-      return;
-    }
-
-    let timeout;
-
-    Promise.any([
-      new Promise(resolve => {
-        timeout = setTimeout(() => {
-          resolve();
-        }, 1000);
-      }),
-      new Promise(resolve => {
-        const activeCarEl = this.querySelector(`.${ClassName.ACTIVE}`);
-        const rootMarginInline = this.getBoundingClientRect().width / 2 -
-            activeCarEl.getBoundingClientRect().width / 2;
-
-        this.arrivalObserver = new IntersectionObserver(([entry], observer) => {
-          if (entry.isIntersecting) {
-            resolve();
-          }
-        }, {
-          root: this,
-          rootMargin: `0px -${rootMarginInline}px`,
-          threshold: 1,
-        });
-        this.arrivalObserver.observe(activeCarEl);
-      }),
-    ]).then(() => {
-      this.classList.add(ClassName.ARRIVE);
-      this.arrivalObserver?.disconnect();
-    });
-  }
-
-  observeDeparture(destination) {
-    this.departureObserver = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting) {
-        this.isLastCarInitiallyIntersecting = true;
-      }
-      if (this.isLastCarInitiallyIntersecting && !entry.isIntersecting) {
-        window.location.assign(destination);
-      }
-    }, {
-      root: this,
-    });
-    this.departureObserver.observe(
-        this.monorailEl.querySelector('li:last-child'));
-  }
-
-  centerActiveCar() {
-    if (this.animationMode !== 'scroll') {
-      return;
-    }
-    this.querySelector(`.${ClassName.ACTIVE}`)
-        .scrollIntoView({block: 'end', inline: 'center'});
+    this.classList.add(ClassName.DEPART);
   }
 }
