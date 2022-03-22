@@ -83,6 +83,7 @@ main,
 
   & img {
     max-block-size: 6rem;
+    object-fit: contain;
 
     @media (--nav-md) {
       max-block-size: 7.5rem;
