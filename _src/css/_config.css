@@ -58,7 +58,14 @@ html {
   --color-accent-3: hsl(3deg 98% 90%);
   --color-bg-code: hsl(0 0% 92%);
   --color-fg-code: hsl(278deg 57% 32%);
+  --color-bg-surface: hsl(0 0% 92%);
   --color-border: hsl(0 0% 92%);
+  @media (--dark) {
+    --color-bg: hsl(0 0% 8%);
+    --color-fg: hsl(0 0% 96%);
+    --color-bg-surface: hsl(0 0% 16%);
+    --color-accent-1: hsl(218deg 64% 32%);
+  }
 
   --zindex-logo: 10;
   --zindex-monorail: 2;
