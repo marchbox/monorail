@@ -1,7 +1,8 @@
 import {render} from './utils';
 
 const styles = `
-:host {
+:host,
+.container {
   display: flex;
 }
 
