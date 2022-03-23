@@ -76,14 +76,12 @@ main,
     margin-block-end: var(--rail-height);
   }
 
-  &,
-  & img {
+  & {
     display: block;
   }
 
-  & img {
+  & land-logo {
     max-block-size: 6rem;
-    object-fit: contain;
 
     @media (--nav-md) {
       max-block-size: 7.5rem;

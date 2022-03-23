@@ -1,11 +1,15 @@
 import 'regenerator-runtime/runtime';
 import '@ungap/custom-elements-builtin';
 
+import Inlinesvg from './inlinesvg';
+import Logo from './logo';
 import Monorail from './monorail';
 import {whenDocumentReady} from './utils';
 
 if ('customElements' in window) {
-  customElements.define('monorail-nav', Monorail, {extends: 'nav'});
+  customElements.define('land-inlinesvg', Inlinesvg);
+  customElements.define('land-logo', Logo);
+  customElements.define('land-monorail', Monorail, {extends: 'nav'});
 }
 
 whenDocumentReady().then(() => {

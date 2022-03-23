@@ -41,3 +41,18 @@ export function elementHasAnimation(element) {
   return element &&
       getComputedStyle(element).getPropertyValue('animation-name') !== 'none';
 }
+
+export function render(hostEl, template, styles = '') {
+  const templateEl = document.createElement('template');
+  templateEl.innerHTML = template;
+
+  const children = [templateEl.content.cloneNode(true)];
+
+  if (styles.trim()) {
+    const styleEl = document.createElement('style');
+    styleEl.textContent = styles;
+    children.unshift(styleEl);
+  }
+
+  hostEl.append(...children);
+}
