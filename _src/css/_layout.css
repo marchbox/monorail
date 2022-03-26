@@ -196,29 +196,26 @@ main,
     }
   }
 
-  &::before,
-  &::after {
+  & land-inlinesvg:first-child,
+  & land-inlinesvg:last-child {
     --fill-offset: .1875rem;
     --block-size: calc(var(--monorail-height) + var(--fill-offset));
 
-    background: url(/assets/decors/monorail.svg) no-repeat left bottom;
-    background-size: 9.875rem var(--block-size);
     block-size: var(--block-size);
     box-sizing: content-box;
-    content: '';
     flex-shrink: 0;
     margin-block-end: calc(-1 * var(--fill-offset));
   }
 
-  &::before {
+  & land-inlinesvg:first-child {
     inline-size: calc(4.875rem + var(--monorail-engine-offset));
-    background-position: var(--monorail-engine-offset) top;
+    text-align: end;
   }
 
-  &::after {
+  & land-inlinesvg:last-child {
     inline-size: calc(4.9375rem + var(--monorail-engine-offset));
-    background-position: right var(--monorail-engine-offset) top;
     margin-inline-start: var(--monorail-car-gap);
+    text-align: start;
   }
 
   & li {

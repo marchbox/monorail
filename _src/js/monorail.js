@@ -30,10 +30,12 @@ export default class extends HTMLElement {
 
     this.stationEl = this.querySelector(`.${ClassName.STATION}`);
     this.monorailEl = this.querySelector(`.${ClassName.MONORAIL}`);
-    this.activeCarEl = this.monorailEl?.querySelector(`.${ClassName.ACTIVE}`);
     if (!this.stationEl || !this.monorailEl) {
       return;
     }
+
+    this.decorate();
+    this.activeCarEl = this.monorailEl.querySelector(`.${ClassName.ACTIVE}`);
 
     this.isVisible = true;
 
@@ -64,6 +66,18 @@ export default class extends HTMLElement {
 
   disconnectedCallback() {
     this.visibilityObserver?.disconnect();
+  }
+
+  decorate() {
+    const engineHead = document.createElement('land-inlinesvg');
+    engineHead.setAttribute('src', '/assets/decors/monorail-engine-head.svg');
+    engineHead.setAttribute('aria-hidden', 'true');
+    const engineTail = document.createElement('land-inlinesvg');
+    engineTail.setAttribute('src', '/assets/decors/monorail-engine-tail.svg');
+    engineTail.setAttribute('aria-hidden', 'true');
+
+    this.monorailEl.prepend(engineHead);
+    this.monorailEl.append(engineTail);
   }
 
   // Only use page transition animation when at least half of the monorail
