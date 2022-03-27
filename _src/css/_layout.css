@@ -2,6 +2,10 @@
 
 body {
   --page-padding: 1.5rem;
+  --page-padding-block-start: var(--page-padding);
+  --page-padding-block-end: var(--page-padding);
+  --page-padding-inline-start: var(--page-padding);
+  --page-padding-inline-end: var(--page-padding);
 
   /**
    * Use grid instead of flex is because Safari/macOS creates extra space after
@@ -15,6 +19,15 @@ body {
 @supports (min-block-size: 100svb) {
   body {
     min-block-size: 100svb;
+  }
+}
+
+@supports (padding-block-start: calc(env(safe-area-inset-top) + var(--foo))) {
+  body {
+    --page-padding-block-start: calc(env(safe-area-inset-top) + var(--page-padding));
+    --page-padding-block-end: calc(env(safe-area-inset-bottom) + var(--page-padding));
+    --page-padding-inline-start: calc(env(safe-area-inset-left) + var(--page-padding));
+    --page-padding-inline-end: calc(env(safe-area-inset-right) + var(--page-padding));
   }
 }
 
@@ -44,7 +57,7 @@ main,
   align-items: center;
   display: flex;
   flex-direction: column;
-  padding: var(--page-padding) 0 0;
+  padding: var(--page-padding-block-start) 0 0;
   position: relative;
 
   @media (--nav-md) {
@@ -52,7 +65,10 @@ main,
     align-items: end;
     gap: 0;
     grid-template-columns:
-        var(--page-padding) var(--logo-inline-size) 1fr var(--page-padding);
+        var(--page-padding-inline-start)
+        var(--logo-inline-size)
+        1fr
+        var(--page-padding-inline-end);
   }
 
   @media (--md) {
@@ -131,7 +147,8 @@ main,
     z-index: var(--zindex-rail);
 
     @media (--nav-md) {
-      inset-inline: calc(-.5 * var(--page-padding));
+      inset-inline-start: calc(-.5 * var(--page-padding-inline-start));
+      inset-inline-end: calc(-.5 * var(--page-padding-inline-end));
     }
   }
 }
@@ -163,7 +180,8 @@ main,
 }
 
 .monorail {
-  --monorail-engine-offset: var(--page-padding);
+  --monorail-engine-offset-start: var(--page-padding-inline-start);
+  --monorail-engine-offset-end: var(--page-padding-inline-end);
   --monorail-car-gap: .125rem;
   --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
 
@@ -179,7 +197,8 @@ main,
   }
 
   @media (--nav-md) {
-    --monorail-engine-offset: 0rem;
+    --monorail-engine-offset-start: 0rem;
+    --monorail-engine-offset-end: 0rem;
   }
 
   @media (--motion) {
@@ -209,11 +228,11 @@ main,
   }
 
   & land-inlinesvg:first-child {
-    padding-inline-start: var(--monorail-engine-offset);
+    padding-inline-start: var(--monorail-engine-offset-start);
   }
 
   & land-inlinesvg:last-child {
-    padding-inline-end: var(--monorail-engine-offset);
+    padding-inline-end: var(--monorail-engine-offset-end);
     margin-inline-start: var(--monorail-car-gap);
   }
 
@@ -328,8 +347,9 @@ main,
   }
 
   & .fenced {
-    margin-inline: var(--page-padding);
-    padding-block-end: var(--page-padding);
+    margin-inline-start: var(--page-padding-inline-start);
+    margin-inline-end: var(--page-padding-inline-end);
+    padding-block-end: var(--page-padding-block-end);
     position: relative;
     text-align: center;
   }
@@ -366,7 +386,9 @@ main,
 /* Main */
 
 main {
-  padding: 2rem var(--page-padding);
+  padding-block: 2rem;
+  padding-inline-start: var(--page-padding-inline-start);
+  padding-inline-end: var(--page-padding-inline-end);
 
   @media (--md) {
     padding-block: 4.5rem;
