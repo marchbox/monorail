@@ -25,9 +25,10 @@
       <div class="monorail-train" role="none">
         {% for entry in collections.all|eleventyNavigation %}
           {% set isActive = entry.url == page.url or entry|isParent(page) %}
-          <div role="none" class="monorail-car{% if isActive %} active{% endif %}">
-            <a href="{{entry.url | url}}" class="nav-link">{{entry.title}}</a>
-          </div>
+          <a href="{{entry.url | url}}"
+              class="monorail-car{% if isActive %} active{% endif %}">
+            <span role="none">{{entry.title}}</span>
+          </a>
         {% endfor %}
       </div>
     </div>
