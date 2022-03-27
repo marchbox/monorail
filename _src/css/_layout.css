@@ -230,6 +230,7 @@ main,
   @media (--dark) {
     --monorail-car-outline-style: dotted;
     --monorail-engine-outline-dasharray: .05 4;
+    --monorail-engine-outline-filter: drop-shadow(0 0 .25rem var(--color-monorail-car-outline));
   }
 
   &:is(.depart *) {
