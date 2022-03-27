@@ -30,6 +30,10 @@ h3 {
   margin-block: 2em 1em;
   text-shadow: .064em .064em 0 var(--color-bg);
 
+  @media (--dark) {
+    text-shadow: none;
+  }
+
   &::part(text) {
     --underline-block-size: calc(var(--lh) * .96em);
 
@@ -38,16 +42,22 @@ h3 {
         to bottom,
         transparent,
         transparent .64em,
-        var(--color-accent-1) .641em,
-        var(--color-accent-1) var(--underline-block-size),
+        var(--color-horizon) .641em,
+        var(--color-horizon) var(--underline-block-size),
         transparent var(--underline-block-size)
       )
       repeat
       top left / 100% calc(var(--lh) * 1em);
+
+    @media (--dark) {
+      background: none;
+    }
   }
 
   & a:any-link {
-    text-decoration: none;
+    @media not (--dark) {
+      text-decoration: none;
+    }
   }
 }
 
@@ -70,13 +80,17 @@ h3 {
   --lh: var(--type-h3-lh);
 }
 
-a,
+:any-link,
 button {
   font-weight: var(--type-actionable-weight);
 }
 
-a {
+:any-link {
   color: inherit;
+
+  @media (--dark) {
+    color: var(--color-nightlight);
+  }
 }
 
 button {

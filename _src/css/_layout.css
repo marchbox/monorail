@@ -117,6 +117,8 @@ main,
 }
 
 .nav {
+  --monorail-track-outline-style: solid;
+
   background-color: transparent;
   justify-self: end;
   inline-size: 100vw;
@@ -136,10 +138,17 @@ main,
     grid: inherit;
   }
 
+  @media (--dark) {
+    --monorail-track-outline-style: dotted;
+  }
+
   &::after {
-    background-color: var(--color-accent-1);
+    background-color: var(--color-monorail-track);
     block-size: var(--rail-height);
-    border-block-start: .125rem solid var(--color-accent-1-darker);
+    border-block-start:
+        .125rem
+        var(--monorail-track-outline-style)
+        var(--color-monorail-track-outline);
     content: '';
     display: block;
     inset: calc(var(--monorail-top) + var(--monorail-height) - var(--rail-offset)) 0 0;
@@ -184,6 +193,8 @@ main,
   --monorail-engine-offset-end: var(--page-padding-inline-end);
   --monorail-car-gap: .125rem;
   --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
+  --monorail-car-outline-style: solid;
+  --monorail-engine-outline-dasharray: 0;
 
   display: flex;
   position: relative;
@@ -201,6 +212,11 @@ main,
   @media (--motion) {
     animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
     transition: transform .48s cubic-bezier(.6,-.01,1,.37);
+  }
+
+  @media (--dark) {
+    --monorail-car-outline-style: dotted;
+    --monorail-engine-outline-dasharray: .5 4;
   }
 
   &:is(.depart *) {
@@ -246,7 +262,10 @@ main,
 
   &.active {
     &::before {
-      border-block-start: .125rem solid currentcolor;
+      border-block-start:
+          .125rem
+          var(--monorail-car-outline-style)
+          var(--color-monorail-car-active-outline);
       content: '';
       inset: -.25rem 0 auto;
       position: absolute;
@@ -294,13 +313,20 @@ main,
   }
 
   &::before {
-    border: .125rem solid currentcolor;
+    border:
+        .125rem 
+        var(--monorail-car-outline-style)
+        var(--color-monorail-car-outline);
     inset: 0;
     pointer-events: none;
   }
 
+  &:is(.active *)::before {
+    border-color: var(--color-monorail-car-active-outline);
+  }
+
   &::after {
-    --monorail-car-paint: var(--color-accent-2);
+    --monorail-car-paint: var(--color-monorail-car);
 
     background-color: var(--monorail-car-paint);
     border: 0 solid var(--color-bg);
@@ -316,7 +342,7 @@ main,
     font-weight: 900;
 
     &::after {
-      --monorail-car-paint: var(--color-accent-3);
+      --monorail-car-paint: var(--color-monorail-car-active);
     }
   }
 }
@@ -325,6 +351,8 @@ main,
 /* Footer */
 
 .footer {
+  --tree-wood-dasharray: 0;
+
   align-items: end;
   display: grid;
   gap: 1.25rem;
@@ -332,6 +360,10 @@ main,
 
   @media (--md) {
     min-block-size: 10rem;
+  }
+
+  @media (--dark) {
+    --tree-wood-dasharray: .5 4;
   }
 
   & .fenced,
@@ -351,12 +383,16 @@ main,
     display: none;
 
     @media (min-width: 22.5rem) {
-      border-bottom: 2px solid var(--color-accent-1-darker);
+      border-block-end: 2px solid var(--color-horizon);
       display: grid;
       grid: inherit;
       grid-column: 1 / -1;
       position: relative;
       z-index: var(--zindex-sidewalks);
+    }
+
+    @media (--dark) {
+      border-block-end-style: dotted;
     }
 
     &::part(container) {
