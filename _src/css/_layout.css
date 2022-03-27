@@ -186,9 +186,6 @@ main,
   --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
 
   display: flex;
-  list-style: none;
-  margin: 0;
-  padding: 0;
   position: relative;
   z-index: var(--zindex-monorail);
 
@@ -235,23 +232,19 @@ main,
     padding-inline-end: var(--monorail-engine-offset-end);
     margin-inline-start: var(--monorail-car-gap);
   }
+}
 
-  & li {
-    margin: 0 var(--monorail-car-gap);
-    position: relative;
+.monorail-car {
+  margin: 0 var(--monorail-car-gap);
+  position: relative;
 
-    &:is(.arrive *) {
-      @media (--nav-sm) {
-        scroll-snap-align: center;
-      }
+  &:is(.arrive *) {
+    @media (--nav-sm) {
+      scroll-snap-align: center;
     }
   }
 
-  & li::marker {
-    content: none;
-  }
-
-  & .active {
+  &.active {
     &::before {
       border-block-start: .125rem solid currentcolor;
       content: '';
