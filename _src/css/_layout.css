@@ -351,7 +351,7 @@ main,
     display: none;
 
     @media (min-width: 22.5rem) {
-      border-bottom: 2px solid currentcolor;
+      border-bottom: 2px solid var(--color-accent-1-darker);
       display: grid;
       grid: inherit;
       grid-column: 1 / -1;
