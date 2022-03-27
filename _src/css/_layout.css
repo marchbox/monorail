@@ -82,10 +82,11 @@ main,
   }
 
   & land-logo {
-    max-block-size: 6rem;
+    display: block;
+    block-size: 6rem;
 
     @media (--nav-md) {
-      max-block-size: 7.5rem;
+      block-size: 7.5rem;
     }
   }
 }
