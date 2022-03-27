@@ -50,23 +50,30 @@ html {
 
 
   --color-bg: hsl(0 0% 96%);
+  --color-bg-code: hsl(0 0% 92%);
+  --color-bg-surface: hsl(0 0% 92%);
   --color-fg: hsl(0 0% 16%);
+  --color-fg-code: hsl(278deg 57% 32%);
+  --color-border: hsl(0 0% 92%);
+
   --color-accent-1: hsl(203deg 100% 90%);
   --color-accent-1-darker: hsl(203deg 100% 72%);
   --color-accent-2: hsl(140deg 67% 84%);
   --color-accent-2-darker: hsl(140deg 43% 60%);
   --color-accent-3: hsl(3deg 98% 90%);
-  --color-bg-code: hsl(0 0% 92%);
-  --color-fg-code: hsl(278deg 57% 32%);
-  --color-bg-surface: hsl(0 0% 92%);
-  --color-border: hsl(0 0% 92%);
+
   @media (--dark) {
     --color-bg: hsl(0 0% 8%);
-    --color-fg: hsl(0 0% 96%);
+    --color-bg-code: hsl(0 0% 16%);
     --color-bg-surface: hsl(0 0% 16%);
+    --color-fg: hsl(0 0% 96%);
+    --color-fg-code: hsl(166deg 100% 50%);
+    --color-border: hsl(0 0% 92%);
+
     --color-accent-1: hsl(270deg 100% 40%);
     --color-accent-1-darker: hsl(270deg 100% 72%);
     --color-accent-2: hsl(214deg 100% 50%);
+    --color-accent-2-darker: hsl(140deg 43% 60%);
     --color-accent-3: hsl(312deg 100% 50%);
   }
 
