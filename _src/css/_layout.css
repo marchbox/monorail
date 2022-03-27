@@ -106,16 +106,6 @@ main,
   }
 }
 
-@keyframes monorail-arriving {
-  from {
-    transform: translatex(100vw);
-  }
-
-  to {
-    transform: none;
-  }
-}
-
 .nav {
   --monorail-track-outline-style: solid;
 
@@ -201,7 +191,7 @@ main,
   }
 }
 
-.monorail {
+.monorail-train {
   --monorail-engine-offset-start: var(--page-padding-inline-start);
   --monorail-engine-offset-end: var(--page-padding-inline-end);
   --monorail-car-gap: .125rem;
@@ -223,8 +213,8 @@ main,
   }
 
   @media (--motion) {
-    animation: monorail-arriving .72s cubic-bezier(.15,.76,.32,.89);
-    transition: transform .48s cubic-bezier(.6,-.01,1,.37);
+    transform: translatex(100vw);
+    transition: transform .72s cubic-bezier(.15,.76,.32,.89);
   }
 
   @media (--dark) {
@@ -233,9 +223,16 @@ main,
     --monorail-engine-outline-filter: drop-shadow(0 0 .25rem var(--color-monorail-car-outline));
   }
 
+  &:is(.action *) {
+    @media (--motion) {
+      transform: none;
+    }
+  }
+
   &:is(.depart *) {
     @media (--motion) {
-      transform: translatex(calc(-1 * var(--monorail-length, 100%)));
+      transform: translatex(calc(-1 * var(--monorail-train-length, 100%)));
+      transition: transform .48s cubic-bezier(.6,-.01,1,.37);
     }
 
     @media (--nav-md) and (--motion) {
