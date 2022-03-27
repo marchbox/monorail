@@ -83,13 +83,14 @@ html {
     --color-monorail-car-window: hsl(0 0% 32%);
     --color-monorail-car-active: var(--color-monorail-car);
     --color-monorail-car-active-outline: hsl(300deg 100% 72%);
-    --color-tree-leaf: var(--color-bg);
+    --color-tree-leaf: transparent;
     --color-tree-leaf-outline: var(--color-nightlight);
     --color-tree-wood: var(--color-nightlight);
   }
 
   --zindex-logo: 10;
   --zindex-monorail: 2;
-  --zindex-rail: -1;
+  --zindex-monorail-track: -1;
+  --zindex-monorail-track-outline: 1;
   --zindex-sidewalks: -1;
 }
