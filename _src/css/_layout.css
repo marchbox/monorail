@@ -266,6 +266,7 @@ main,
 .monorail-car {
   margin: 0 var(--monorail-car-gap);
   position: relative;
+  text-decoration: none;
 
   &:is(.arrive *) {
     @media (--nav-sm) {
@@ -300,7 +301,7 @@ main,
   }
 }
 
-.nav-link {
+.monorail-car span {
   align-items: center;
   background: transparent;
   block-size: var(--monorail-height);
@@ -310,7 +311,6 @@ main,
   padding: 0 .5rem;
   position: relative;
   text-align: center;
-  text-decoration: none;
   text-shadow: .125rem .0625rem 0 var(--color-bg);
   text-transform: uppercase;
 
@@ -318,8 +318,8 @@ main,
     transition: var(--monorail-car-bounce);
   }
 
-  &:hover,
-  &:focus {
+  &:is(.monorail-car:hover *),
+  &:is(.monorail-car:focus *) {
     transform: translatey(-.25rem);
   }
 
