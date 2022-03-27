@@ -53,11 +53,17 @@ html {
   --color-fg-code: hsl(278deg 57% 32%);
   --color-border: hsl(0 0% 92%);
 
-  --color-accent-1: hsl(203deg 100% 90%);
-  --color-accent-1-darker: hsl(203deg 100% 72%);
-  --color-accent-2: hsl(140deg 67% 84%);
-  --color-accent-2-darker: hsl(140deg 43% 60%);
-  --color-accent-3: hsl(3deg 98% 90%);
+  --color-horizon: hsl(203deg 100% 72%);
+  --color-monorail-track: hsl(203deg 100% 90%);
+  --color-monorail-track-outline: var(--color-horizon);
+  --color-monorail-car: hsl(140deg 67% 84%);
+  --color-monorail-car-outline: var(--color-fg);
+  --color-monorail-car-window: hsl(140deg 43% 60%);
+  --color-monorail-car-active: hsl(3deg 98% 90%);
+  --color-monorail-car-active-outline: var(--color-monorail-car-outline);
+  --color-tree-leaf: hsl(140deg 67% 84%);
+  --color-tree-leaf-outline: transparent;
+  --color-tree-wood: var(--color-fg);
 
   @media (--dark) {
     --color-bg: hsl(0 0% 8%);
@@ -67,11 +73,19 @@ html {
     --color-fg-code: hsl(166deg 100% 50%);
     --color-border: hsl(0 0% 92%);
 
-    --color-accent-1: hsl(270deg 100% 40%);
-    --color-accent-1-darker: hsl(270deg 100% 72%);
-    --color-accent-2: hsl(214deg 100% 50%);
-    --color-accent-2-darker: hsl(140deg 43% 60%);
-    --color-accent-3: hsl(312deg 100% 50%);
+    --color-nightlight: hsl(56deg 100% 50%);
+
+    --color-horizon: var(--color-nightlight);;
+    --color-monorail-track: var(--color-bg);
+    --color-monorail-track-outline: var(--color-nightlight);
+    --color-monorail-car: var(--color-bg);
+    --color-monorail-car-outline: hsl(172deg 100% 50%);
+    --color-monorail-car-window: hsl(0 0% 32%);
+    --color-monorail-car-active: var(--color-monorail-car);
+    --color-monorail-car-active-outline: hsl(300deg 100% 72%);
+    --color-tree-leaf: var(--color-bg);
+    --color-tree-leaf-outline: var(--color-nightlight);
+    --color-tree-wood: var(--color-nightlight);
   }
 
   --zindex-logo: 10;
