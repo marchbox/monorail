@@ -19,8 +19,7 @@ body {
 }
 
 main,
-.header,
-.footer {
+.header {
   @media (--md) {
     display: grid;
     gap: 1.25rem;
@@ -210,14 +209,12 @@ main,
   }
 
   & land-inlinesvg:first-child {
-    inline-size: calc(4.875rem + var(--monorail-engine-offset));
-    text-align: end;
+    padding-inline-start: var(--monorail-engine-offset);
   }
 
   & land-inlinesvg:last-child {
-    inline-size: calc(4.9375rem + var(--monorail-engine-offset));
+    padding-inline-end: var(--monorail-engine-offset);
     margin-inline-start: var(--monorail-car-gap);
-    text-align: start;
   }
 
   & li {
@@ -316,41 +313,54 @@ main,
 /* Footer */
 
 .footer {
+  align-items: end;
+  display: grid;
+  gap: 1.25rem;
+  grid-template-columns: 1fr repeat(12, minmax(0, 3.75rem)) 1fr;
+
   @media (--md) {
     min-block-size: 10rem;
   }
 
+  & .fenced,
+  & land-sidewalks {
+    grid-row: 1 / -1;
+  }
+
   & .fenced {
-    align-self: end;
     margin-inline: var(--page-padding);
     padding-block-end: var(--page-padding);
+    position: relative;
     text-align: center;
   }
-}
 
-.footer .fenced,
-.footer-sidewalk:first-child,
-.footer-sidewalk:last-child {
-  grid-row: 1 / -1;
-}
+  & land-sidewalks {
+    display: none;
 
-.footer-sidewalk {
-  &:first-child {
-    background:
-      var(--bg) no-repeat right bottom / 74px 102px,
-      var(--bg) no-repeat right 49px bottom / 89px 122px;
-    grid-column: 1 / 3;
+    @media (min-width: 22.5rem) {
+      border-bottom: 2px solid currentcolor;
+      display: grid;
+      grid: inherit;
+      grid-column: 1 / -1;
+      position: relative;
+      z-index: var(--zindex-sidewalks);
+    }
+
+    &::part(container) {
+      display: grid;
+      grid: inherit;
+      grid-column: 1 / -1;
+    }
+
+    &::part(sidewalk-start) {
+      grid-column: 1 / 2;
+    }
+
+    &::part(sidewalk-end) {
+      grid-column: -2 / -1;
+    }
   }
-
-  &:last-child {
-    background:
-      var(--bg) no-repeat left bottom / 52px 72px,
-      var(--bg) no-repeat 77px bottom / 44px 61px,
-      var(--bg) no-repeat 95px bottom / 88px 122px;
-    grid-column: -3 / -1;
-  }
 }
-
 
 
 /* Main */

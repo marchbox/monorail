@@ -43,8 +43,19 @@ export function elementHasAnimation(element) {
 }
 
 export function render(hostEl, template, styles = '') {
-  const templateEl = document.createElement('template');
-  templateEl.innerHTML = template;
+  let templateEl;
+
+  if (typeof template === 'string') {
+    templateEl = document.createElement('template');
+    templateEl.innerHTML = template;
+  }
+  else if (template instanceof HTMLTemplateElement) {
+    templateEl = template;
+  }
+
+  if (!templateEl) {
+    return;
+  }
 
   const children = [templateEl.content.cloneNode(true)];
 
