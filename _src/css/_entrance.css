@@ -2,7 +2,7 @@
   grid-column: 2 / -2;
 
   & .intro {
-    background: hsl(0 0% 92%);
+    background: var(--color-bg-surface);
     border-radius: 1rem;
     margin-block-end: 4rem;
     padding: 2rem;
