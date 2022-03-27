@@ -229,7 +229,7 @@ main,
 
   @media (--dark) {
     --monorail-car-outline-style: dotted;
-    --monorail-engine-outline-dasharray: .5 4;
+    --monorail-engine-outline-dasharray: .05 4;
   }
 
   &:is(.depart *) {
@@ -374,7 +374,7 @@ main,
 /* Footer */
 
 .footer {
-  --tree-wood-dasharray: 0;
+  --tree-light-dasharray: 0;
 
   align-items: end;
   display: grid;
@@ -386,7 +386,7 @@ main,
   }
 
   @media (--dark) {
-    --tree-wood-dasharray: .5 4;
+    --tree-light-dasharray: .05 4;
   }
 
   & .fenced,
