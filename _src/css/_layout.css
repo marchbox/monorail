@@ -49,8 +49,8 @@ main,
 
 .header {
   --monorail-height: 1.75rem;
-  --rail-height: 1rem;
-  --rail-offset: .2rem;
+  --track-height: 1rem;
+  --track-offset: .2rem;
   --monorail-top: .8rem;
   --logo-inline-size: 12.75rem;
 
@@ -89,7 +89,7 @@ main,
   @media (--nav-md) {
     grid-column: 2 / 3;
     justify-self: center;
-    margin-block-end: var(--rail-height);
+    margin-block-end: var(--track-height);
   }
 
   & {
@@ -124,7 +124,7 @@ main,
   inline-size: 100vw;
   overflow: hidden;
   position: relative;
-  padding-block-end: calc(var(--rail-height) - var(--rail-offset));
+  padding-block-end: calc(var(--track-height) - var(--track-offset));
 
   @media (--nav-sm) {
     display: flex;
@@ -142,18 +142,31 @@ main,
     --monorail-track-outline-style: dotted;
   }
 
+  &::before,
   &::after {
-    background-color: var(--color-monorail-track);
-    block-size: var(--rail-height);
+    content: '';
+    display: block;
+    inset: calc(var(--monorail-top) + var(--monorail-height) - var(--track-offset)) 0 0;
+    position: absolute;
+  }
+
+  &::before {
+    block-size: 0;
     border-block-start:
         .125rem
         var(--monorail-track-outline-style)
         var(--color-monorail-track-outline);
-    content: '';
-    display: block;
-    inset: calc(var(--monorail-top) + var(--monorail-height) - var(--rail-offset)) 0 0;
-    position: absolute;
-    z-index: var(--zindex-rail);
+    z-index: var(--zindex-monorail-track-outline);
+
+    @media (--dark) {
+      filter: drop-shadow(0 0 .25rem var(--color-monorail-track-outline));
+    }
+  }
+
+  &::after {
+    background-color: var(--color-monorail-track);
+    block-size: var(--track-height);
+    z-index: var(--zindex-monorail-track);
 
     @media (--nav-md) {
       inset-inline-start: calc(-.5 * var(--page-padding-inline-start));
@@ -274,6 +287,10 @@ main,
         transition: var(--monorail-car-bounce);
         transition-delay: .12s;
       }
+
+      @media (--dark) {
+        filter: drop-shadow(0 0 .25rem var(--color-monorail-car-active-outline));
+      }
     }
 
     &:hover::before,
@@ -313,16 +330,22 @@ main,
   }
 
   &::before {
+    --border-color: var(--color-monorail-car-outline);
+
     border:
         .125rem 
         var(--monorail-car-outline-style)
-        var(--color-monorail-car-outline);
+        var(--border-color);
     inset: 0;
     pointer-events: none;
+
+    @media (--dark) {
+      filter: drop-shadow(0 0 .25rem var(--border-color));
+    }
   }
 
   &:is(.active *)::before {
-    border-color: var(--color-monorail-car-active-outline);
+    --border-color: var(--color-monorail-car-active-outline);
   }
 
   &::after {
@@ -393,6 +416,7 @@ main,
 
     @media (--dark) {
       border-block-end-style: dotted;
+      filter: drop-shadow(0 0 .25rem var(--color-nightlight));
     }
 
     &::part(container) {
