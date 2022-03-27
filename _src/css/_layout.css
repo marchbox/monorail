@@ -3,18 +3,19 @@
 body {
   --page-padding: 1.5rem;
 
-  display: flex;
-  flex-direction: column;
+  /**
+   * Use grid instead of flex is because Safari/macOS creates extra space after
+   * footer when body is a flexbox + main has flex-grow: 1.
+   */
+  display: grid;
+  grid-template: auto 1fr auto / 100%;
   min-block-size: 100vh;
 }
 
-_::-webkit-full-page-media, /* Hack targeting iOS Safari only. */
-body {
-  block-size: 100vh;
-}
-
-body.masked {
-  overflow: hidden;
+@supports (min-block-size: 100svb) {
+  body {
+    min-block-size: 100svb;
+  }
 }
 
 main,
@@ -354,7 +355,6 @@ main,
 /* Main */
 
 main {
-  flex-grow: 1;
   padding: 2rem var(--page-padding);
 
   @media (--md) {
