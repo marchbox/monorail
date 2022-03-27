@@ -6,12 +6,9 @@
 
 html {
   --type-body-family: 'source sans pro', sans-serif;
-  --type-body-size: 1rem; /* 18px */
+  --type-body-size: 1.125rem;
   --type-body-weight: 400;
   --type-body-lh: 1.5;
-  @media (--md) {
-    --type-body-size: 1.125rem;
-  }
 
   --type-heading-family: 'source serif pro', serif;
 
