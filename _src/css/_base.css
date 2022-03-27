@@ -42,8 +42,8 @@ h3 {
         to bottom,
         transparent,
         transparent .64em,
-        var(--color-horizon) .641em,
-        var(--color-horizon) var(--underline-block-size),
+        var(--color-heading-decor) .641em,
+        var(--color-heading-decor) var(--underline-block-size),
         transparent var(--underline-block-size)
       )
       repeat
@@ -54,9 +54,11 @@ h3 {
     }
   }
 
-  & a:any-link {
-    @media not (--dark) {
-      text-decoration: none;
+  & :any-link {
+    text-decoration: none;
+
+    @media (--dark) {
+      text-decoration: underline;
     }
   }
 }

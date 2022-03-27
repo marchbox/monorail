@@ -52,6 +52,7 @@ html {
   --color-fg: hsl(0 0% 16%);
   --color-fg-code: hsl(278deg 57% 32%);
   --color-border: hsl(0 0% 92%);
+  --color-heading-decor: hsl(203deg 100% 90%);
 
   --color-horizon: hsl(203deg 100% 72%);
   --color-monorail-track: hsl(203deg 100% 90%);
@@ -72,6 +73,7 @@ html {
     --color-fg: hsl(0 0% 96%);
     --color-fg-code: hsl(166deg 100% 50%);
     --color-border: hsl(0 0% 92%);
+    --color-heading-decor: transparent;
 
     --color-nightlight: hsl(56deg 100% 50%);
 
