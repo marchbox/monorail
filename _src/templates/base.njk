@@ -21,16 +21,16 @@
     <land-logo aria-label="marchbox.com’s logo" width="204" height="120"
         src="{{'/assets/logo.svg' | url}}"></land-logo>
   </a>
-  <nav class="nav" is="land-monorail">
-    <div role="none" class="monorail-station">
-      <ul class="monorail">
+  <nav class="nav" is="land-monorail" aria-label="main navigation">
+    <div class="monorail-station" role="none">
+      <div class="monorail" role="none">
         {% for entry in collections.all|eleventyNavigation %}
           {% set isActive = entry.url == page.url or entry|isParent(page) %}
-          <li{% if isActive %} class="active"{% endif %}>
+          <div role="none" class="monorail-car{% if isActive %} active{% endif %}">
             <a href="{{entry.url | url}}" class="nav-link">{{entry.title}}</a>
-          </li>
+          </div>
         {% endfor %}
-      </ul>
+      </div>
     </div>
   </nav>
 </header>
