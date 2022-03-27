@@ -1,3 +1,5 @@
+import {render} from './utils';
+
 export default class extends HTMLElement {
   async connectedCallback() {
     const src = this.getAttribute('src');
@@ -11,6 +13,16 @@ export default class extends HTMLElement {
           'attribute’s value, provided `src`: ' + src)
     }
 
+    this.style.display = 'block';
+    this.style.maxBlockSize = '100%';
+    this.style.maxInineSize = '100%';
+    if (height) {
+      this.style.blockSize = `${height}px`;
+    }
+    if (width) {
+      this.style.inlineSize = `${width}px`;
+    }
+
     const res = await fetch(src, {
       'Accept': 'image/svg+xml',
     });
@@ -20,15 +32,16 @@ export default class extends HTMLElement {
       const template = document.createElement('template');
       template.innerHTML = svg;
 
-      const element = template.content.cloneNode(true);
-      const svgEl = element.querySelector('svg');
+      const svgEl = template.content.querySelector('svg');
       if (width) {
         svgEl.setAttribute('width', width);
       }
       if (height) {
         svgEl.setAttribute('height', height);
       }
-      this.append(svgEl);
+      svgEl.style.display = 'block';
+
+      render(this, template);
     }
   }
 }

@@ -4,12 +4,14 @@ import '@ungap/custom-elements-builtin';
 import Inlinesvg from './inlinesvg';
 import Logo from './logo';
 import Monorail from './monorail';
+import Sidewalks from './sidewalks';
 import {whenDocumentReady} from './utils';
 
 if ('customElements' in window) {
   customElements.define('land-inlinesvg', Inlinesvg);
   customElements.define('land-logo', Logo);
   customElements.define('land-monorail', Monorail, {extends: 'nav'});
+  customElements.define('land-sidewalks', Sidewalks);
 }
 
 whenDocumentReady().then(() => {

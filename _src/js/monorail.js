@@ -72,9 +72,13 @@ export default class extends HTMLElement {
     const engineHead = document.createElement('land-inlinesvg');
     engineHead.setAttribute('src', '/assets/decors/monorail-engine-head.svg');
     engineHead.setAttribute('aria-hidden', 'true');
+    engineHead.setAttribute('width', '78');
+    engineHead.setAttribute('height', '30');
     const engineTail = document.createElement('land-inlinesvg');
     engineTail.setAttribute('src', '/assets/decors/monorail-engine-tail.svg');
     engineTail.setAttribute('aria-hidden', 'true');
+    engineTail.setAttribute('width', '78');
+    engineTail.setAttribute('height', '30');
 
     this.monorailEl.prepend(engineHead);
     this.monorailEl.append(engineTail);

@@ -62,4 +62,5 @@ html {
   --zindex-logo: 10;
   --zindex-monorail: 2;
   --zindex-rail: -1;
+  --zindex-sidewalks: -1;
 }
