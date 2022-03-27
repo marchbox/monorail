@@ -22,7 +22,7 @@
   </a>
   <nav class="nav" is="land-monorail" aria-label="main navigation">
     <div class="monorail-station" role="none">
-      <div class="monorail" role="none">
+      <div class="monorail-train" role="none">
         {% for entry in collections.all|eleventyNavigation %}
           {% set isActive = entry.url == page.url or entry|isParent(page) %}
           <div role="none" class="monorail-car{% if isActive %} active{% endif %}">

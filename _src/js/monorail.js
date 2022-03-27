@@ -1,19 +1,28 @@
-import {
-  whenElementAnimationEnd,
-  whenElementTransitionEnd,
-} from './utils';
+import {whenElementTransitionEnd} from './utils';
 
 const ClassName = {
+  // When component is ready.
+  ACTION: 'action',
+
+  // The train car that represents the website section the current page belongs to.
   ACTIVE: 'active',
+
+  // When train has arrived and stopped.
   ARRIVE: 'arrive',
+
+  // When train is about to depart.
   DEPART: 'depart',
-  MONORAIL: 'monorail',
+
+  // The train element.
+  TRAIN: 'monorail-train',
+
+  // The container that contains the train element.
   STATION: 'monorail-station',
 };
 
 export default class extends HTMLElement {
   stationEl;
-  monorailEl;
+  trainEl;
   activeCarEl;
 
   visibilityObserver;
@@ -23,26 +32,28 @@ export default class extends HTMLElement {
     return this.stationEl?.scrollWidth > this.stationEl?.offsetWidth;
   }
 
-  connectedCallback() {
+  async connectedCallback() {
     if (!('IntersectionObserver' in window)) {
       return;
     }
 
     this.stationEl = this.querySelector(`.${ClassName.STATION}`);
-    this.monorailEl = this.querySelector(`.${ClassName.MONORAIL}`);
-    if (!this.stationEl || !this.monorailEl) {
+    this.trainEl = this.querySelector(`.${ClassName.TRAIN}`);
+    if (!this.stationEl || !this.trainEl) {
       return;
     }
 
+    await customElements.whenDefined('land-inlinesvg');
+
     this.decorate();
-    this.activeCarEl = this.monorailEl.querySelector(`.${ClassName.ACTIVE}`);
+    this.activeCarEl = this.trainEl.querySelector(`.${ClassName.ACTIVE}`);
 
     this.isVisible = true;
 
-    this.style.setProperty('--monorail-length',
-        `${this.monorailEl.scrollWidth / 16}rem`);
+    this.style.setProperty('--monorail-train-length',
+        `${this.trainEl.scrollWidth / 16}rem`);
 
-    whenElementAnimationEnd(this.monorailEl, true).then(() => {
+    whenElementTransitionEnd(this.trainEl, true).then(() => {
       let waitBeforeAddArriveClass = 0;
 
       if (this.hasScroll) {
@@ -62,6 +73,8 @@ export default class extends HTMLElement {
 
     this.observeVisibility();
     this.listenToClicks();
+
+    this.classList.add(ClassName.ACTION);
   }
 
   disconnectedCallback() {
@@ -80,8 +93,8 @@ export default class extends HTMLElement {
     engineTail.setAttribute('width', '78');
     engineTail.setAttribute('height', '30');
 
-    this.monorailEl.prepend(engineHead);
-    this.monorailEl.append(engineTail);
+    this.trainEl.prepend(engineHead);
+    this.trainEl.append(engineTail);
   }
 
   // Only use page transition animation when at least half of the monorail
@@ -117,7 +130,7 @@ export default class extends HTMLElement {
   }
 
   depart(destination) {
-    whenElementTransitionEnd(this.monorailEl, true).then(() => {
+    whenElementTransitionEnd(this.trainEl, true).then(() => {
       window.addEventListener('pagehide', () => {
         // Restore the class names right before page unload so if a user use
         // browser back/forward cache, the navigation will be there.
