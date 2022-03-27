@@ -3,7 +3,9 @@ import {render} from './utils';
 const styles = `
 :host,
 .container {
+  block-size: 100%;
   display: flex;
+  inline-size: 100%;
 }
 
 svg {
