@@ -194,10 +194,11 @@ main,
 .monorail-train {
   --monorail-engine-offset-start: var(--page-padding-inline-start);
   --monorail-engine-offset-end: var(--page-padding-inline-end);
+  --monorail-engine-outline-dasharray: 0;
+  --monorail-engine-transform: none;
   --monorail-car-gap: .125rem;
   --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
   --monorail-car-outline-style: solid;
-  --monorail-engine-outline-dasharray: 0;
 
   display: flex;
   position: relative;
@@ -221,6 +222,7 @@ main,
     --monorail-car-outline-style: dotted;
     --monorail-engine-outline-dasharray: .05 4;
     --monorail-engine-outline-filter: drop-shadow(0 0 .25rem var(--color-monorail-car-outline));
+    --monorail-engine-transform: translate(-.125rem,-.125rem);
   }
 
   &:is(.action *) {
@@ -357,9 +359,14 @@ main,
     inset: 0;
     position: absolute;
     z-index: -1;
+
+    @media (--dark) {
+      border-width: 0;
+      box-shadow: none;
+    }
   }
 
-  @nest .nav .active & {
+  &:is(.active *) {
     font-weight: 900;
 
     &::after {
