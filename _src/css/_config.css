@@ -35,6 +35,7 @@ html {
 
   --type-caption-size: .875rem;
   --type-caption-lh: 1.2857;
+  --type-caption-weight: 600;
 
   --type-code-family: 'monolisa', monospace;
   --type-code-size: .9rem;
@@ -51,6 +52,7 @@ html {
   --color-bg-code: var(--color-bg-surface);
   --color-fg: hsl(0 0% 16%);
   --color-fg-code: hsl(278deg 57% 32%);
+  --color-fg-caption: hsl(0 0% 16%);
   --color-border: hsl(0 0% 92%);
   --color-heading-decor: hsl(203deg 100% 90%);
 
@@ -71,6 +73,7 @@ html {
     --color-bg-surface: hsl(0 0% 12%);
     --color-fg: hsl(0 0% 96%);
     --color-fg-code: hsl(166deg 100% 50%);
+    --color-fg-caption: hsl(0 0% 72%);
     --color-border: hsl(0 0% 92%);
     --color-heading-decor: transparent;
 

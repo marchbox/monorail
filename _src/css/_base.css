@@ -147,19 +147,21 @@ code {
 figure {
   --margin-inline: 0;
 
-  margin: 2rem var(--margin-inline);
+  margin: 4rem var(--margin-inline);
 
   @media (--md) {
     --margin-inline: -2rem;
   }
 
-  & img {
+  & :is(img, video, iframe) {
     display: block;
     margin: 0 auto;
   }
 
   & figcaption {
+    color: var(--color-fg-caption);
     font-size: var(--type-caption-size);
+    font-weight: var(--type-caption-weight);
     line-height: var(--type-caption-lh);
     margin-block-start: .5rem;
     padding-inline: calc(var(--margin-inline) * -1);
