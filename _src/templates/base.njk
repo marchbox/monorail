@@ -5,16 +5,26 @@
 
 <head>
 <meta charset="utf-8">
-<title>
+
+{% set title %}{% filter trim %}
   {% if is_home %}
     {{title}}
   {% else %}
     {{title + " – " if title}}{{metadata.title}}
   {% endif %}
-</title>
-{% if intro or is_home %}
-  <meta name="description" content="{{intro if not is_home else metadata.description}}">
+{% endfilter %}{% endset %}
+<title>{{title}}</title>
+
+{% set description %}{% filter trim %}
+  {% if is_home %}{{metadata.description}}
+  {% elif excerpt %}{{excerpt}}
+  {% elif intro %}{{intro}}
+  {% endif %}
+{% endfilter %}{% endset %}
+{% if description %}
+  <meta name="description" content="{{description|safe}}">
 {% endif %}
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="canonical" content="{{metadata.host + page.url|url}}">
 <link rel="icon" href="{{'/assets/favicon.png'|url}}">
