@@ -29,11 +29,17 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('*.txt');
 
   eleventyConfig.addTransform('htmlmin', function(content, outputPath) {
-    if(process.env.WCL_PROD && outputPath && outputPath.endsWith('.html')) {
+    if(outputPath && outputPath.endsWith('.html')) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
+        collapseInlineTagWhitespace: true,
+        collapseBooleanAttributes: true,
+        decodeEntities: true,
+        preserveLineBreaks: true,
+        minifyJS: true,
+        minifyCSS: true,
       });
       return minified;
     }
