@@ -34,7 +34,6 @@ module.exports = function(eleventyConfig) {
         useShortDoctype: true,
         removeComments: true,
         collapseWhitespace: true,
-        collapseInlineTagWhitespace: true,
         collapseBooleanAttributes: true,
         decodeEntities: true,
         preserveLineBreaks: true,

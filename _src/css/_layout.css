@@ -318,6 +318,10 @@ main,
     transition: var(--monorail-car-bounce);
   }
 
+  @media (--dark) {
+    text-shadow: none;
+  }
+
   &:is(.monorail-car:hover *),
   &:is(.monorail-car:focus *) {
     transform: translatey(-.25rem);

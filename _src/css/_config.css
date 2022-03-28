@@ -47,8 +47,8 @@ html {
 
 
   --color-bg: hsl(0 0% 96%);
-  --color-bg-code: hsl(0 0% 92%);
   --color-bg-surface: hsl(0 0% 92%);
+  --color-bg-code: var(--color-bg-surface);
   --color-fg: hsl(0 0% 16%);
   --color-fg-code: hsl(278deg 57% 32%);
   --color-border: hsl(0 0% 92%);
@@ -67,9 +67,8 @@ html {
   --color-tree-wood: var(--color-fg);
 
   @media (--dark) {
-    --color-bg: hsl(0 0% 8%);
-    --color-bg-code: hsl(0 0% 16%);
-    --color-bg-surface: hsl(0 0% 16%);
+    --color-bg: hsl(0 0% 4%);
+    --color-bg-surface: hsl(0 0% 12%);
     --color-fg: hsl(0 0% 96%);
     --color-fg-code: hsl(166deg 100% 50%);
     --color-border: hsl(0 0% 92%);
