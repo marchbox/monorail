@@ -27,6 +27,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addPassthroughCopy('assets');
   eleventyConfig.addPassthroughCopy('*.txt');
+  eleventyConfig.addPassthroughCopy('(about|articles|drawings)/**/*.(jpg|png)');
 
   eleventyConfig.addTransform('htmlmin', function(content, outputPath) {
     if(outputPath && outputPath.endsWith('.html')) {
