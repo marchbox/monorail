@@ -1,11 +1,18 @@
+{% set is_home = page.url|url === '/' %} 
 <!doctype html>
 <html lang="en">
 
 <head>
 <meta charset="utf-8">
-<title>{{title + " – " if title}}{{metadata.title}}</title>
-{% if intro or page.url|url === '/' %}
-  <meta name="description" content="{{intro if page.url|url !== '/' else metadata.description}}">
+<title>
+  {% if is_home %}
+    {{title}}
+  {% else %}
+    {{title + " – " if title}}{{metadata.title}}
+  {% endif %}
+</title>
+{% if intro or is_home %}
+  <meta name="description" content="{{intro if not is_home else metadata.description}}">
 {% endif %}
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="canonical" content="{{metadata.host + page.url|url}}">
