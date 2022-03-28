@@ -6,9 +6,9 @@ eleventyNavigation:
   order: 2
 ---
 
-## The author
+## About Zacky
 
-My name is [Zacky Ma](https://marchbox.com), a Frontend Web Developer who loves Disney, and is passionate about the Web Standards, progressive enhancement, accessibility, typography, and interaction design. I currently work at Niantic as a Web Developer, prior to that, I was at Google for over 10 years as a UX Engineer.
+I’m a Web Developer who loves drawing and Disney. I’m passionate about the Web Standards, accessibility, progressive enhancement, typography, and interaction design. I currently work at Niantic as a Staff Web Developer, prior to that, I worked at Google for over a decade.
 
 ## The design theme
 
