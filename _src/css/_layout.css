@@ -215,7 +215,7 @@ main,
 
   @media (--motion) {
     transform: translatex(100vw);
-    transition: transform .72s .08s cubic-bezier(.15,.76,.32,.89);
+    transition: transform .72s cubic-bezier(.15,.76,.32,.89);
   }
 
   @media (--dark) {
