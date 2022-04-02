@@ -1,4 +1,9 @@
-import {render} from './utils';
+import {
+  pxToRem,
+  render,
+} from './utils';
+
+import treeSvg from '../svg/tree.svg';
 
 const styles = `
 :host {
@@ -26,22 +31,22 @@ const styles = `
   justify-content: start;
 }
 
-land-inlinesvg {
+.tree {
   grid-column: 1 / -1;
   grid-row: 1 / -1;
 }
 `;
 
-const template = (src) => `
+const template = `
   <div class="container" part="container">
     <div class="sidewalk" part="sidewalk sidewalk-start">
-      <land-inlinesvg src="${src}" width="74" height="90"></land-inlinesvg>
-      <land-inlinesvg src="${src}" width="89" height="122" style="transform: translatex(-4rem)"></land-inlinesvg>
+      <div class="tree" style="width:${pxToRem(74)}rem;height:${pxToRem(90)}rem">${treeSvg}</div>
+      <div class="tree" style="width:${pxToRem(89)}rem;height:${pxToRem(122)}rem;transform: translatex(-4rem)">${treeSvg}</div>
     </div>
     <div class="sidewalk" part="sidewalk sidewalk-end">
-      <land-inlinesvg src="${src}" width="52" height="72"></land-inlinesvg>
-      <land-inlinesvg src="${src}" width="44" height="61" style="transform: translatex(4.8rem)"></land-inlinesvg>
-      <land-inlinesvg src="${src}" width="88" height="122" style="transform: translatex(5.9rem)"></land-inlinesvg>
+      <div class="tree" style="width:${pxToRem(52)}rem;height:${pxToRem(72)}rem">${treeSvg}</div>
+      <div class="tree" style="width:${pxToRem(44)}rem;height:${pxToRem(61)}rem;transform: translatex(4.8rem)">${treeSvg}</div>
+      <div class="tree" style="width:${pxToRem(88)}rem;height:${pxToRem(122)}rem;transform: translatex(5.9rem)">${treeSvg}</div>
     </div>
   </div>
 `;
@@ -57,9 +62,6 @@ export default class Sidewalks extends HTMLElement {
 
   connectedCallback() {
     this.setAttribute('aria-hidden', 'true');
-
-    const src = this.getAttribute('src');
-
-    render(this.shadow, template(src), styles);
+    render(this.shadow, template, styles);
   }
 }

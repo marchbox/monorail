@@ -1,4 +1,5 @@
 const fs = require('fs');
+const inlineSvg = require('rollup-plugin-inline-svg');
 const path = require('path');
 const rollup = require('rollup');
 const {terser} = require('rollup-plugin-terser');
@@ -17,9 +18,14 @@ const BABEL_CONFIG = {
   babelHelpers: 'bundled',
 };
 
+const INLINESVG_CONFIG = {
+  removeSVGTagAttrs: false,
+};
+
 module.exports = class {
   async data() {
     const rawFilePath = path.join(__dirname, `../_src/js/main.js`);
+
     return {
       permalink: `js/main.js`,
       rawCode: fs.readFileSync(rawFilePath, 'utf8'),
@@ -33,8 +39,10 @@ module.exports = class {
       plugins: [
         resolve(),
         babel(BABEL_CONFIG),
+        inlineSvg(INLINESVG_CONFIG),
       ],
     };
+
     const outputOpts = {
       format: 'iife',
       compact: true,
@@ -47,5 +55,3 @@ module.exports = class {
     return generated.output[0].code;
   }
 };
-
-

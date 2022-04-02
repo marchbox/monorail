@@ -67,3 +67,7 @@ export function render(hostEl, template, styles = '') {
 
   hostEl.append(...children);
 }
+
+export function pxToRem(px) {
+  return px / 16;
+}

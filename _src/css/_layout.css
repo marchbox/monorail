@@ -241,26 +241,27 @@ main,
       transform: translatex(-100vw);
     }
   }
+}
 
-  & land-inlinesvg:first-child,
-  & land-inlinesvg:last-child {
-    --fill-offset: .1875rem;
-    --block-size: calc(var(--monorail-height) + var(--fill-offset));
+.monorail-engine {
+  --fill-offset: .1875rem;
+  --block-size: calc(var(--monorail-height) + var(--fill-offset));
 
-    block-size: var(--block-size);
-    box-sizing: content-box;
-    flex-shrink: 0;
-    margin-block-end: calc(-1 * var(--fill-offset));
-  }
+  block-size: var(--block-size);
+  box-sizing: content-box;
+  flex-shrink: 0;
+  inline-size: 4.875rem;
+  margin-block-end: calc(-1 * var(--fill-offset));
 
-  & land-inlinesvg:first-child {
+  &:first-child {
     padding-inline-start: var(--monorail-engine-offset-start);
   }
 
-  & land-inlinesvg:last-child {
+  &:last-child {
     padding-inline-end: var(--monorail-engine-offset-end);
     margin-inline-start: var(--monorail-car-gap);
   }
+
 }
 
 .monorail-car {
