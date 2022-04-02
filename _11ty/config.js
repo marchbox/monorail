@@ -1,16 +1,31 @@
 const {DateTime} = require('luxon');
 const fs = require('fs');
 const htmlmin = require('html-minifier');
+const path = require('path');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 // const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
 
+const OUTPUT_DIR = '_site';
+
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   // eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
+
+  eleventyConfig.addGlobalData('cssVersion', () => {
+    const rawFilePath = path.join(__dirname, `../${OUTPUT_DIR}/css/default.css`);
+    const {mtime} = fs.statSync(rawFilePath);
+    return mtime.getTime();
+  });
+
+  eleventyConfig.addGlobalData('jsVersion', () => {
+    const rawFilePath = path.join(__dirname, `../${OUTPUT_DIR}/js/main.js`);
+    const {mtime} = fs.statSync(rawFilePath);
+    return mtime.getTime();
+  });
 
   eleventyConfig.setDataDeepMerge(true);
 
@@ -30,7 +45,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('(about|articles|drawings)/**/*.(jpg|png)');
 
   eleventyConfig.addTransform('htmlmin', function(content, outputPath) {
-    if(outputPath && outputPath.endsWith('.html')) {
+    if (outputPath && outputPath.endsWith('.html')) {
       let minified = htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
@@ -58,7 +73,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setBrowserSyncConfig({
     callbacks: {
       ready: function(err, browserSync) {
-        const content_404 = fs.readFileSync('_site/404.html');
+        const content_404 = fs.readFileSync(`${OUTPUT_DIR}/404.html`);
 
         browserSync.addMiddleware('*', (req, res) => {
           // Provides the 404 content without redirect.
@@ -76,6 +91,7 @@ module.exports = function(eleventyConfig) {
       includes: '_src',
       layouts: '_src/njk',
     },
+    output: OUTPUT_DIR,
     markdownTemplateEngine: 'liquid',
     htmlTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
