@@ -15,17 +15,7 @@ module.exports = function(eleventyConfig) {
   // eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
 
-  eleventyConfig.addGlobalData('cssVersion', () => {
-    const rawFilePath = path.join(__dirname, `../${OUTPUT_DIR}/css/default.css`);
-    const {mtime} = fs.statSync(rawFilePath);
-    return mtime.getTime();
-  });
-
-  eleventyConfig.addGlobalData('jsVersion', () => {
-    const rawFilePath = path.join(__dirname, `../${OUTPUT_DIR}/js/main.js`);
-    const {mtime} = fs.statSync(rawFilePath);
-    return mtime.getTime();
-  });
+  eleventyConfig.addGlobalData('cacheVersion', Date.now());
 
   eleventyConfig.setDataDeepMerge(true);
 
