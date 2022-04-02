@@ -1,5 +1,7 @@
 import {render} from './utils';
 
+import logoSvg from '../svg/logo.svg';
+
 const styles = `
 :host,
 .container {
@@ -11,12 +13,13 @@ const styles = `
 svg {
   display: block;
   max-block-size: 100%;
+  max-inline-size: 100%;
 }
 `;
 
-const template = (src, width, height) => `
+const template = `
   <div class="container" aria-hidden="true">
-    <land-inlinesvg src="${src}" width="${width}" height="${height}"></land-inlinesvg>
+    ${logoSvg}
   </div>
 `;
 
@@ -36,10 +39,6 @@ export default class extends HTMLElement {
       this.setAttribute('aria-hidden', 'true');
     }
 
-    const src = this.getAttribute('src');
-    const width = parseFloat(this.getAttribute('width'));
-    const height = parseFloat(this.getAttribute('height'));
-
-    render(this.shadow, template(src, width, height), styles);
+    render(this.shadow, template, styles);
   }
 }

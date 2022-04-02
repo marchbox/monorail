@@ -3801,6 +3801,11 @@ rimraf@^2.7.1:
   dependencies:
     glob "^7.1.3"
 
+rollup-plugin-inline-svg@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-inline-svg/-/rollup-plugin-inline-svg-2.0.0.tgz#18df215d429f2b868b59fc398ab3c776fc2fe901"
+  integrity sha512-lU1bKuKtej+zf3ZJuOyLNfEelKcw2y9dRhXo5Gs1Fn43EnL6HtpNFIIIepHGxnQZL74oVXL1V9oNFuT8MHnQtQ==
+
 rollup-plugin-terser@^7.0.2:
   version "7.0.2"
   resolved "https://registry.yarnpkg.com/rollup-plugin-terser/-/rollup-plugin-terser-7.0.2.tgz#e8fbba4869981b2dc35ae7e8a502d5c6c04d324d"

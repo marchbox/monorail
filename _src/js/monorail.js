@@ -1,5 +1,8 @@
 import {whenElementTransitionEnd} from './utils';
 
+import engineHeadSvg from '../svg/monorail-engine-head.svg';
+import engineTailSvg from '../svg/monorail-engine-tail.svg';
+
 const ClassName = {
   // When component is ready.
   ACTION: 'action',
@@ -15,6 +18,9 @@ const ClassName = {
 
   // The train element.
   TRAIN: 'monorail-train',
+
+  // The train engine element.
+  ENGINE: 'monorail-engine',
 
   // The container that contains the train element.
   STATION: 'monorail-station',
@@ -42,8 +48,6 @@ export default class extends HTMLElement {
     if (!this.stationEl || !this.trainEl) {
       return;
     }
-
-    await customElements.whenDefined('land-inlinesvg');
 
     this.decorate();
     this.activeCarEl = this.trainEl.querySelector(`.${ClassName.ACTIVE}`);
@@ -82,16 +86,15 @@ export default class extends HTMLElement {
   }
 
   decorate() {
-    const engineHead = document.createElement('land-inlinesvg');
-    engineHead.setAttribute('src', '/assets/decors/monorail-engine-head.svg');
+    const engineHead = document.createElement('div');
+    engineHead.classList.add(ClassName.ENGINE);
     engineHead.setAttribute('aria-hidden', 'true');
-    engineHead.setAttribute('width', '78');
-    engineHead.setAttribute('height', '30');
-    const engineTail = document.createElement('land-inlinesvg');
-    engineTail.setAttribute('src', '/assets/decors/monorail-engine-tail.svg');
+    engineHead.innerHTML = engineHeadSvg;
+
+    const engineTail = document.createElement('div');
+    engineTail.classList.add(ClassName.ENGINE);
     engineTail.setAttribute('aria-hidden', 'true');
-    engineTail.setAttribute('width', '78');
-    engineTail.setAttribute('height', '30');
+    engineTail.innerHTML = engineTailSvg;
 
     this.trainEl.prepend(engineHead);
     this.trainEl.append(engineTail);
