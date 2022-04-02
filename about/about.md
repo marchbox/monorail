@@ -3,14 +3,14 @@ layout: templates/article.njk
 title: About
 eleventyNavigation:
   key: About
-  order: 2
+  order: 4
 ---
 
 ## About Zacky
 
-I’m a Web Developer who loves drawing and Disney. I’m passionate about the Web Standards, accessibility, progressive enhancement, typography, and interaction design. I currently work at Niantic as a Staff Web Developer, prior to that, I worked at Google for over a decade.
+I’m a web developer who loves drawing and Disney. As a web developer, I enjoy making inclusive websites that follow the Web Standards, focus on usability, accessibility, performance, and maintainability.
 
-## The design theme
+## The design
 
 You may have noticed the references to Disney, especially to Disneyland, all over the website. I grew up in the far west part of mainland China, internet wasn’t a thing until I was in high school. Disney was kind of my window to the outside world. My love towards Disney has driven me through almost all major changes in my life, including this website.
 
@@ -35,6 +35,8 @@ The navigation in header is a tribute to my favorite [Disney.com design (circa e
 </figure>
 
 Unlike today, it was a time when websites looked all different from each other, web design was more experimental and interesting. It seems the industry is trending that direction again, hopefully the web will look more diverse in a few years without bringing back the closeness, lack of security, and inaccessibility that Flash had.
+
+There is also a dark mode design, it’s inspired by Disneyland’s classic [Main Street Electrical Parade](https://en.wikipedia.org/wiki/Main_Street_Electrical_Parade).
 
 ## Acknowledgement
 
