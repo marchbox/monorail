@@ -74,6 +74,7 @@ module.exports = function(eleventyConfig) {
   return {
     dir: {
       includes: '_src',
+      layouts: '_src/njk',
     },
     markdownTemplateEngine: 'liquid',
     htmlTemplateEngine: 'njk',
