@@ -202,7 +202,12 @@ main,
 
   display: flex;
   position: relative;
+  transform: translatex(var(--monorail-train-length, 100%));
   z-index: var(--zindex-monorail);
+
+  @supports (transform: translatex(max(var(--foo), 100vw))) {
+    transform: translatex(max(var(--monorail-train-length, 100%), 100vw));
+  }
 
   @media (--nav-sm) {
     display: inline-flex;
@@ -214,12 +219,6 @@ main,
   }
 
   @media (--motion) {
-    transform: translatex(var(--monorail-train-length, 100%));
-
-    @supports (transform: translatex(max(var(--foo), 100vw))) {
-      transform: translatex(max(var(--monorail-train-length, 100%), 100vw));
-    }
-
     transition: transform .72s cubic-bezier(.15,.76,.32,.89);
   }
 
