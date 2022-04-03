@@ -19,7 +19,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('head',
     (array, n) => n < 0 ? array.slice(n) : array.slice(0, n));
 
-  eleventyConfig.addFilter('articleList', require('./filters/article-list.js'));
   eleventyConfig.addFilter('articleTagList', require('./filters/article-tag-list.js'));
   eleventyConfig.addFilter('articleTagName', require('./filters/article-tag-name.js'));
   eleventyConfig.addFilter('getFontUrl', require('./filters/get-font-url.js'));
@@ -33,6 +32,8 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addTransform('htmlmin', require('./transforms/htmlmin.js'));
   eleventyConfig.addTransform('addCacheVersions', require('./transforms/add-cache-versions.js'));
+
+  eleventyConfig.addCollection('articles', require('./collections/articles.js'));
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
