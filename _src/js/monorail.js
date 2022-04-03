@@ -137,15 +137,17 @@ export default class extends HTMLElement {
   }
 
   depart(destination) {
+    window.addEventListener('pagehide', () => {
+      // Restore the class names right before page unload so if a user use
+      // browser back/forward cache, the navigation will be there.
+      this.classList.remove(ClassName.DEPART);
+      this.classList.add(ClassName.ARRIVE);
+    });
+
     whenElementTransitionEnd(this.trainEl, true).then(() => {
-      window.addEventListener('pagehide', () => {
-        // Restore the class names right before page unload so if a user use
-        // browser back/forward cache, the navigation will be there.
-        this.classList.remove(ClassName.DEPART);
-        this.classList.add(ClassName.ARRIVE);
-      });
       window.location.assign(destination);
     });
+
     this.classList.remove(ClassName.ARRIVE);
     this.classList.add(ClassName.DEPART);
   }
