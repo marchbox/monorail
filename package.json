@@ -1,7 +1,7 @@
 {
   "private": true,
   "engines": {
-    "node": "16"
+    "node": "17"
   },
   "scripts": {
     "start": "npx @11ty/eleventy --serve --config=./_11ty/config.js",
