@@ -42,7 +42,6 @@ export default class extends HTMLElement {
   }
 
   connectedCallback() {
-    console.log(Date.now());
     if (!('IntersectionObserver' in window)) {
       return;
     }
@@ -83,7 +82,6 @@ export default class extends HTMLElement {
     this.listenToClicks();
 
     this.classList.add(ClassName.ACTION);
-    console.log(Date.now());
   }
 
   disconnectedCallback() {

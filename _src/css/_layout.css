@@ -214,8 +214,17 @@ main,
   }
 
   @media (--motion) {
-    transform: translatex(100vw);
+    transform: translatex(var(--monorail-train-length, 100%));
+
+    @supports (transform: translatex(max(1px,2px))) {
+      transform: translatex(max(var(--monorail-train-length, 100%), 100vw));
+    }
+
     transition: transform .72s cubic-bezier(.15,.76,.32,.89);
+  }
+
+  @media (--nav-md) and (--motion) {
+    transform: translatex(100vw);
   }
 
   @media (--dark) {
@@ -234,6 +243,11 @@ main,
   @nest .depart & {
     @media (--motion) {
       transform: translatex(calc(-1 * var(--monorail-train-length, 100%)));
+
+      @supports (transform: translatex(min(1px,2px))) {
+        transform: translatex(min(calc(-1 * var(--monorail-train-length, 100%)), -100vw));
+      }
+
       transition: transform .48s cubic-bezier(.6,-.01,1,.37);
     }
 
