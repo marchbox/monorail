@@ -8,6 +8,20 @@ export function whenDocumentReady() {
   });
 }
 
+export function whenDocumentComplete() {
+  return new Promise(resolve => {
+    if (document.readyState === 'complete') {
+      resolve();
+    } else {
+      document.addEventListener('readystatechange', () => {
+        if (document.readyState === 'complete') {
+          resolve();
+        }
+      });
+    }
+  });
+}
+
 export function whenElementTransitionEnd(element, once = false) {
   return new Promise(resolve => {
     if (elementHasTransition(element)) {

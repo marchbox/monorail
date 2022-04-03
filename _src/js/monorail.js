@@ -1,5 +1,6 @@
 import {
   pxToRem,
+  whenDocumentComplete,
   whenElementTransitionEnd,
 } from './utils';
 
@@ -81,7 +82,7 @@ export default class extends HTMLElement {
     this.observeVisibility();
     this.listenToClicks();
 
-    setTimeout(() => this.classList.add(ClassName.ACTION), 1);
+    whenDocumentComplete().then(() => this.classList.add(ClassName.ACTION));
   }
 
   disconnectedCallback() {
