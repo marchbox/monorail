@@ -1,4 +1,7 @@
-import {whenElementTransitionEnd} from './utils';
+import {
+  pxToRem,
+  whenElementTransitionEnd,
+} from './utils';
 
 import engineHeadSvg from '../svg/monorail-engine-head.svg';
 import engineTailSvg from '../svg/monorail-engine-tail.svg';
@@ -38,7 +41,8 @@ export default class extends HTMLElement {
     return this.stationEl?.scrollWidth > this.stationEl?.offsetWidth;
   }
 
-  async connectedCallback() {
+  connectedCallback() {
+    console.log(Date.now());
     if (!('IntersectionObserver' in window)) {
       return;
     }
@@ -55,7 +59,7 @@ export default class extends HTMLElement {
     this.isVisible = true;
 
     this.style.setProperty('--monorail-train-length',
-        `${this.trainEl.scrollWidth / 16}rem`);
+        `${pxToRem(this.trainEl.scrollWidth)}rem`);
 
     whenElementTransitionEnd(this.trainEl, true).then(() => {
       let waitBeforeAddArriveClass = 0;
@@ -78,7 +82,8 @@ export default class extends HTMLElement {
     this.observeVisibility();
     this.listenToClicks();
 
-    setTimeout(() => this.classList.add(ClassName.ACTION), 10);
+    this.classList.add(ClassName.ACTION);
+    console.log(Date.now());
   }
 
   disconnectedCallback() {
