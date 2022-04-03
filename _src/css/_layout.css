@@ -173,6 +173,8 @@ main,
   padding-block-start: var(--monorail-top);
 
   @media (--nav-sm) {
+    block-size: calc(var(--track-height) + var(--monorail-height));
+    box-sizing: content-box;
     flex-grow: 1;
     overflow: auto;
     padding-block-end: var(--padding-block-end);
@@ -205,6 +207,7 @@ main,
   z-index: var(--zindex-monorail);
 
   @media (--nav-sm) {
+    box-sizing: revert;
     display: inline-flex;
   }
 
@@ -383,7 +386,7 @@ main,
       }
     }
 
-    @nest .active & {
+    &:is(.active *) {
       font-weight: 900;
 
       &::after {
