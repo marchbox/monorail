@@ -1,4 +1,3 @@
-const {DateTime} = require('luxon');
 const fs = require('fs');
 const path = require('path');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
@@ -16,23 +15,24 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.setDataDeepMerge(true);
 
-  eleventyConfig.addFilter('readableDate',
-    date => DateTime.fromJSDate(date, {zone: 'utc'}).toFormat('LLLL dd, yyyy'));
-
   // Get the first `n` elements of a collection.
   eleventyConfig.addFilter('head',
     (array, n) => n < 0 ? array.slice(n) : array.slice(0, n));
 
-  eleventyConfig.addFilter('getFontUrl', require('./get-font-url.js'));
-  eleventyConfig.addFilter('articleList', require('./article-list.js'));
-  eleventyConfig.addFilter('isParent', require('./is-parent.js'));
+  eleventyConfig.addFilter('articleList', require('./filters/article-list.js'));
+  eleventyConfig.addFilter('articleTagList', require('./filters/article-tag-list.js'));
+  eleventyConfig.addFilter('articleTagName', require('./filters/article-tag-name.js'));
+  eleventyConfig.addFilter('getFontUrl', require('./filters/get-font-url.js'));
+  eleventyConfig.addFilter('isParent', require('./filters/is-parent.js'));
+  eleventyConfig.addFilter('readableDate', require('./filters/readable-date.js'));
+  eleventyConfig.addFilter('attrDate', require('./filters/attr-date.js'));
 
   eleventyConfig.addPassthroughCopy('assets');
   eleventyConfig.addPassthroughCopy('*.txt');
   eleventyConfig.addPassthroughCopy('(about|articles|drawings)/**/*.(jpg|png)');
 
-  eleventyConfig.addTransform('htmlmin', require('./htmlmin.js'));
-  eleventyConfig.addTransform('addCacheVersions', require('./add-cache-versions.js'));
+  eleventyConfig.addTransform('htmlmin', require('./transforms/htmlmin.js'));
+  eleventyConfig.addTransform('addCacheVersions', require('./transforms/add-cache-versions.js'));
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
