@@ -1,6 +1,8 @@
 ---
 title: Opening day
 date: 2020-10-16
+tags:
+  - dumpling
 excerpt: |
   After almost 7 months of procracination in the quarantine, today I’m finally ready to open Web Components Land, a website dedicated to learning Web Components and making them inclusive, resilient, and useful.
 ---

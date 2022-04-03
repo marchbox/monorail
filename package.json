@@ -31,7 +31,6 @@
     "cssnano": "^5.0.5",
     "fs-extra": "^10.0.1",
     "html-minifier": "^4.0.0",
-    "luxon": "^2.3.0",
     "markdown-it": "^12.0.6",
     "markdown-it-anchor": "^8.4.1",
     "md5": "^2.3.0",

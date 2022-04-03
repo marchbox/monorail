@@ -6,7 +6,15 @@ layout: base.njk
   <header>
     <h1>{{title}}</h1>
     {% if date %}
-      <p>{{date|readableDate}}
+    <p><time datetime="{{date|attrDate}}">{{date|readableDate}}</time></p>
+    {% endif %}
+    {% set tagList = tags|articleTagList %}
+    {% if tagList.length %}
+    <ul>
+      {% for tag in tagList %}
+      <li><a href="{{'/articles/tag/'+tag|url}}">{{tag|articleTagName}}</a></li>
+      {% endfor %}
+    </ul>
     {% endif %}
   </header>
 
