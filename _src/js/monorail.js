@@ -81,7 +81,7 @@ export default class extends HTMLElement {
     this.observeVisibility();
     this.listenToClicks();
 
-    setTimeout(() => this.classList.add(ClassName.ACTION), 2000);
+    setTimeout(() => this.classList.add(ClassName.ACTION), 1);
   }
 
   disconnectedCallback() {

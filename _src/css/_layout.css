@@ -216,7 +216,7 @@ main,
   @media (--motion) {
     transform: translatex(var(--monorail-train-length, 100%));
 
-    @supports (transform: translatex(max(1px,2px))) {
+    @supports (transform: translatex(max(var(--foo), 100vw))) {
       transform: translatex(max(var(--monorail-train-length, 100%), 100vw));
     }
 
@@ -244,7 +244,7 @@ main,
     @media (--motion) {
       transform: translatex(calc(-1 * var(--monorail-train-length, 100%)));
 
-      @supports (transform: translatex(min(1px,2px))) {
+      @supports (transform: translatex(min(var(--foo), -100vw))) {
         transform: translatex(min(calc(-1 * var(--monorail-train-length, 100%)), -100vw));
       }
 
