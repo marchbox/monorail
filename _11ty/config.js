@@ -1,6 +1,5 @@
 const {DateTime} = require('luxon');
 const fs = require('fs');
-const htmlmin = require('html-minifier');
 const path = require('path');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
 // const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
@@ -14,8 +13,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginRss);
   // eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
-
-  eleventyConfig.addGlobalData('cacheVersion', Date.now());
 
   eleventyConfig.setDataDeepMerge(true);
 
@@ -34,23 +31,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy('*.txt');
   eleventyConfig.addPassthroughCopy('(about|articles|drawings)/**/*.(jpg|png)');
 
-  eleventyConfig.addTransform('htmlmin', function(content, outputPath) {
-    if (outputPath && outputPath.endsWith('.html')) {
-      let minified = htmlmin.minify(content, {
-        useShortDoctype: true,
-        removeComments: true,
-        collapseWhitespace: true,
-        collapseBooleanAttributes: true,
-        decodeEntities: true,
-        preserveLineBreaks: true,
-        minifyJS: true,
-        minifyCSS: true,
-      });
-      return minified;
-    }
-
-    return content;
-  });
+  eleventyConfig.addTransform('htmlmin', require('./htmlmin.js'));
+  eleventyConfig.addTransform('addCacheVersions', require('./add-cache-versions.js'));
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
