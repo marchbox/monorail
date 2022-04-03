@@ -201,6 +201,7 @@ main,
   --monorail-car-outline-style: solid;
 
   display: flex;
+  opacity: 0;
   position: relative;
   transform: translatex(var(--monorail-train-length, 100%));
   z-index: var(--zindex-monorail);
@@ -234,9 +235,8 @@ main,
   }
 
   @nest .action & {
-    @media (--motion) {
-      transform: none;
-    }
+    opacity: 1;
+    transform: none;
   }
 
   @nest .depart & {
