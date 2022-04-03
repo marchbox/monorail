@@ -8,7 +8,7 @@ eleventyNavigation:
 
 ## The author
 
-My name is Zacky Mǎ. I’m a web developer who loves drawing and Disney. As a web developer, I enjoy making inclusive websites that follow the Web Standards, with focuses on usability, accessibility, performance, maintainability, and internationalization.
+My name is Zacky Mǎ. I’m a web developer who loves drawing and Disney. As a web developer, I enjoy making inclusive websites that follows the Web Standards, and I prioritize usability, accessibility, performance, maintainability, and internationalization.
 
 
 ## The content
