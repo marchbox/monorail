@@ -1,5 +1,6 @@
-const fs = require('fs');
+const fs = require('fs-extra');
 const inlineSvg = require('rollup-plugin-inline-svg');
+const md5 = require('md5');
 const path = require('path');
 const rollup = require('rollup');
 const {terser} = require('rollup-plugin-terser');
@@ -51,7 +52,11 @@ module.exports = class {
 
     const bundle = await rollup.rollup(inputOpts);
     const generated = await bundle.generate(outputOpts);
+    const js = generated.output[0].code;
 
-    return generated.output[0].code;
+    fs.outputFileSync(path.join(__dirname, `../_tmp/jsVersion`),
+        md5(js), 'utf8');
+
+    return js;
   }
 };

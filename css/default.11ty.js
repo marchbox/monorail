@@ -1,4 +1,5 @@
-const fs = require('fs');
+const fs = require('fs-extra');
+const md5 = require('md5');
 const path = require('path');
 const postcss = require('postcss');
 
@@ -42,7 +43,11 @@ module.exports = class {
         }),
       ])
       .process(rawCss, {from: rawFilePath})
-      .then(result => result.css);
+      .then(({css}) => {
+        fs.outputFileSync(path.join(__dirname, `../_tmp/cssVersion`),
+            md5(css), 'utf8');
+        return css;
+      });
   }
 };
 
