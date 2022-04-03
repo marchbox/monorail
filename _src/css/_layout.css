@@ -214,8 +214,17 @@ main,
   }
 
   @media (--motion) {
-    transform: translatex(100vw);
+    opacity: 0;
+    transform: translatex(var(--monorail-train-length, 100%));
     transition: transform .72s cubic-bezier(.15,.76,.32,.89);
+
+    @supports (transform: translatex(max(var(--foo), 100vw))) {
+      transform: translatex(max(var(--monorail-train-length, 100%), 100vw));
+    }
+  }
+
+  @media (--nav-md) and (--motion) {
+    transform: translatex(100vw);
   }
 
   @media (--dark) {
@@ -225,15 +234,19 @@ main,
     --monorail-engine-transform: translate(-.125rem,-.125rem);
   }
 
-  &:is(.action *) {
-    @media (--motion) {
-      transform: none;
-    }
+  @nest .action & {
+    opacity: 1;
+    transform: none;
   }
 
-  &:is(.depart *) {
+  @nest .depart & {
     @media (--motion) {
       transform: translatex(calc(-1 * var(--monorail-train-length, 100%)));
+
+      @supports (transform: translatex(min(var(--foo), -100vw))) {
+        transform: translatex(min(calc(-1 * var(--monorail-train-length, 100%)), -100vw));
+      }
+
       transition: transform .48s cubic-bezier(.6,-.01,1,.37);
     }
 
@@ -269,7 +282,7 @@ main,
   position: relative;
   text-decoration: none;
 
-  &:is(.arrive *) {
+  @nest .arrive & {
     @media (--nav-sm) {
       scroll-snap-align: center;
     }
@@ -300,82 +313,82 @@ main,
       transform: translatey(-.25rem);
     }
   }
-}
 
-.monorail-car span {
-  align-items: center;
-  background: transparent;
-  block-size: var(--monorail-height);
-  display: flex;
-  color: var(--color-fg);
-  font-size: 1rem;
-  padding: 0 .5rem;
-  position: relative;
-  text-align: center;
-  text-shadow: .125rem .0625rem 0 var(--color-bg);
-  text-transform: uppercase;
+  & span {
+    align-items: center;
+    background: transparent;
+    block-size: var(--monorail-height);
+    display: flex;
+    color: var(--color-fg);
+    font-size: 1rem;
+    padding: 0 .5rem;
+    position: relative;
+    text-align: center;
+    text-shadow: .125rem .0625rem 0 var(--color-bg);
+    text-transform: uppercase;
 
-  @media (--motion) {
-    transition: var(--monorail-car-bounce);
-  }
-
-  @media (--dark) {
-    text-shadow: none;
-  }
-
-  &:is(.monorail-car:hover *),
-  &:is(.monorail-car:focus *) {
-    transform: translatey(-.25rem);
-  }
-
-  &::before,
-  &::after {
-    content: '';
-    position: absolute;
-  }
-
-  &::before {
-    --border-color: var(--color-monorail-car-outline);
-
-    border:
-        .125rem 
-        var(--monorail-car-outline-style)
-        var(--border-color);
-    inset: 0;
-    pointer-events: none;
+    @media (--motion) {
+      transition: var(--monorail-car-bounce);
+    }
 
     @media (--dark) {
-      filter: drop-shadow(0 0 .25rem var(--border-color));
+      text-shadow: none;
     }
-  }
 
-  &:is(.active *)::before {
-    --border-color: var(--color-monorail-car-active-outline);
-  }
-
-  &::after {
-    --monorail-car-paint: var(--color-monorail-car);
-
-    background-color: var(--monorail-car-paint);
-    border: 0 solid var(--color-bg);
-    border-width: .25rem 0 0 .25rem;
-    box-shadow: .25rem .25rem 0 -.1rem var(--monorail-car-paint);
-    content: '';
-    inset: 0;
-    position: absolute;
-    z-index: -1;
-
-    @media (--dark) {
-      border-width: 0;
-      box-shadow: none;
+    &:is(.monorail-car:hover *),
+    &:is(.monorail-car:focus *) {
+      transform: translatey(-.25rem);
     }
-  }
 
-  &:is(.active *) {
-    font-weight: 900;
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+    }
+
+    &::before {
+      --border-color: var(--color-monorail-car-outline);
+
+      border:
+          .125rem 
+          var(--monorail-car-outline-style)
+          var(--border-color);
+      inset: 0;
+      pointer-events: none;
+
+      @media (--dark) {
+        filter: drop-shadow(0 0 .25rem var(--border-color));
+      }
+    }
+
+    &:is(.active *)::before {
+      --border-color: var(--color-monorail-car-active-outline);
+    }
 
     &::after {
-      --monorail-car-paint: var(--color-monorail-car-active);
+      --monorail-car-paint: var(--color-monorail-car);
+
+      background-color: var(--monorail-car-paint);
+      border: 0 solid var(--color-bg);
+      border-width: .25rem 0 0 .25rem;
+      box-shadow: .25rem .25rem 0 -.1rem var(--monorail-car-paint);
+      content: '';
+      inset: 0;
+      position: absolute;
+      z-index: -1;
+
+      @media (--dark) {
+        border-width: 0;
+        box-shadow: none;
+      }
+    }
+
+    @nest .active & {
+      font-weight: 900;
+
+      &::after {
+        --monorail-car-paint: var(--color-monorail-car-active);
+      }
     }
   }
 }
