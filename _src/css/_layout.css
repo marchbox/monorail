@@ -468,7 +468,7 @@ main,
 /* Main */
 
 main {
-  padding-block: 2rem;
+  padding-block: 3rem;
   padding-inline-start: var(--page-padding-inline-start);
   padding-inline-end: var(--page-padding-inline-end);
 
