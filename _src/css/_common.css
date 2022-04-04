@@ -8,12 +8,6 @@
   }
 }
 
-.article-list {
-  & article h2 {
-    margin-block-end: 0;
-  }
-}
-
 .readmore {
   &::after {
     content: ' →';

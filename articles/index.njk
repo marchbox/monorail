@@ -19,16 +19,25 @@ eleventyNavigation:
       <ul class="tags">
         {% for tag in collections.articlesTags %}
         <li>
-          <a href="{{('/articles/tag/'+tag)|url}}">
-            {{tag|articleTagName}}
+          <a href="{{tag.href|url}}"
+              title="Articles tagged with “{{tag.tag|articleTagName}}”">
+            {{tag.tag|articleTagName}} ({{collections[tag.tag].length}})
           </a>
         </li>
         {% endfor %}
       </ul>
     </section>
     <section class="surface margin-trim">
-      <h2 class="plain">Archieve</h2>
-      <ul>
+      <h2 class="plain">Archives</h2>
+      <ul class="articles-archives">
+        {% for yearMonth in collections.articlesArchives %}
+        <li>
+          <a href="{{yearMonth.href|url}}"
+              title="Articles written in {{yearMonth.date|readableYearMonth}}">
+            {{yearMonth.date|readableYearMonth}}
+          </a>
+        </li>
+        {% endfor %}
       </ul>
     </section>
   </aside>

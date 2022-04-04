@@ -14,7 +14,12 @@ layout: base.njk
       {% if tagList.length %}
       <ul class="tags">
         {% for tag in tagList %}
-        <li><a href="{{'/articles/tag/'+tag|url}}">{{tag|articleTagName}}</a></li>
+        <li>
+          <a href="{{'/articles/tag/'+tag|url}}"
+              title="Articles tagged with “{{tag|articleTagName}}”">
+            {{tag|articleTagName}}
+          </a>
+        </li>
         {% endfor %}
       </ul>
       {% endif %}
