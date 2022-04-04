@@ -1,24 +1,24 @@
 module.exports = function(api) {
-  const refSet = new Set();
-  const archives = [];
+  const archives = new Map();
 
   api.getFilteredByGlob('articles/**/*.md').forEach(article => {
     const date = article.date;
     const year = date.getUTCFullYear();
     const month = date.getUTCMonth();
-    const refYearMonth = `${year}-${month}`;
-    date.setUTCDate(1);
+    const key = `${year}-${month}`;
 
-    if (!refSet.has(refYearMonth)) {
-      refSet.add(refYearMonth);
-      archives.push({
-        href: `/article/${year}/${(month + 1).toString().padStart(2, '0')}`,
-        date,
+    if (archives.has(key)) {
+      archives.get(key).articles.push(article);
+    } else {
+      archives.set(key, {
+        href: `/articles/${year}-${(month + 1).toString().padStart(2, '0')}`,
+        date: new Date(date).setUTCDate(1),
+        articles: [article],
       });
     }
   });
 
-  return archives.sort((a, b) => {
+  return Array.from(archives.values()).sort((a, b) => {
     a = a.date;
     b = b.date;
     if (a.getUTCFullYear() === b.getUTCFullYear()) {

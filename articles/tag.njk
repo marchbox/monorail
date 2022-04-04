@@ -1,0 +1,19 @@
+---
+layout: base.njk
+override:tags: []
+pagination:
+  data: collections.articlesTags
+  size: 1
+  alias: tag
+permalink: '{{tag.href}}/index.html'
+eleventyComputed:
+  title: 'Articles: {{tag.tag|articleTagName}}'
+---
+
+<div class="articles margin-trim" role="none">
+  <h1>Articles: {{tag.tag|articleTagName}}</h1>
+  <div class="articles-list" role="none">
+    {% set article_list_collection = collections[tag.tag] %}
+    {% include "_src/njk/article-list.njk" %}
+  </div>
+</div>
