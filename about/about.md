@@ -57,7 +57,7 @@ The dark mode design is inspired by Disneyland’s classic [Main Street Electric
 
 The monospace fonts used in all code samples belongs to the font family called [Mono Lisa](https://monolisa.dev). I was going to used Source Code Pro to be consistent with Source Serif Pro and Source Sans Pro, which I use as the heading and body fonts respectively. But I do find Mono Lisa’s larger counter and longer x-height design more appealing and legible, it also looks great in the logo.
 
-The website is built with the Node-based static site generator, [Elevety](https://11ty.dev). I like its simplicity and flexibility.
+The website is built with the Node-based static site generator, [Eleventy](https://11ty.dev). I like its simplicity and flexibility.
 
 
 ## Contact
