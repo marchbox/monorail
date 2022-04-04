@@ -15,7 +15,9 @@ title: "MarchBox – Zacky Ma’s personal website"
 
   <section>
     <h2>Recent articles</h2>
-    {% set article_list_h_tag = 'h3' %}
-    {% include "_src/njk/article-list.njk" %}
+    <div class="articles-list" role="none">
+      {% set article_list_h_tag = 'h3' %}
+      {% include "_src/njk/article-list.njk" %}
+    </div>
   </section>
 </div>
