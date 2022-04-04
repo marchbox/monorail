@@ -12,7 +12,7 @@ layout: base.njk
 
       {% set tagList = tags|articleTagList %}
       {% if tagList.length %}
-      <ul class="tags">
+      <ul class="article-tags">
         {% for tag in tagList %}
         <li>
           <a href="{{'/articles/tag/'+tag|url}}"
