@@ -1,5 +1,4 @@
 {% if collections.articles.length %}
-<div class="article-list" role="none">
   {% for article in collections.articles %}
   <article>
     {% set h_tag = article_list_h_tag or 'h2' %}
@@ -9,5 +8,4 @@
     <p><a href="{{article.url|url}}" class="readmore">Read on</a>
   </article>
   {% endfor %}
-</div>
 {% endif %}

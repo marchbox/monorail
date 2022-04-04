@@ -50,9 +50,11 @@ html {
   --color-bg: hsl(0 0% 96%);
   --color-bg-surface: hsl(0 0% 92%);
   --color-bg-code: var(--color-bg-surface);
+  --color-bg-tag: hsl(140deg 67% 84%);
   --color-fg: hsl(0 0% 16%);
   --color-fg-code: hsl(278deg 57% 32%);
   --color-fg-caption: hsl(0 0% 16%);
+  --color-fg-tag: var(--color-fg);
   --color-border: hsl(0 0% 92%);
   --color-heading-decor: hsl(203deg 100% 90%);
 
@@ -71,9 +73,11 @@ html {
   @media (--dark) {
     --color-bg: hsl(0 0% 4%);
     --color-bg-surface: hsl(0 0% 12%);
+    --color-bg-tag: hsl(56deg 100% 50%);
     --color-fg: hsl(0 0% 96%);
     --color-fg-code: hsl(166deg 100% 50%);
     --color-fg-caption: hsl(0 0% 72%);
+    --color-fg-tag: var(--color-bg);
     --color-border: hsl(0 0% 92%);
     --color-heading-decor: transparent;
 

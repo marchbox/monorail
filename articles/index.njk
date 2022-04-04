@@ -7,7 +7,29 @@ eleventyNavigation:
 ---
 
 <div class="articles margin-trim" role="none">
-  <h1>Articles</h1>
+  <h1 id="title">Articles</h1>
 
-  {% include "_src/njk/article-list.njk" %}
+  <section class="articles-list" role="none" aria-labelledby="title">
+    {% include "_src/njk/article-list.njk" %}
+  </section>
+
+  <aside>
+    <section class="surface margin-trim">
+      <h2 class="plain">Tags</h2>
+      <ul class="tags">
+        {% for tag in collections.articlesTags %}
+        <li>
+          <a href="{{('/articles/tag/'+tag)|url}}">
+            {{tag|articleTagName}}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    <section class="surface margin-trim">
+      <h2 class="plain">Archieve</h2>
+      <ul>
+      </ul>
+    </section>
+  </aside>
 </div>
