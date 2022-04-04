@@ -2,6 +2,7 @@
   grid-column: 2 / -2;
 
   @media (--md) {
+    align-content: start;
     display: grid;
     grid-template-columns: 1fr 15rem;
     gap: 0 4rem;

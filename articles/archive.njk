@@ -1,0 +1,19 @@
+---
+layout: base.njk
+override:tags: []
+pagination:
+  data: collections.articlesArchives
+  size: 1
+  alias: archive
+permalink: '{{archive.href}}/index.html'
+eleventyComputed:
+  title: 'Articles: {{archive.date|readableYearMonth}}'
+---
+
+<div class="articles margin-trim" role="none">
+  <h1>{{title}}</h1>
+  <div class="articles-list" role="none">
+    {% set article_list_collection = archive.articles %}
+    {% include "_src/njk/article-list.njk" %}
+  </div>
+</div>
