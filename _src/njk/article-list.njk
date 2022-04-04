@@ -3,9 +3,11 @@
   <article>
     {% set h_tag = article_list_h_tag or 'h2' %}
     <{{h_tag}}><a href="{{article.url|url}}">{{article.data.title}}</a></{{h_tag}}>
-    <p>{{article.date|readableDate}}
-    <p>{{article.data.excerpt}}
-    <p><a href="{{article.url|url}}" class="readmore">Read on</a>
+    <div class="article-meta" role="none">
+      <p><time datetime="{{article.date|attrDate}}">{{article.date|readableDate}}</time></p>
+    </div>
+    <p>{{article.data.excerpt}}</p>
+    <p><a href="{{article.url|url}}" class="readmore">Read on</a></p>
   </article>
   {% endfor %}
 {% endif %}

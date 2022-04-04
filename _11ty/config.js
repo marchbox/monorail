@@ -24,6 +24,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('getFontUrl', require('./filters/get-font-url.js'));
   eleventyConfig.addFilter('isParent', require('./filters/is-parent.js'));
   eleventyConfig.addFilter('readableDate', require('./filters/readable-date.js'));
+  eleventyConfig.addFilter('readableYearMonth', require('./filters/readable-year-month.js'));
   eleventyConfig.addFilter('attrDate', require('./filters/attr-date.js'));
 
   eleventyConfig.addPassthroughCopy('assets');
@@ -35,6 +36,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection('articles', require('./collections/articles.js'));
   eleventyConfig.addCollection('articlesTags', require('./collections/articles-tags.js'));
+  eleventyConfig.addCollection('articlesArchives', require('./collections/articles-archives.js'));
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({

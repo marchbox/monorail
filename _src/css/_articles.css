@@ -22,6 +22,22 @@
   }
 }
 
+.articles-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+
+  & article h2 {
+    margin-block-end: .5rem;
+  }
+}
+
+.articles-archives {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .article {
   & h1 {
     margin-block-end: 2rem;
@@ -33,11 +49,13 @@
 }
 
 .article-meta {
-  align-items: center;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;
+  @nest .article & {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
 
   & p {
     margin: 0;
