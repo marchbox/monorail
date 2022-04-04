@@ -27,7 +27,8 @@
   flex-direction: column;
   gap: 5rem;
 
-  & article h2 {
+  & article h2,
+  & article h3 {
     margin-block-end: .5rem;
   }
 }

@@ -47,50 +47,61 @@ html {
   --type-actionable-weight: 600;
 
 
-  --color-bg: hsl(0 0% 96%);
+  --color-red-light: hsl(3deg 98% 90%);
+  --color-red-dark: hsl(3deg 98% 32%);
+  --color-green-light: hsl(140deg 67% 84%);
+  --color-green-medium: hsl(140deg 43% 60%);
+  --color-blue-light: hsl(203deg 100% 90%);
+  --color-blue-medium: hsl(203deg 100% 72%);
+  --color-purple-dark: hsl(278deg 57% 32%);
+  --color-yellow-light: hsl(56deg 100% 50%);
+  --color-teal-medium: hsl(172deg 100% 50%);
+  --color-magenta-medium: hsl(300deg 100% 72%);
+
+  --color-bg: hsl(0 0% 98%);
   --color-bg-surface: hsl(0 0% 92%);
   --color-bg-code: var(--color-bg-surface);
-  --color-bg-tag: hsl(140deg 67% 84%);
+  --color-bg-tag: var(--color-green-light);
   --color-fg: hsl(0 0% 16%);
-  --color-fg-code: hsl(278deg 57% 32%);
+  --color-fg-code: var(--color-purple-dark);
   --color-fg-caption: hsl(0 0% 16%);
   --color-fg-tag: var(--color-fg);
   --color-border: hsl(0 0% 92%);
-  --color-heading-decor: hsl(203deg 100% 90%);
+  --color-heading-decor: var(--color-blue-light);
 
-  --color-horizon: hsl(203deg 100% 72%);
-  --color-monorail-track: hsl(203deg 100% 90%);
+  --color-horizon: var(--color-blue-medium);
+  --color-monorail-track: var(--color-blue-light);
   --color-monorail-track-outline: var(--color-horizon);
-  --color-monorail-car: hsl(140deg 67% 84%);
+  --color-monorail-car: var(--color-green-light);
   --color-monorail-car-outline: var(--color-fg);
-  --color-monorail-car-window: hsl(140deg 43% 60%);
-  --color-monorail-car-active: hsl(3deg 98% 90%);
+  --color-monorail-car-window: var(--color-green-medium);
+  --color-monorail-car-active: var(--color-red-light);
   --color-monorail-car-active-outline: var(--color-monorail-car-outline);
-  --color-tree-leaf: hsl(140deg 67% 84%);
+  --color-tree-leaf: var(--color-green-light);
   --color-tree-leaf-outline: transparent;
   --color-tree-wood: var(--color-fg);
 
   @media (--dark) {
     --color-bg: hsl(0 0% 4%);
     --color-bg-surface: hsl(0 0% 12%);
-    --color-bg-tag: hsl(56deg 100% 50%);
+    --color-bg-tag: var(--color-yellow-light);
     --color-fg: hsl(0 0% 96%);
-    --color-fg-code: hsl(166deg 100% 50%);
+    --color-fg-code: var(--color-teal-medium);
     --color-fg-caption: hsl(0 0% 72%);
     --color-fg-tag: var(--color-bg);
     --color-border: hsl(0 0% 92%);
     --color-heading-decor: transparent;
 
-    --color-nightlight: hsl(56deg 100% 50%);
+    --color-nightlight: var(--color-yellow-light);
 
     --color-horizon: var(--color-nightlight);;
     --color-monorail-track: var(--color-bg);
     --color-monorail-track-outline: var(--color-nightlight);
     --color-monorail-car: var(--color-bg);
-    --color-monorail-car-outline: hsl(172deg 100% 50%);
+    --color-monorail-car-outline: var(--color-teal-medium);
     --color-monorail-car-window: hsl(0 0% 32%);
     --color-monorail-car-active: var(--color-monorail-car);
-    --color-monorail-car-active-outline: hsl(300deg 100% 72%);
+    --color-monorail-car-active-outline: var(--color-magenta-medium);
     --color-tree-leaf: transparent;
     --color-tree-leaf-outline: var(--color-nightlight);
     --color-tree-wood: var(--color-nightlight);
