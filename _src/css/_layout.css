@@ -404,8 +404,11 @@ main,
 
   align-items: end;
   display: grid;
+  font-size: var(--type-caption-size);
+  font-weight: var(--type-caption-weight);
   gap: 1.25rem;
   grid-template-columns: 1fr repeat(12, minmax(0, 3.75rem)) 1fr;
+  line-height: var(--type-caption-lh);
 
   @media (--md) {
     min-block-size: 10rem;

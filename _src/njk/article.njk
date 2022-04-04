@@ -2,20 +2,23 @@
 layout: base.njk
 ---
 
-<article class="fenced">
+<article class="fenced article">
   <header>
     <h1>{{title}}</h1>
-    {% if date %}
-    <p><time datetime="{{date|attrDate}}">{{date|readableDate}}</time></p>
-    {% endif %}
-    {% set tagList = tags|articleTagList %}
-    {% if tagList.length %}
-    <ul>
-      {% for tag in tagList %}
-      <li><a href="{{'/articles/tag/'+tag|url}}">{{tag|articleTagName}}</a></li>
-      {% endfor %}
-    </ul>
-    {% endif %}
+    <aside class="article-meta">
+      {% if date %}
+      <p><time datetime="{{date|attrDate}}">{{date|readableDate}}</time></p>
+      {% endif %}
+
+      {% set tagList = tags|articleTagList %}
+      {% if tagList.length %}
+      <ul class="tags">
+        {% for tag in tagList %}
+        <li><a href="{{'/articles/tag/'+tag|url}}">{{tag|articleTagName}}</a></li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+    </aside>
   </header>
 
   {{content|safe}}

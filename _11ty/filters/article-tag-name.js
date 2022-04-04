@@ -5,5 +5,5 @@ const TagName = new Map([
 ]);
 
 module.exports = function(tag) {
-  return TagName.get(tag) || '';
+  return TagName.get(tag) || tag;
 }

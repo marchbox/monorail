@@ -34,6 +34,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addTransform('addCacheVersions', require('./transforms/add-cache-versions.js'));
 
   eleventyConfig.addCollection('articles', require('./collections/articles.js'));
+  eleventyConfig.addCollection('articlesTags', require('./collections/articles-tags.js'));
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
