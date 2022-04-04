@@ -12,9 +12,16 @@
   }
 
   & aside {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
     gap: 2rem;
+    margin-block-start: 4rem;
+
+    @media (--md) {
+      display: flex;
+      flex-direction: column;
+      margin-block-start: 0;
+    }
 
     & h2 {
       font-size: 1.2rem;
