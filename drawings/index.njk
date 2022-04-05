@@ -9,4 +9,16 @@ eleventyNavigation:
 
 <div class="drawings margin-trim" role="none">
   <h1>Drawings</h1>
+  <h2>Hppiest</h2>
+  {% for drawing in drawings.happiest %}
+  <a href="{{('/drawings/happiest/'+drawing.key)|url}}">
+    <figure>
+      <img src="{{('/drawings/happiest/'+drawing.key+'.jpg')|url}}" alt="{{drawing.title}}">
+      <figcaption>
+        <p>{{drawing.title}}</p>
+        <p>{{drawing.caption}}</p>
+      </figcaption>
+    </figure>
+  </a>
+  {% endfor %}
 </div>

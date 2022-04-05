@@ -1,0 +1,13 @@
+layout: article.njk
+tags:
+  - drawing
+drawings:
+  happiest:
+    - key: agatha-harkness
+      title: Agatha Harkness
+      caption: It’s been Agatha all along. 
+      date: 2021-02-22
+    - key: bill-the-lizard
+      title: Bill the Lizard
+      caption: Poor Bill.
+      date: 2021-02-19
