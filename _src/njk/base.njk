@@ -53,7 +53,7 @@ TODO: add these feed.
         {% for entry in collections.all|eleventyNavigation %}
           {% set isCurrent = entry.url == page.url %}
           {% set isActive = entry.url == page.url or entry|isParent(page) %}
-          <a href="{{entry.url | url}}"{% if isCurrent %} aria-current="page"{% endif %}
+          <a href="{{entry.url|url}}"{% if isCurrent %} aria-current="page"{% endif %}
               class="monorail-car{% if isActive %} active{% endif %}">
             <span role="none">{{entry.title}}</span>
           </a>
@@ -72,7 +72,7 @@ TODO: add these feed.
   <land-sidewalks />
 </footer>
 
-<script src="{{'/js/main.js?[js-version]' | url}}"></script>
+<script src="{{'/js/main.js?[js-version]'|url}}"></script>
 </body>
 
 </html>
