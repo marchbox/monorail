@@ -31,7 +31,7 @@ I grew up in the far west part of mainland China, internet wasn’t a thing unti
 The website logo is designed as the old Disneyland park entrance sign.
 
 <figure>
-  <img src="{{'/about/disneyland-sign.jpg'|url}}" alt="An old photo of the Disneyland entrance sign.">
+  <img src="{{'disneyland-sign.jpg'|url|imgUrl(page)}}" alt="An old photo of the Disneyland entrance sign.">
   <figcaption>
     Disneyland entrance sign. Photo by Werner Weiss, 1974.
     (Source: <a href="https://www.yesterland.com/disneylandsign.html">Yesterland</a>)
@@ -41,7 +41,7 @@ The website logo is designed as the old Disneyland park entrance sign.
 The navigation in the header is a tribute to my favorite [Disney.com design (circa early 2000s)](https://www.webdesignmuseum.org/gallery/disney-2001 "Link to Web Design Museum"): the main navigation was a monorail referencing the famous Disney Park monorail systems. I thought it was such a clever idea for brand continuation to bring their magic from the real world to the online world.
 
 <figure>
-  <img src="{{'/about/disneycom-2001.jpg'|url}}" alt="">
+  <img src="{{'disneycom-2001.jpg'|url|imgUrl(page)}}" alt="">
   <figcaption>
     A later iteration of the design in 2006, the best I could find.
     (Source: <a href="https://www.webdesignmuseum.org/gallery/disney-2001">Web Design Museum</a>)

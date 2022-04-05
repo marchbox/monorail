@@ -26,6 +26,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('readableDate', require('./filters/readable-date.js'));
   eleventyConfig.addFilter('readableYearMonth', require('./filters/readable-year-month.js'));
   eleventyConfig.addFilter('attrDate', require('./filters/attr-date.js'));
+  eleventyConfig.addFilter('imgUrl', require('./filters/img-url.js'));
 
   eleventyConfig.addPassthroughCopy('assets');
   eleventyConfig.addPassthroughCopy('*.txt');
@@ -67,7 +68,7 @@ module.exports = function(eleventyConfig) {
       layouts: '_src/njk',
     },
     output: OUTPUT_DIR,
-    markdownTemplateEngine: 'liquid',
+    markdownTemplateEngine: 'njk',
     htmlTemplateEngine: 'njk',
     dataTemplateEngine: 'njk',
   };
