@@ -93,6 +93,11 @@ button {
   @media (--dark) {
     color: var(--color-nightlight);
   }
+
+  &:hover,
+  &:focus {
+    text-underline-offset: 0.125rem;
+  }
 }
 
 button {
