@@ -13,7 +13,7 @@ eleventyNavigation:
   <section aria-labelledby="happiest-heading">
     <h2 id="happiest-heading">Hppiest</h2>
     {% for drawing in drawings.happiest|sort(true,false,'date') %}
-    <a href="{{('/drawings/happiest/'+drawing.key)|url}}">
+    <a href="{{('/drawings/happiest/'+drawing.key)|url}}" class="drawing">
       <figure>
         <img src="{{('/drawings/happiest/'+drawing.key+'.jpg')|url}}"
             alt="{{drawing.title}}" loading="lazy" width="600" height="600">

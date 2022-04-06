@@ -7,13 +7,11 @@
 <meta charset="utf-8">
 
 {% set title %}{% filter trim %}
-  {% if is_home %}
-    {{title}}
-  {% else %}
-    {{title + " – " if title}}{{metadata.title}}
+  {% if is_home %}{{title|safe}}
+  {% else %}{{(title + " – ")|safe if title}}{{metadata.title}}
   {% endif %}
 {% endfilter %}{% endset %}
-<title>{{title}}</title>
+<title>{{title|safe}}</title>
 
 {% set description %}{% filter trim %}
   {% if is_home %}{{metadata.description}}

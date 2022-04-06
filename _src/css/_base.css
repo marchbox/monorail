@@ -113,6 +113,7 @@ i {
 img,
 video {
   max-inline-size: 100%;
+  object-fit: contain;
 }
 
 input,

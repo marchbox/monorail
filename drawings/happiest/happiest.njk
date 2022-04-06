@@ -7,7 +7,7 @@ pagination:
 tags: happiest
 permalink: '/drawings/happiest/{{drawing.key}}/index.html'
 eleventyComputed:
-  title: '{{drawing.title}}'
+  title: '{{drawing.title|safe}}'
 ---
 
 <article class="fenced article">
