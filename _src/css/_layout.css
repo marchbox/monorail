@@ -199,7 +199,7 @@ main,
   --monorail-engine-outline-dasharray: 0;
   --monorail-engine-transform: none;
   --monorail-car-gap: .125rem;
-  --monorail-car-bounce: transform .16s cubic-bezier(.64,1.81,.71,1.64);
+  --monorail-car-bounce: transform .16s var(--ease-bouncing);
   --monorail-car-outline-style: solid;
 
   display: flex;

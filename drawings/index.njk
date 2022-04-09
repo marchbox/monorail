@@ -8,5 +8,39 @@ eleventyNavigation:
 ---
 
 <div class="drawings margin-trim" role="none">
-  <h1>Drawings</h1>
+  <h1 id="title">Drawings</h1>
+
+  <section class="drawings-gallery">
+    {% for drawing in drawings.happiest|sort(true,false,'date') %}
+    {% set title_id = 'drawing-' + drawing.id %}
+    {% set is_featured = loop.first %}
+    {% set classes = {
+      'drawing': true,
+      'drawing-featured': is_featured
+    }|classes %}
+    {% set url = ('/drawings/happiest/'+drawing.key)|url %}
+    <article class="{{classes}}" aria-labelledby="{{title_id}}">
+      <a href="{{url}}">
+        <figure>
+          <img src="{{('/drawings/happiest/'+drawing.key+'.jpg')|url}}"
+              alt="{{drawing.title}}" loading="lazy"
+              width="600" height="600">
+          <figcaption class="margin-trim">
+            {% if is_featured %}
+            <p class="drawing-caption">{{drawing.caption}}</p>
+            <p class="drawing-title" id="{{title_id}}">{{drawing.title}}</p>
+            <p class="drawing-date">
+              <time datetime="{{drawing.date|attrDate}}">
+                {{drawing.date|readableDate}}
+              </time>
+            </p>
+            {% else %}
+              {{drawing.caption}}
+            {% endif %}
+          </figcaption>
+        </figure>
+      </a>
+    </article>
+    {% endfor %}
+  </section>
 </div>
