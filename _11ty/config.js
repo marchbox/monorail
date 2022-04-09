@@ -15,15 +15,11 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
 
   eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
-
   eleventyConfig.setDataDeepMerge(true);
-
-  // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter('head',
-    (array, n) => n < 0 ? array.slice(n) : array.slice(0, n));
 
   eleventyConfig.addFilter('articleTagList', require('./filters/article-tag-list.js'));
   eleventyConfig.addFilter('articleTagName', require('./filters/article-tag-name.js'));
+  eleventyConfig.addFilter('classes', require('./filters/classes.js'));
   eleventyConfig.addFilter('getFontUrl', require('./filters/get-font-url.js'));
   eleventyConfig.addFilter('isParent', require('./filters/is-parent.js'));
   eleventyConfig.addFilter('readableDate', require('./filters/readable-date.js'));
