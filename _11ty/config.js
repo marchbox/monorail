@@ -5,6 +5,7 @@ const pluginRss = require('@11ty/eleventy-plugin-rss');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
+const yaml = require('js-yaml');
 
 const OUTPUT_DIR = '_site';
 
@@ -13,14 +14,12 @@ module.exports = function(eleventyConfig) {
   // eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
 
+  eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
   eleventyConfig.setDataDeepMerge(true);
-
-  // Get the first `n` elements of a collection.
-  eleventyConfig.addFilter('head',
-    (array, n) => n < 0 ? array.slice(n) : array.slice(0, n));
 
   eleventyConfig.addFilter('articleTagList', require('./filters/article-tag-list.js'));
   eleventyConfig.addFilter('articleTagName', require('./filters/article-tag-name.js'));
+  eleventyConfig.addFilter('classes', require('./filters/classes.js'));
   eleventyConfig.addFilter('getFontUrl', require('./filters/get-font-url.js'));
   eleventyConfig.addFilter('isParent', require('./filters/is-parent.js'));
   eleventyConfig.addFilter('readableDate', require('./filters/readable-date.js'));
@@ -37,6 +36,8 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addCollection('articlesTags', require('./collections/articles-tags.js'));
   eleventyConfig.addCollection('articlesArchives', require('./collections/articles-archives.js'));
+
+  eleventyConfig.addWatchTarget('./**/*.yaml');
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({

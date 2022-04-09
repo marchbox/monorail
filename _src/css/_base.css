@@ -96,7 +96,7 @@ button {
 
   &:hover,
   &:focus {
-    text-underline-offset: 0.125rem;
+    text-underline-offset: 0.25rem;
   }
 }
 
@@ -113,6 +113,7 @@ i {
 img,
 video {
   max-inline-size: 100%;
+  object-fit: contain;
 }
 
 input,
