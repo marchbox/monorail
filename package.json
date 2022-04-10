@@ -5,7 +5,7 @@
   },
   "scripts": {
     "start": "npx @11ty/eleventy --serve --config=./_11ty/config.js",
-    "prepare": "npx netlify link && npx netlify lm:setup",
+    "setup": "npx netlify link && npx netlify lm:setup",
     "build": "npx @11ty/eleventy --config=./_11ty/config.js",
     "build:prod": "npx @11ty/eleventy --config=./_11ty/config.js",
     "debug": "DEBUG=* npx @11ty/eleventy"
