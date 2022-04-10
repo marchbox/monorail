@@ -2,7 +2,7 @@
 <article>
   {% set h_tag = article_list_h_tag or 'h2' %}
   <{{h_tag}}><a href="{{article.url|url}}">{{article.data.title}}</a></{{h_tag}}>
-  <div class="article-meta" role="none">
+  <div class="post-meta" role="none">
     <p><time datetime="{{article.date|attrDate}}">{{article.date|readableDate}}</time></p>
   </div>
   <p>{{article.data.excerpt}}</p>

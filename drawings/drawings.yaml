@@ -1,4 +1,4 @@
-layout: article.njk
+layout: post.njk
 tags:
   - drawing
 drawings:

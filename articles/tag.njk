@@ -7,11 +7,11 @@ pagination:
   alias: tag
 permalink: '{{tag.href}}/index.html'
 eleventyComputed:
-  title: 'Articles: {{tag.tag|articleTagName}}'
+  title: 'Articles: {{tag.tag|postTagName}}'
 ---
 
 <div class="articles margin-trim" role="none">
-  <h1>Articles: {{tag.tag|articleTagName}}</h1>
+  <h1>Articles: {{tag.tag|postTagName}}</h1>
   <div class="articles-list" role="none">
     {% set article_list_collection = collections[tag.tag] %}
     {% include "_src/njk/article-list.njk" %}

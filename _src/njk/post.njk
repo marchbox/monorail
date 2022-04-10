@@ -2,22 +2,23 @@
 layout: base.njk
 ---
 
-<article class="fenced article">
+<article class="fenced post">
   <header>
-    <h1>{{title}}</h1>
-    <aside class="article-meta">
+    <h1>{{pageTitle or title}}</h1>
+    <aside class="post-meta">
       {% if date %}
       <p><time datetime="{{date|attrDate}}">{{date|readableDate}}</time></p>
       {% endif %}
 
-      {% set tagList = tags|articleTagList %}
+      {# TODO: Enable for drawings if needed. #}
+      {% set tagList = tags|postTagList %}
       {% if tagList.length %}
-      <ul class="article-tags">
+      <ul class="post-tags">
         {% for tag in tagList %}
         <li>
           <a href="{{'/articles/tag/'+tag|url}}"
-              title="Articles tagged with “{{tag|articleTagName}}”">
-            {{tag|articleTagName}}
+              title="Articles tagged with “{{tag|postTagName}}”">
+            {{tag|postTagName}}
           </a>
         </li>
         {% endfor %}

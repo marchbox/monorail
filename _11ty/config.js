@@ -17,8 +17,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
   eleventyConfig.setDataDeepMerge(true);
 
-  eleventyConfig.addFilter('articleTagList', require('./filters/article-tag-list.js'));
-  eleventyConfig.addFilter('articleTagName', require('./filters/article-tag-name.js'));
+  eleventyConfig.addFilter('postTagList', require('./filters/post-tag-list.js'));
+  eleventyConfig.addFilter('postTagName', require('./filters/post-tag-name.js'));
   eleventyConfig.addFilter('classes', require('./filters/classes.js'));
   eleventyConfig.addFilter('getFontUrl', require('./filters/get-font-url.js'));
   eleventyConfig.addFilter('isParent', require('./filters/is-parent.js'));

@@ -1,5 +1,5 @@
 ---
-layout: article.njk
+layout: post.njk
 title: About
 eleventyNavigation:
   key: About

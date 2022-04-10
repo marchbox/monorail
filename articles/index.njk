@@ -22,8 +22,8 @@ eleventyNavigation:
         {% for tag in collections.articlesTags %}
         <li>
           <a href="{{tag.href|url}}"
-              title="Articles tagged with “{{tag.tag|articleTagName}}”">
-            {{tag.tag|articleTagName}} ({{collections[tag.tag].length}})
+              title="Articles tagged with “{{tag.tag|postTagName}}”">
+            {{tag.tag|postTagName}} ({{collections[tag.tag].length}})
           </a>
         </li>
         {% endfor %}

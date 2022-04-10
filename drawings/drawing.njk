@@ -1,5 +1,5 @@
 ---
-layout: base.njk
+layout: post.njk
 pagination:
   data: drawings
   size: 1
@@ -7,15 +7,10 @@ pagination:
 permalink: '/drawings/{{drawing.key}}/index.html'
 eleventyComputed:
   title: '{{(drawing.title+" – Drawings")|safe}}'
+  pageTitle: '{{drawing.title|safe}}'
 ---
 
-<article class="fenced article">
-  <h1>{{drawing.title}}</h1>
-  <div class="article-meta">
-    <p><time datetime="{{drawing.date|attrDate}}">{{drawing.date|readableDate}}</time></p>
-  </div>
-  <figure class="drawing-exhibition">
-    <figcaption>{{drawing.caption}}</figcaption>
-    <img src="{{('/drawings/gallery/'+drawing.key+'.jpg')|url}}" alt="{{drawing.title}}">
-  </figure>
-</article>
+<figure class="drawing-exhibition">
+  <figcaption>{{drawing.caption}}</figcaption>
+  <img src="{{('/drawings/gallery/'+drawing.key+'.jpg')|url}}" alt="{{drawing.title}}">
+</figure>
