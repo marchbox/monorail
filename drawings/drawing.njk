@@ -1,11 +1,10 @@
 ---
 layout: base.njk
 pagination:
-  data: drawings.happiest
+  data: drawings
   size: 1
   alias: drawing
-tags: happiest
-permalink: '/drawings/happiest/{{drawing.key}}/index.html'
+permalink: '/drawings/{{drawing.key}}/index.html'
 eleventyComputed:
   title: '{{(drawing.title+" – Drawings")|safe}}'
 ---
@@ -17,6 +16,6 @@ eleventyComputed:
   </div>
   <figure class="drawing-exhibition">
     <figcaption>{{drawing.caption}}</figcaption>
-    <img src="{{('/drawings/happiest/'+drawing.key+'.jpg')|url}}" alt="{{drawing.title}}">
+    <img src="{{('/drawings/gallery/'+drawing.key+'.jpg')|url}}" alt="{{drawing.title}}">
   </figure>
 </article>

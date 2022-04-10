@@ -11,18 +11,18 @@ eleventyNavigation:
   <h1 id="title">Drawings</h1>
 
   <section class="drawings-gallery">
-    {% for drawing in drawings.happiest|sort(true,false,'date') %}
+    {% for drawing in drawings|sort(true,false,'date') %}
     {% set title_id = 'drawing-' + drawing.id %}
     {% set is_featured = loop.first %}
     {% set classes = {
       'drawing': true,
       'drawing-featured': is_featured
     }|classes %}
-    {% set url = ('/drawings/happiest/'+drawing.key)|url %}
+    {% set url = ('/drawings/'+drawing.key)|url %}
     <article class="{{classes}}" aria-labelledby="{{title_id}}">
       <a href="{{url}}">
         <figure>
-          <img src="{{('/drawings/happiest/'+drawing.key+'.jpg')|url}}"
+          <img src="{{('/drawings/gallery/'+drawing.key+'.jpg')|url}}"
               alt="{{drawing.title}}" loading="lazy"
               width="600" height="600">
           <figcaption class="margin-trim">
