@@ -17,6 +17,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
   eleventyConfig.setDataDeepMerge(true);
 
+  eleventyConfig.addShortcode('currentYear', require('./shortcodes/current-year.js'));
+
   eleventyConfig.addFilter('postTagList', require('./filters/post-tag-list.js'));
   eleventyConfig.addFilter('postTagName', require('./filters/post-tag-name.js'));
   eleventyConfig.addFilter('classes', require('./filters/classes.js'));
