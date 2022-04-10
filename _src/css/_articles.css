@@ -37,6 +37,10 @@
       padding: 0;
       text-transform: uppercase;
     }
+
+    & li {
+      margin-block: .5rem;
+    }
   }
 }
 

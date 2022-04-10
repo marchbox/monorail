@@ -26,6 +26,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('readableYearMonth', require('./filters/readable-year-month.js'));
   eleventyConfig.addFilter('attrDate', require('./filters/attr-date.js'));
   eleventyConfig.addFilter('imgUrl', require('./filters/img-url.js'));
+  eleventyConfig.addFilter('listHead', require('./filters/list-head.js'));
 
   eleventyConfig.addPassthroughCopy('assets');
   eleventyConfig.addPassthroughCopy('*.txt');

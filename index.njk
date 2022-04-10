@@ -7,18 +7,19 @@ title: "MarchBox – Zacky Ma’s personal website"
 ---
 
 <div class="entrance margin-trim" role="none">
-  <section class="intro surface margin-trim">
+  <section class="intro surface margin-trim" aria-label="About marchbox.com">
     <h1 class="plain">{{metadata.title}}</h1>
     <p>{{metadata.description}}</p>
-    <p><a href="{{'/about'|url}}" class="readmore">Learn more about me</a></p>
+    <p><a href="{{'/about'|url}}" class="readmore">Learn more about the site</a></p>
   </section>
 
-  <section>
-    <h2>Recent articles</h2>
+  <section aria-label="Recent articles">
     <div class="articles-list" role="none">
-      {% set article_list_h_tag = 'h3' %}
-      {% set article_list_collection = collections.article %}
+      {% set article_list_collection = collections.article|listHead(5) %}
       {% include "_src/njk/article-list.njk" %}
     </div>
+  </section>
+
+  <section aria-label="Recent drawings">
   </section>
 </div>

@@ -6,6 +6,11 @@
     <p><time datetime="{{article.date|attrDate}}">{{article.date|readableDate}}</time></p>
   </div>
   <p>{{article.data.excerpt}}</p>
-  <p><a href="{{article.url|url}}" class="readmore">Read on</a></p>
+  <p>
+    <a href="{{article.url|url}}" class="readmore"
+        title="Continue reading article “{{article.data.title}}”">
+      Read on
+    </a>
+  </p>
 </article>
 {% endfor %}

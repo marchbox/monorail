@@ -94,9 +94,13 @@ button {
     color: var(--color-nightlight);
   }
 
+  @media (--motion) {
+    transition: .16s var(--ease-bouncing);
+  }
+
   &:hover,
   &:focus {
-    text-underline-offset: 0.25rem;
+    /* TODO */
   }
 }
 

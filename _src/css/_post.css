@@ -43,11 +43,22 @@
     background-color: var(--color-bg-tag);
     border-radius: 1rem;
     color: var(--color-fg-tag);
+    display: block;
     font-size: var(--type-caption-size);
     font-weight: var(--type-caption-weight);
     line-height: var(--type-caption-lh);
     padding: .125rem .5rem;
+    text-decoration: none;
     text-transform: uppercase;
     white-space: nowrap;
+
+    @media (--motion) {
+      transition: transform .16s var(--ease-bouncing);
+    }
+
+    &:hover,
+    &:focus {
+      transform: scale(1.1);
+    }
   }
 }
