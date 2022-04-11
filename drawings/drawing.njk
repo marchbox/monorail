@@ -4,6 +4,7 @@ pagination:
   data: drawings
   size: 1
   alias: drawing
+  reverse: true
 permalink: '/drawings/{{drawing.key}}/index.html'
 eleventyComputed:
   title: '{{(drawing.title+" – Drawings")|safe}}'

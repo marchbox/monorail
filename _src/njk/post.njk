@@ -29,3 +29,20 @@ layout: base.njk
 
   {{content|safe}}
 </article>
+
+{% if tags and tags|listIncludes('drawing') and pagination %}
+<nav class="drawing-pagination fenced" aria-label="More drawings">
+  {% if pagination.page.next.title %}
+  <a href="{{pagination.href.next}}" class="drawing-pagination-next">
+    Next:
+    <strong>{{pagination.page.next.title}}</strong>
+  </a>
+  {% endif %}
+  {% if pagination.page.previous.title %}
+  <a href="{{pagination.href.previous}}" class="drawing-pagination-prev">
+    Previous:
+    <strong>{{pagination.page.previous.title}}</strong>
+  </a>
+  {% endif %}
+</nav>
+{% endif %}
