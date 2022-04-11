@@ -196,6 +196,7 @@
       background-color: var(--color-green-light);
       border-radius: .25rem;
       block-size: 100%;
+      color: var(--color-fg);
       display: grid;
       font-size: 1.2rem;
       inline-size: var(--arrow-size);
@@ -207,11 +208,17 @@
       @media (--motion) {
         transition: .16s var(--ease-bouncing);
       }
+
+      @media (--dark) {
+        background-color: var(--color-nightlight);
+        color: var(--color-bg);
+        text-shadow: none;
+      }
     }
   }
 
   & strong {
-    color: revert;
+    color: var(--color-fg);
     display: block;
     font-size: var(--type-body-size);
     line-height: 1;
