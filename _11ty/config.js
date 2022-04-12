@@ -1,10 +1,10 @@
 const fs = require('fs');
-const path = require('path');
-const pluginRss = require('@11ty/eleventy-plugin-rss');
-// const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
-const pluginNavigation = require('@11ty/eleventy-navigation');
 const markdownIt = require('markdown-it');
 const markdownItAnchor = require('markdown-it-anchor');
+const path = require('path');
+const pluginNavigation = require('@11ty/eleventy-navigation');
+const pluginRss = require('@11ty/eleventy-plugin-rss');
+// const pluginSyntaxHighlight = require('@11ty/eleventy-plugin-syntaxhighlight');
 const yaml = require('js-yaml');
 
 const OUTPUT_DIR = '_site';
@@ -18,6 +18,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
   eleventyConfig.addShortcode('currentYear', require('./shortcodes/current-year.js'));
+  eleventyConfig.addNunjucksAsyncShortcode('image', require('./shortcodes/image.js'));
 
   eleventyConfig.addFilter('postTagList', require('./filters/post-tag-list.js'));
   eleventyConfig.addFilter('postTagName', require('./filters/post-tag-name.js'));

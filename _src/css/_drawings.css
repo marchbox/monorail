@@ -119,13 +119,13 @@
     }
   }
 
-  & img,
+  & picture,
   & figcaption {
     grid-row: 1 / 2;
     pointer-events: initial;
   }
 
-  & img {
+  & picture {
     grid-column: 1 / 7; 
   }
 
