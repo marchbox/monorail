@@ -65,12 +65,17 @@ export default class extends HTMLElement {
       let waitBeforeAddArriveClass = 0;
 
       if (this.hasScroll) {
-        this.activeCarEl.scrollIntoView({
-          behavior: 'smooth',
-          block: 'end',
-          inline: 'center',
-        });
-        waitBeforeAddArriveClass = 1000;
+        const {
+          x: activeCarX,
+          width: activeCarWidth,
+        } = this.activeCarEl.getBoundingClientRect();
+        const scrollDistance = activeCarX + activeCarWidth / 2 -
+            this.stationEl.getBoundingClientRect().width / 2;
+
+        if (scrollDistance > 0) {
+          this.stationEl.scrollBy(scrollDistance, 0);
+          waitBeforeAddArriveClass = 1000;
+        }
       }
 
       // Wait to set `arrive` class to give time for `this.adjust()` to finish
