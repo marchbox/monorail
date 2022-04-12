@@ -13,5 +13,9 @@ eleventyComputed:
 
 <figure class="drawing-exhibition">
   <figcaption>{{drawing.caption}}</figcaption>
-  <img src="{{('/drawings/gallery/'+drawing.key+'.jpg')|url}}" alt="{{drawing.title}}">
+  {% set image_src = ('/drawings/gallery/'+drawing.key+'.jpg')|url %}
+  {% set image_alt = drawing.title or '' %}
+  {% set image_widths = [600, 1240] %}
+  {% set image_sizes = '(max-width: 300px) 300px, 620px' %}
+  {% image image_src, image_alt, image_widths, image_sizes %}
 </figure>
