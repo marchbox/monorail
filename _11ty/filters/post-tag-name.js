@@ -1,7 +1,7 @@
 const TagName = new Map([
-  ['dumpling', 'Dumpling'],
-  ['mouse', 'The Mouse'],
-  ['pixel', 'Pixel'],
+  ['life', 'Life'],
+  ['disney', 'Disney'],
+  ['web-design', 'Web Design'],
 ]);
 
 module.exports = function(tag) {
