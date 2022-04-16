@@ -91,8 +91,11 @@
     }
 
     &::after {
-      border: .125rem dotted var(--color-nightlight);
+      --border-color: var(--color-nightlight);
+
+      border: .125rem dotted var(--border-color);
       content: none;
+      filter: drop-shadow(0 0 .25rem var(--border-color));
       inset: -.125rem;
       position: absolute;
       pointer-events: none;
