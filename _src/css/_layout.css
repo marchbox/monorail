@@ -50,7 +50,7 @@ main,
 .header {
   --monorail-height: 1.75rem;
   --track-height: 1rem;
-  --track-offset: .2rem;
+  --track-offset: .4rem;
   --monorail-top: .8rem;
   --logo-inline-size: 12.75rem;
 
