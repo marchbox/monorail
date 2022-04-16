@@ -187,7 +187,7 @@
   margin-block-start: 3rem;
 
   & a {
-    color: var(--color-fg-caption);
+    color: var(--color-fg-caption) !important;
     font-size: var(--type-caption-size);
     position: relative;
     text-decoration: none;

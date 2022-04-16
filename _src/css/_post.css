@@ -42,7 +42,7 @@
   & a {
     background-color: var(--color-bg-tag);
     border-radius: 1rem;
-    color: var(--color-fg-tag);
+    color: var(--color-fg-tag) !important;
     display: block;
     font-size: var(--type-caption-size);
     font-weight: var(--type-caption-weight);
@@ -58,7 +58,6 @@
 
     &:hover,
     &:focus {
-      color: var(--color-fg-tag);
       transform: scale(1.1);
     }
   }
