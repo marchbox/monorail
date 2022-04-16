@@ -28,6 +28,7 @@
       & h1 {
         margin-block-start: .5rem;
         text-align: initial;
+        text-shadow: .175rem .175rem 0 var(--color-bg);
       }
 
       & .intro-subtitle {
