@@ -5,6 +5,10 @@
     fill="none"
 >
   <path
+      fill="var(--color-bg,#fff)"
+      d="M1 1v26h49.575l5.237-4.967h15.31l3.607-4.836c-3.387-4.054-6.994-7.311-10.827-9.768C58.562 4.007 52.944 1.862 47.048 1H1z"
+  />
+  <path
       fill="var(--color-monorail-car,#bcf2cd)"
       fill-rule="evenodd"
       clip-rule="evenodd"
