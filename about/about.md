@@ -48,6 +48,8 @@ The primary logotype (“MarchBox”) uses [Parkly](https://simplebits.com/colle
 
 The website is built with the Node.js-based static site generator, [Eleventy](https://11ty.dev). I like its simplicity and flexibility.
 
+The copyrights of all characters in the drawings belong to their original copyright owners, this includes but not limited to Disney, Disney/Pixar, Marvel, and Lucasfilm.
+
 
 ## Contact
 
