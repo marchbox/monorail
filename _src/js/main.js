@@ -14,12 +14,6 @@ whenDocumentReady().then(() => {
     customElements.define('land-logo', Logo);
     customElements.define('land-sidewalks', Sidewalks);
   }
-
-  // Remove and use CSS once `text-underline-offset` is supported in Chromium.
-  [...document.querySelectorAll(':is(h1,h2,h3):not(.plain)')].forEach(h => {
-    const shadow = h.attachShadow({mode: 'open'});
-    shadow.innerHTML = '<span part="text" role="presentation"><slot></slot></span>';
-  });
 });
 
 whenDocumentComplete().then(() => {

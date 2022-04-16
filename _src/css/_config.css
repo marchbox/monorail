@@ -54,8 +54,10 @@ html {
   --color-green-medium: hsl(140deg 43% 60%);
   --color-blue-light: hsl(203deg 100% 90%);
   --color-blue-medium: hsl(203deg 100% 72%);
+  --color-blue-dark: hsl(207deg 100% 40%);
   --color-purple-dark: hsl(278deg 57% 32%);
-  --color-yellow-light: hsl(56deg 100% 50%);
+  --color-yellow-medium: hsl(56deg 100% 50%);
+  --color-yellow-dark: hsl(56deg 100% 32%);
   --color-teal-medium: hsl(172deg 100% 50%);
   --color-magenta-medium: hsl(300deg 100% 72%);
 
@@ -68,8 +70,12 @@ html {
   --color-fg-caption: hsl(0 0% 16%);
   --color-fg-tag: var(--color-fg);
   --color-border: hsl(0 0% 92%);
-  --color-heading-decor: var(--color-blue-light);
   --color-gallery-shadow: var(--color-blue-light);
+
+  --color-fg-link: var(--color-fg);
+  --color-fg-link-preactive: var(--color-blue-dark);
+  --color-link-decoration: var(--color-blue-medium);
+  --color-link-decoration-preactive: var(--color-blue-light);
 
   --color-horizon: var(--color-blue-medium);
   --color-monorail-track: var(--color-blue-light);
@@ -86,15 +92,19 @@ html {
   @media (--dark) {
     --color-bg: hsl(0 0% 4%);
     --color-bg-surface: hsl(0 0% 12%);
-    --color-bg-tag: var(--color-yellow-light);
+    --color-bg-tag: var(--color-yellow-medium);
     --color-fg: hsl(0 0% 96%);
     --color-fg-code: var(--color-teal-medium);
     --color-fg-caption: hsl(0 0% 72%);
     --color-fg-tag: var(--color-bg);
     --color-border: hsl(0 0% 92%);
-    --color-heading-decor: transparent;
 
-    --color-nightlight: var(--color-yellow-light);
+    --color-link-decoration: var(--color-nightlight);
+    --color-link-decoration-preactive: var(--color-yellow-dark);
+    --color-fg-link: var(--color-nightlight);
+    --color-fg-link-preactive: var(--color-nightlight);
+
+    --color-nightlight: var(--color-yellow-medium);
 
     --color-horizon: var(--color-nightlight);;
     --color-monorail-track: var(--color-bg);

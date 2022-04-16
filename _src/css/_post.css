@@ -58,6 +58,7 @@
 
     &:hover,
     &:focus {
+      color: var(--color-fg-tag);
       transform: scale(1.1);
     }
   }

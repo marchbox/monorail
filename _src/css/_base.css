@@ -28,39 +28,6 @@ h3 {
   font-weight: var(--fw);
   line-height: var(--lh);
   margin-block: 2em 1em;
-  text-shadow: .064em .064em 0 var(--color-bg);
-
-  @media (--dark) {
-    text-shadow: none;
-  }
-
-  &::part(text) {
-    --underline-block-size: calc(var(--lh) * .96em);
-
-    background:
-      linear-gradient(
-        to bottom,
-        transparent,
-        transparent .64em,
-        var(--color-heading-decor) .641em,
-        var(--color-heading-decor) var(--underline-block-size),
-        transparent var(--underline-block-size)
-      )
-      repeat
-      top left / 100% calc(var(--lh) * 1em);
-
-    @media (--dark) {
-      background: none;
-    }
-  }
-
-  &:not(.plain) :any-link {
-    text-decoration: none;
-
-    @media (--dark) {
-      text-decoration: underline;
-    }
-  }
 }
 
 h1 {
@@ -88,20 +55,25 @@ button {
 }
 
 :any-link {
-  color: inherit;
-
-  @media (--dark) {
-    color: var(--color-nightlight);
-  }
+  color: var(--color-fg-link);
+  text-decoration-color: var(--color-link-decoration);
+  text-decoration-thickness: .25rem;
+  text-decoration-skip-ink: none;
+  text-underline-thickness: .25rem;
 
   @media (--motion) {
-    /* TODO */
-    /* transition: .16s var(--ease-bouncing); */
+    transition: color .24s, text-decoration-color .24s;
+  }
+
+  @media (--dark) {
+    text-decoration-skip-ink: initial;
+    text-decoration-thickness: .125rem;
   }
 
   &:hover,
   &:focus {
-    /* TODO */
+    color: var(--color-fg-link-preactive);
+    text-decoration-color: var(--color-link-decoration-preactive);
   }
 }
 

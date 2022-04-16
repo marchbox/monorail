@@ -10,7 +10,21 @@
 
 .readmore {
   &::after {
-    content: ' →';
+    content: '→';
+    display: inline-block;
+    transform: translatex(.125rem);
+    vertical-align: middle;
+
+    @media (--motion) {
+      transition: transform .16s var(--ease-bouncing);
+    }
+  }
+
+  &:hover,
+  &:focus {
+    &::after {
+      transform: translatex(.375rem);
+    }
   }
 }
 
