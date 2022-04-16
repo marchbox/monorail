@@ -164,12 +164,14 @@
 .drawing-exhibition {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  margin: 1rem 0;
+  gap: 1rem;
+  margin: 0;
 
   & figcaption {
     color: var(--color-fg);
     font: inherit;
+    margin: 0;
+    padding: 0;
   }
 }
 
