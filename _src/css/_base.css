@@ -95,7 +95,8 @@ button {
   }
 
   @media (--motion) {
-    transition: .16s var(--ease-bouncing);
+    /* TODO */
+    /* transition: .16s var(--ease-bouncing); */
   }
 
   &:hover,
