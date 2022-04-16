@@ -54,7 +54,7 @@ h3 {
     }
   }
 
-  & :any-link {
+  &:not(.plain) :any-link {
     text-decoration: none;
 
     @media (--dark) {

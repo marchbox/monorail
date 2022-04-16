@@ -1,15 +1,19 @@
 {% for article in article_list_collection %}
 <article>
-  {% set h_tag = article_list_h_tag or 'h2' %}
-  <{{h_tag}}><a href="{{article.url|url}}">{{article.data.title}}</a></{{h_tag}}>
-  <div class="post-meta" role="none">
-    <p><time datetime="{{article.date|attrDate}}">{{article.date|readableDate}}</time></p>
-  </div>
-  <p>{{article.data.excerpt}}</p>
+  <header>
+    {% set h_tag = article_list_h_tag or 'h2' %}
+    <{{h_tag}}{% if h_tag === 'h3' %} class="plain"{% endif %}>
+      <a href="{{article.url|url}}">{{article.data.title}}</a>
+    </{{h_tag}}>
+    <div class="post-meta" role="none">
+      <p><time datetime="{{article.date|attrDate}}">{{article.date|readableDate}}</time></p>
+    </div>
+  </header>
   <p>
-    <a href="{{article.url|url}}" class="readmore"
+    {{article.data.excerpt}}
+    <a href="{{article.url|url}}"
         title="Continue reading article “{{article.data.title}}”">
-      Read on
+      Continue reading
     </a>
   </p>
 </article>

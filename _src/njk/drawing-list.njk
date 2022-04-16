@@ -1,0 +1,28 @@
+{% for drawing in drawing_list_collection %}
+  {% set title_id = 'drawing-' + drawing.data.key %}
+  {% set is_featured = loop.first and drawing_list_use_featured %}
+  {% set classes = {
+    'drawing': true,
+    'drawing-featured': is_featured
+  }|classes %}
+  <article class="{{classes}}" aria-labelledby="{{title_id}}">
+    <a href="{{drawing.url}}">
+      <figure>
+        {% drawingImage drawing.data %}
+        <figcaption class="margin-trim">
+          {% if is_featured %}
+          <p class="drawing-caption">{{drawing.data.caption}}</p>
+          <p class="drawing-title" id="{{title_id}}">{{drawing.data.pageTitle}}</p>
+          <p class="drawing-date">
+            <time datetime="{{drawing.date|attrDate}}">
+              {{drawing.date|readableDate}}
+            </time>
+          </p>
+          {% else %}
+            {{drawing.data.caption}}
+          {% endif %}
+        </figcaption>
+      </figure>
+    </a>
+  </article>
+{% endfor %}

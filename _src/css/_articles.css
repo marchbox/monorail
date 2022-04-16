@@ -44,13 +44,16 @@
   }
 }
 
-.articles-list {
+.article-list {
   display: flex;
   flex-direction: column;
   gap: 5rem;
 
-  & article h2,
-  & article h3 {
+  & article h2 {
     margin-block-end: .5rem;
+  }
+
+  & article h3 {
+    margin-block-end: 0;
   }
 }
