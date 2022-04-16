@@ -42,9 +42,11 @@ The dark mode design is inspired by Disneyland’s classic [Main Street Electric
 
 ## Acknowledgement
 
-The monospace fonts used in all code samples belongs to the font family called [Mono Lisa](https://monolisa.dev). I was going to used Source Code Pro to be consistent with Source Serif Pro and Source Sans Pro, which I use as the heading and body fonts respectively. But I do find Mono Lisa’s larger counter and longer x-height design more appealing and legible, it also looks great in the logo.
+The monospace fonts used in all code samples belong to the font family called [Mono Lisa](https://monolisa.dev). I was going to used Source Code Pro to be consistent with the body type Source Serif Pro and heading type Source Sans Pro. But I do find Mono Lisa’s larger counter and taller x-height design more appealing and legible.
 
-The website is built with the Node-based static site generator, [Eleventy](https://11ty.dev). I like its simplicity and flexibility.
+The logotype uses [Parkly](https://simplebits.com/collections/fonts/products/parkly-font), made by the great [SimpleBits](https://simplebits.com). I like that each letter has friendly rounded edges while maintaining a square shape, the friendliness fits the Disneyland vibe and the square shape fits the logo design. Plus, the name!
+
+The website is built with the Node.js-based static site generator, [Eleventy](https://11ty.dev). I like its simplicity and flexibility.
 
 
 ## Contact
