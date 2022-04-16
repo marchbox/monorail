@@ -1,14 +1,19 @@
----
-layout: post.njk
-pagination:
-  data: drawings
-  size: 1
-  alias: drawing
-  reverse: true
-permalink: '/drawings/{{drawing.key}}/index.html'
-eleventyComputed:
-  title: '{{(drawing.title+" – Drawings")|safe}}'
-  pageTitle: '{{drawing.title|safe}}'
+---js
+{
+  layout: 'post.njk',
+  pagination: {
+    data: 'drawings',
+    size: 1,
+    alias: 'drawing',
+    reverse: true,
+  },
+  eleventyComputed: {
+    permalink: data => `/drawings/${data.drawing.key}/index.html`,
+    title: data => `${data.drawing.title} – Drawings`,
+    pageTitle: data => data.drawing.title,
+    date: data => data.drawing.date,
+  },
+}
 ---
 
 <figure class="drawing-exhibition">
