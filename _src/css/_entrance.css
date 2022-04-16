@@ -5,9 +5,31 @@
     margin-block-end: 4rem;
     padding: 2rem;
 
-    & h1 {
-      margin-block-end: 0;
-      text-align: initial;
+    & header {
+      margin-block-end: 2rem;
+
+      & * {
+        line-height: 1;
+        margin: 0;
+      }
+
+      & h1 {
+        margin-block-start: .5rem;
+        text-align: initial;
+      }
+
+      & .intro-subtitle {
+        font-size: 1.5rem;
+        font-weight: 600;
+        letter-spacing: -.05rem;
+        text-shadow: .125rem .125rem 0 var(--color-bg);
+      }
+    }
+
+    & footer {
+      & > :last-child {
+        margin-block-end: 0;
+      }
     }
   }
 }

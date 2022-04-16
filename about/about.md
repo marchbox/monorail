@@ -8,20 +8,7 @@ eleventyNavigation:
 
 ## The author
 
-My name is Zacky Mǎ. I’m a web developer who loves drawing and Disney. As a web developer, I enjoy making inclusive websites that follows the Web Standards, and I prioritize usability, accessibility, performance, maintainability, and internationalization.
-
-
-## The content
-
-The content of the website reflects my personal interests and thoughts.
-
-In the [Articles]({{'/articles'|url}}) section, the 3 main tag include:
-
-- [Pixel]({{'/articles/tag/pixel'|url}}): web design and development.
-- [The Mouse]({{'/articles/tag/mouse'|url}}): all things Disney.
-- [Dumpling]({{'/articles/tag/dumpling'|url}}): everything else that I’m interested in.
-
-In the [Drawings]({{'/drawings'|url}}) section, I showcases some of my favorite illustrations I’ve done.
+My name is Zacky Ma. I’m a web developer who loves drawing and Disney. As a web developer, I advocate for making inclusive websites that follows the Web Standards, and I prioritize usability, accessibility, performance, maintainability, and internationalization.
 
 
 ## The design
