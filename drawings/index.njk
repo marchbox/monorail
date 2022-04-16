@@ -22,11 +22,7 @@ eleventyNavigation:
     <article class="{{classes}}" aria-labelledby="{{title_id}}">
       <a href="{{url}}">
         <figure>
-          {% set image_src = ('/drawings/gallery/'+drawing.key+'.jpg')|url %}
-          {% set image_alt = drawing.title or '' %}
-          {% set image_widths = [600, 1240] %}
-          {% set image_sizes = '(max-width: 300px) 300px, 620px' %}
-          {% image image_src, image_alt, image_widths, image_sizes %}
+          {% drawingImage drawing %}
           <figcaption class="margin-trim">
             {% if is_featured %}
             <p class="drawing-caption">{{drawing.caption}}</p>

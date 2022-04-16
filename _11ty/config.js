@@ -19,6 +19,7 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addShortcode('currentYear', require('./shortcodes/current-year.js'));
   eleventyConfig.addNunjucksAsyncShortcode('image', require('./shortcodes/image.js'));
+  eleventyConfig.addNunjucksAsyncShortcode('drawingImage', require('./shortcodes/drawing-image.js'));
 
   eleventyConfig.addFilter('postTagList', require('./filters/post-tag-list.js'));
   eleventyConfig.addFilter('postTagName', require('./filters/post-tag-name.js'));
