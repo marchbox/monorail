@@ -485,6 +485,12 @@ main {
       margin-inline: 0;
     }
   }
+
+  & img {
+    @media (--dark) {
+      filter: brightness(.8);
+    }
+  }
 }
 
 main .fenced > :first-child,
