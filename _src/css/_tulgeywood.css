@@ -14,6 +14,28 @@
     font-weight: 600;
     line-height: 1.4;
     margin: 0;
+
+    & p {
+      quotes: '“' '”';
+
+      @supports (hanging-punctuation: first) {
+        hanging-punctuation: first;
+      }
+
+      &::before {
+        content: open-quote;
+
+        @supports not (hanging-punctuation: first) {
+          display: inline-block;
+          inline-size: 0;
+          transform: translatex(-.5em);
+        }
+      }
+
+      &:last-of-type::after {
+        content: close-quote;
+      }
+    }
   }
 
   & figcaption {
