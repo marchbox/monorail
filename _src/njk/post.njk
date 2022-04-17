@@ -37,12 +37,17 @@ layout: base.njk
     Next:
     <strong>{{pagination.page.next.title}}</strong>
   </a>
+  {% else %}
+  <span class="drawing-pagination-next">More to come…</span>
   {% endif %}
+
   {% if pagination.page.previous.title %}
   <a href="{{pagination.href.previous}}" class="drawing-pagination-prev">
     Previous:
     <strong>{{pagination.page.previous.title}}</strong>
   </a>
+  {% else %}
+  <span class="drawing-pagination-prev">The end</span>
   {% endif %}
 </nav>
 {% endif %}

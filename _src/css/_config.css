@@ -69,6 +69,7 @@ html {
   --color-fg-code: var(--color-purple-dark);
   --color-fg-caption: hsl(0 0% 16%);
   --color-fg-tag: var(--color-fg);
+  --color-fg-watermark: hsl(0 0% 56%);
   --color-border: hsl(0 0% 92%);
   --color-gallery-shadow: var(--color-blue-light);
 
