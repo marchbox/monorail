@@ -51,12 +51,24 @@
   }
 
   & .article-list {
+    gap: 2rem;
     grid-area: articles;
     margin-block: 2rem;
+
+    & article {
+      border-inline-start: .25rem solid var(--color-bg-surface);
+      margin-inline-start: .5rem;
+      padding-inline-start: 1rem;
+    }
   }
 
   & .drawing-gallery {
     grid-area: drawings;
+    margin-inline: auto;
     max-inline-size: 32rem;
+
+    @media (--md) {
+      margin-inline: initial;
+    }
   }
 }
