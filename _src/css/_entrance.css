@@ -17,6 +17,10 @@
     grid-area: intro;
     padding: 2rem;
 
+    @media (--md) {
+      margin-inline: -2rem;
+    }
+
     & header {
       margin-block-end: 2rem;
 
