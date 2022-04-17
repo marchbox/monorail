@@ -480,6 +480,10 @@ main {
     grid-column: 4 / -4;
     margin-inline: auto;
     max-inline-size: 70ch;
+
+    @media (--md) {
+      margin-inline: 0;
+    }
   }
 }
 

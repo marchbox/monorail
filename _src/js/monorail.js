@@ -64,7 +64,7 @@ export default class extends HTMLElement {
     whenElementTransitionEnd(this.trainEl, true).then(() => {
       let waitBeforeAddArriveClass = 0;
 
-      if (this.hasScroll) {
+      if (this.hasScroll && this.activeCarEl) {
         const {
           x: activeCarX,
           width: activeCarWidth,

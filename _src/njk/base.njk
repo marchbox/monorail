@@ -24,7 +24,9 @@
 {% endif %}
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+{% if page.url !== '/404.html' %}
 <meta name="canonical" content="{{metadata.host + page.url|url}}">
+{% endif %}
 <link rel="alternate" type="application/rss+xml" title="All articles and drawings" href="{{metadata.host}}/feed.xml">
 {#
 TODO: add these feed.

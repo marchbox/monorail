@@ -36,22 +36,18 @@
     margin: 0;
   }
 
-  & img,
-  & figcaption {
+  & img {
     --border-width: .1875rem;
 
+    aspect-ratio: 1 / 1;
+    block-size: auto;
     border: var(--border-width) solid var(--color-fg);
+    inline-size: 100%;
+    transform: scale(var(--scale));
 
     @media (--dark) {
       --border-width: 0;
     }
-  }
-
-  & img {
-    aspect-ratio: 1 / 1;
-    block-size: auto;
-    inline-size: 100%;
-    transform: scale(var(--scale));
 
     @media (--motion) {
       transition: transform .16s var(--ease-bouncing);
@@ -60,25 +56,10 @@
 
   & figcaption {
     --translate-y: -1rem;
-    --shadow-offset: .32rem;
-    --inset-shadow-offset: calc(var(--shadow-offset) - var(--border-width));
 
-    background-color: var(--color-gallery-shadow);
-    box-shadow:
-        var(--shadow-offset) var(--shadow-offset) 0 var(--color-gallery-shadow),
-        inset var(--inset-shadow-offset) var(--inset-shadow-offset) 0 var(--color-bg);
     margin: 0 1rem;
     padding: .5rem 1rem;
-    position: relative;
-    text-shadow: .125rem .0625rem 0 var(--color-bg);
     transform: translatey(var(--translate-y)) scale(var(--scale));;
-
-    @media (--dark) {
-      background-color: var(--color-bg);
-      box-shadow: none;
-      color: var(--color-fg);
-      text-shadow: none;
-    }
 
     @media (--gallery-md) {
       --translate-y: -50%;
@@ -88,21 +69,6 @@
 
     @media (--motion) {
       transition: .16s .08s var(--ease-bouncing);
-    }
-
-    &::after {
-      --border-color: var(--color-nightlight);
-
-      border: .125rem dotted var(--border-color);
-      content: none;
-      filter: drop-shadow(0 0 .25rem var(--border-color));
-      inset: -.125rem;
-      position: absolute;
-      pointer-events: none;
-
-      @media (--dark) {
-        content: '';
-      }
     }
   }
 }

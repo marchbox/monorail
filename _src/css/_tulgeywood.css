@@ -1,0 +1,176 @@
+.tulgeywood {
+  display: block;
+  text-align: center;
+
+  & figure {
+    margin: 0 0 2rem;
+    padding: 3rem;
+    position: relative;
+    text-align: initial;
+  }
+
+  & blockquote {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.4;
+    margin: 0;
+  }
+
+  & figcaption {
+    margin-block-start: 1rem;
+    padding: 0;
+    text-align: end;
+
+    &::before {
+      content: '— ';
+    }
+  }
+
+  & cite {
+    font-style: normal;
+    font-weight: 700;
+  }
+}
+
+.tulgeywood-cheshire,
+.tulgeywood-sign {
+  position: absolute;
+  pointer-events: none;
+  z-index: 10;
+
+  & svg {
+    display: block;
+  }
+}
+
+@keyframes cheshire-reveal {
+  0% {
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+.tulgeywood-cheshire {
+  --x: 0;
+  --y: 0;
+  --r: 0deg;
+  --stroke: var(--color-fg);
+  --stroke-dasharray: 0;
+  --stroke-filter: none;
+  --eye-bg: hsl(0 100% 100%);
+  --eye-fill: hsl(47deg 95% 85%);
+  --pupil-fill: var(--color-fg);
+  --pupil-shadow: hsl(0 100% 100%);
+  --teeth-fill: hsl(0 100% 100%);
+  --teeth-shadow: hsl(0 0% 94%);
+
+  block-size: 3.25rem;
+  inline-size: 5.5625rem;
+  inset: 0;
+  opacity: 0;
+  transform: translate(var(--x), var(--y)) rotatez(var(--r));
+  z-index: 20;
+
+  @media (--dark) {
+    --stroke: var(--color-magenta-medium);
+    --stroke-dasharray: .05 4;
+    --stroke-filter: drop-shadow(0 0 .25rem var(--stroke));
+    --eye-bg: var(--color-bg);
+    --eye-fill: transparent;
+    --pupil-fill: var(--stroke);
+    --pupil-shadow: transparent;
+    --teeth-fill: var(--color-bg);
+    --teeth-shadow: transparent;
+  }
+
+  &.reveal {
+    animation: 8s cheshire-reveal;
+  }
+}
+
+@keyframes sign {
+  0% {
+    transform: scale(0);
+  }
+
+  90% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.tulgeywood-sign {
+  --sign-fg: var(--color-fg);
+  --sign-fg-shadow: var(--color-bg);
+  --sign-fg-filter: none;
+  --sign-stroke: var(--color-fg);
+  --sign-stroke-dasharray: 0;
+  --sign-stroke-filter: none;
+
+  z-index: 10;
+
+  @media (--motion) {
+    animation: .32s forwards sign;
+    transform: scale(0);
+  }
+
+  @media (--dark) {
+    --sign-fill: transparent !important;
+    --sign-fg: var(--color-nightlight);
+    --sign-fg-shadow: transparent;
+    --sign-fg-filter: drop-shadow(0 0 .125rem var(--sign-stroke));
+    --sign-stroke: var(--color-nightlight);
+    --sign-stroke-dasharray: .05 4;
+    --sign-stroke-filter: drop-shadow(0 0 .25rem var(--sign-stroke));
+  }
+}
+
+.tulgeywood-sign-that-direction {
+  --sign-fill: #e3eea1;
+
+  animation-delay: .4s;
+  block-size: 7.6875rem;
+  inset: -2.25rem auto auto -1.2rem;
+  inline-size: 6.9375rem;
+}
+
+.tulgeywood-sign-this-way {
+  --sign-fill: #fbd2ac;
+
+  animation-delay: .72s;
+  block-size: 3.875rem;
+  inset: -1.375rem -1.5rem auto auto;
+  inline-size: 6.9375rem;
+}
+
+.tulgeywood-sign-yonder {
+  --sign-fill: hsl(281deg 71% 84%);
+
+  animation-delay: .56s;
+  block-size: 3rem;
+  inset: auto auto -1.2rem 2.375rem;
+  inline-size: 6.75rem;
+}
+
+.tulgeywood-sign-up {
+  --sign-fill: #a7f1ed;
+
+  animation-delay: .24s;
+  block-size: 3.4375rem;
+  inset: auto -1.375rem -1.2rem auto;
+  inline-size: 2.6875rem;
+}
