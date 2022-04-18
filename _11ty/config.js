@@ -69,6 +69,11 @@ module.exports = function(eleventyConfig) {
     ghostMode: false
   });
 
+  eleventyConfig.setFrontMatterParsingOptions({
+    excerpt: true,
+    excerpt_separator: '^^^',
+  });
+
   return {
     dir: {
       includes: '_src',

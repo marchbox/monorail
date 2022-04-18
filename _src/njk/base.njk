@@ -18,7 +18,7 @@
 
 {% set description %}{% filter trim %}
   {% if is_home %}{{metadata.description}}
-  {% elif excerpt %}{{excerpt}}
+  {% elif page.excerpt %}{{page.excerpt}}
   {% elif intro %}{{intro}}
   {% elif caption %}{{caption}}
   {% endif %}

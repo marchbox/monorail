@@ -5,11 +5,11 @@ tags:
   - life
   - disney
   - web-design
-excerpt: |
-  After almost 7 months of procracination in the quarantine, today I’m finally ready to open Web Components Land, a website dedicated to learning Web Components and making them inclusive, resilient, and useful.
 ---
 
 After almost 7 months of procracination in the quarantine, today I’m finally ready to open Web Components Land, a website dedicated to learning Web Components and making them inclusive, resilient, and useful.
+
+^^^
 
 I believe web designers and developers have a responsibility of making the web accessible and useful for everyone. The easiest and most robust way of achieving that is building well-structured HTML and progressively enhance with CSS and JavaScript. So, before we move forward, I’d like to clarify that, while Web Components is a JavaScript-required solution, I’m not advocating for using JavaScript by default and for everything. Progressively enhancing webpages from JavaScript-absent scenarios doesn’t mean taking away all the goodness and power that comes with JavaScript, it’s simply the most robust way of building webpages because a webpage doesn’t require JavaScript, nor even CSS, it only requires HTML. With that, let’s move on.
 
