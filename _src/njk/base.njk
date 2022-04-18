@@ -1,5 +1,5 @@
 <!doctype html>
-{% set is_home = page.url|url === '/' %} 
+{% set is_home = page.url === '/' %}
 
 <html lang="en">
 
@@ -52,7 +52,7 @@ TODO: add these feed.
 #}
 <link rel="icon" href="{{'/assets/favicon.png'|url}}">
 <link rel="icon" href="{{'/assets/favicon.svg'|url}}" type="image/svg+xml">
-<link href="{{fonts.google|getFontUrl|safe}}" rel="stylesheet"> 
+<link rel="stylesheet" href="{{fonts.google|getFontUrl|safe}}">
 <link rel="stylesheet" href="{{'/css/default.css?[css-version]'|url}}">
 </head>
 
