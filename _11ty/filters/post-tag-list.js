@@ -1,6 +1,7 @@
 const EXCLUDING_TAGS = [
   'article',
   'drawing',
+  'feed',
 ];
 
 module.exports = function(list) {
