@@ -14,6 +14,8 @@
 <title>{{title|safe}}</title>
 <meta property="og:title" content="{{title|safe}}">
 
+<script>document.documentElement.classList.add('js')</script>
+
 {% set description %}{% filter trim %}
   {% if is_home %}{{metadata.description}}
   {% elif excerpt %}{{excerpt}}
@@ -58,11 +60,16 @@ TODO: add these feed.
 
 <header class="header">
   <a class="logo" href="{{'/'|url}}" title="Return to the entrance">
-    <land-logo aria-label="marchbox.com’s logo" />
+    <div class="logo-img" aria-label="marchbox.com’s logo" role="img">
+      {% include '_src/svg/logo.svg' %}
+    </div>
   </a>
   <nav class="nav" is="land-monorail" aria-label="main navigation">
     <div class="monorail-station" role="none">
       <div class="monorail-train" role="none">
+        <div class="monorail-engine" aria-hidden="true">
+          {% include '_src/svg/monorail-engine-head.svg' %}
+        </div>
         {% for entry in collections.all|eleventyNavigation %}
           {% set isCurrent = entry.url == page.url %}
           {% set isActive = entry.url == page.url or entry|isParent(page) %}
@@ -71,6 +78,9 @@ TODO: add these feed.
             <span role="none">{{entry.title}}</span>
           </a>
         {% endfor %}
+        <div class="monorail-engine" aria-hidden="true">
+          {% include '_src/svg/monorail-engine-tail.svg' %}
+        </div>
       </div>
     </div>
   </nav>
@@ -85,7 +95,7 @@ TODO: add these feed.
   <land-sidewalks />
 </footer>
 
-<script src="{{'/js/main.js?[js-version]'|url}}"></script>
+<script src="{{'/js/main.js?[js-version]'|url}}" async></script>
 </body>
 
 </html>

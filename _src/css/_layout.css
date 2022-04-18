@@ -82,6 +82,7 @@ main,
 }
 
 .logo {
+  display: block;
   flex-shrink: 0;
   position: relative;
   z-index: var(--zindex-logo);
@@ -92,16 +93,18 @@ main,
     margin-block-end: var(--track-height);
   }
 
-  & {
-    display: block;
-  }
-
-  & land-logo {
+  & .logo-img {
     display: block;
     block-size: 6rem;
 
     @media (--nav-md) {
       block-size: 7.5rem;
+    }
+
+    & svg {
+      display: block;
+      max-block-size: 100%;
+      max-inline-size: 100%;
     }
   }
 }
@@ -216,18 +219,20 @@ main,
     --monorail-engine-offset-end: 0rem;
   }
 
-  @media (--motion) {
-    opacity: 0;
-    transform: translatex(var(--monorail-train-length, 100%));
-    transition: transform .72s cubic-bezier(.15,.76,.32,.89);
+  @nest .js & {
+    @media (--motion) {
+      opacity: 0;
+      transform: translatex(var(--monorail-train-length, 100%));
+      transition: transform .72s cubic-bezier(.15,.76,.32,.89);
 
-    @supports (transform: translatex(max(var(--foo), 100vw))) {
-      transform: translatex(max(var(--monorail-train-length, 100%), 100vw));
+      @supports (transform: translatex(max(var(--foo), 100vw))) {
+        transform: translatex(max(var(--monorail-train-length, 100%), 100vw));
+      }
     }
-  }
 
-  @media (--nav-md) and (--motion) {
-    transform: translatex(100vw);
+    @media (--nav-md) and (--motion) {
+      transform: translatex(100vw);
+    }
   }
 
   @media (--dark) {

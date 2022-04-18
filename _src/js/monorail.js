@@ -4,9 +4,6 @@ import {
   whenElementTransitionEnd,
 } from './utils';
 
-import engineHeadSvg from '../svg/monorail-engine-head.svg';
-import engineTailSvg from '../svg/monorail-engine-tail.svg';
-
 const ClassName = {
   // When component is ready.
   ACTION: 'action',
@@ -22,9 +19,6 @@ const ClassName = {
 
   // The train element.
   TRAIN: 'monorail-train',
-
-  // The train engine element.
-  ENGINE: 'monorail-engine',
 
   // The container that contains the train element.
   STATION: 'monorail-station',
@@ -53,7 +47,7 @@ export default class extends HTMLElement {
       return;
     }
 
-    this.decorate();
+    // this.decorate();
     this.activeCarEl = this.trainEl.querySelector(`.${ClassName.ACTIVE}`);
 
     this.isVisible = true;
@@ -92,21 +86,6 @@ export default class extends HTMLElement {
 
   disconnectedCallback() {
     this.visibilityObserver?.disconnect();
-  }
-
-  decorate() {
-    const engineHead = document.createElement('div');
-    engineHead.classList.add(ClassName.ENGINE);
-    engineHead.setAttribute('aria-hidden', 'true');
-    engineHead.innerHTML = engineHeadSvg;
-
-    const engineTail = document.createElement('div');
-    engineTail.classList.add(ClassName.ENGINE);
-    engineTail.setAttribute('aria-hidden', 'true');
-    engineTail.innerHTML = engineTailSvg;
-
-    this.trainEl.prepend(engineHead);
-    this.trainEl.append(engineTail);
   }
 
   // Only use page transition animation when at least half of the monorail
