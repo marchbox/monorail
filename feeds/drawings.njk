@@ -1,0 +1,8 @@
+---
+permalink: /feeds/drawings.xml
+description: Drawings from marchbox.com
+eleventyComputed:
+  title: "{{metadata.title}} (Drawings)"
+---
+{%- set feed_collection = collections.drawing|reverse -%}
+{% include '_src/njk/feed.njk' %}

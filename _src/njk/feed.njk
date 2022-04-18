@@ -1,27 +1,25 @@
----
-permalink: feed.xml
-eleventyExcludeFromCollections: true
----
+{%- if feed_collection -%}
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>{{metadata.title}}</title>
-  <subtitle>{{metadata.description}}</subtitle>
+  <title>{{title or metadata.title}}</title>
+  <subtitle>{{description or metadata.description}}</subtitle>
   <link href="{{metadata.host}}/{{permalink}}" rel="self"/>
   <link href="{{metadata.host}}"/>
-  <updated>{{collections.articles|getNewestCollectionItemDate|dateToRfc3339}}</updated>
+  <updated>{{feed_collection|getNewestCollectionItemDate|dateToRfc3339}}</updated>
   <id>{{metadata.host}}</id>
   <author>
     <name>{{metadata.author.name}}</name>
     <email>{{metadata.author.email}}</email>
   </author>
-  {%- for post in collections.articles %}
+  {%- for post in feed_collection %}
   {% set absolutePostUrl %}{{post.url|url|absoluteUrl(metadata.host)}}{% endset %}
   <entry>
-    <title>{{ post.data.title }}</title>
-    <link href="{{ absolutePostUrl }}"/>
+    <title>{{post.data.pageTitle or post.data.title}}</title>
+    <link href="{{absolutePostUrl}}"/>
     <updated>{{post.date|dateToRfc3339}}</updated>
-    <id>{{ absolutePostUrl }}</id>
+    <id>{{absolutePostUrl}}</id>
     <content type="html">{{post.templateContent|htmlToAbsoluteUrls(absolutePostUrl)}}</content>
   </entry>
   {%- endfor %}
 </feed>
+{%- endif -%}

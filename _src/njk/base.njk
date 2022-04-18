@@ -42,14 +42,12 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
-<link rel="alternate" type="application/rss+xml" title="All articles and drawings" href="{{metadata.host}}/feed.xml">
-{#
-TODO: add these feed.
-<link rel="alternate" type="application/rss+xml" title="All articles" href="">
-<link rel="alternate" type="application/rss+xml" title="All web design and development articles" href="">
-<link rel="alternate" type="application/rss+xml" title="All Disney articles" href="">
-<link rel="alternate" type="application/rss+xml" title="All drawings" href="">
-#}
+<link rel="alternate" type="application/rss+xml" title="All articles and drawings"
+    href="{{metadata.host}}/feeds/all.xml">
+<link rel="alternate" type="application/rss+xml" title="All articles"
+    href="{{metadata.host}}/feeds/articles.xml">
+<link rel="alternate" type="application/rss+xml" title="All drawings"
+    href="{{metadata.host}}/feeds/drawings.xml">
 <link rel="icon" href="{{'/assets/favicon.png'|url}}">
 <link rel="icon" href="{{'/assets/favicon.svg'|url}}" type="image/svg+xml">
 <link rel="stylesheet" href="{{fonts.google|getFontUrl|safe}}">
