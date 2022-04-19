@@ -1,10 +1,12 @@
+const EXCLUDING_TAGS = require('../common/excluding-tags');
+
 module.exports = function(api) {
   const refSet = new Set();
   const tags = [];
 
   api.getFilteredByGlob('articles/**/*.md').forEach(article => {
     article.data.tags
-      .filter(tag => tag !== 'article')
+      .filter(tag => !EXCLUDING_TAGS.includes(tag))
       .forEach(tag => {
         if (!refSet.has(tag)) {
           refSet.add(tag);
