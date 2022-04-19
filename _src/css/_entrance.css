@@ -56,7 +56,7 @@
     margin-block: 2rem;
 
     & article {
-      border-inline-start: .25rem solid var(--color-bg-surface);
+      border-inline-start: .25rem solid var(--color-bg-code);
       margin-inline-start: .5rem;
       padding-inline-start: 1rem;
     }

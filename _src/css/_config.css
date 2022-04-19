@@ -62,8 +62,8 @@ html {
   --color-magenta-medium: hsl(300deg 100% 72%);
 
   --color-bg: hsl(0 0% 98%);
-  --color-bg-surface: hsl(0 0% 92%);
-  --color-bg-code: var(--color-bg-surface);
+  --color-bg-surface: var(--color-blue-light);
+  --color-bg-code: hsl(0 0% 92%);
   --color-bg-tag: var(--color-green-light);
   --color-fg: hsl(0 0% 16%);
   --color-fg-code: var(--color-purple-dark);
@@ -71,7 +71,6 @@ html {
   --color-fg-tag: var(--color-fg);
   --color-fg-watermark: hsl(0 0% 56%);
   --color-border: hsl(0 0% 92%);
-  --color-gallery-shadow: var(--color-blue-light);
 
   --color-fg-link: var(--color-fg);
   --color-fg-link-preactive: var(--color-blue-dark);
@@ -92,7 +91,7 @@ html {
 
   @media (--dark) {
     --color-bg: hsl(0 0% 4%);
-    --color-bg-surface: hsl(0 0% 12%);
+    --color-bg-surface: transparent;
     --color-bg-tag: var(--color-yellow-medium);
     --color-fg: hsl(0 0% 96%);
     --color-fg-code: var(--color-teal-medium);
