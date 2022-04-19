@@ -69,8 +69,12 @@
 
   & a {
     --color-fg-link-preactive: var(--color-fg-link);
-    --color-link-decoration-preactive: #fff;
+    --color-link-decoration-preactive: hsl(0 100% 100% / .8);
 
     text-shadow: none;
+
+    @media (--dark) {
+      --color-link-decoration-preactive: inherit;
+    }
   }
 }
