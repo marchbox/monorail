@@ -7,7 +7,7 @@ node_modules/
 .*.swp
 _site/
 _tmp/
-
+*.plist
 *.log
 
 # Local Netlify folder
