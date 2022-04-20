@@ -92,6 +92,7 @@ html {
   @media (--dark) {
     --color-bg: hsl(0 0% 4%);
     --color-bg-surface: transparent;
+    --color-bg-code: hsl(0 0% 24%);
     --color-bg-tag: var(--color-yellow-medium);
     --color-fg: hsl(0 0% 96%);
     --color-fg-code: var(--color-teal-medium);
