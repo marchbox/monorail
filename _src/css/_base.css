@@ -18,6 +18,10 @@ body {
   background-color: var(--color-bg);
   color: var(--color-fg);
   font: var(--type-body-weight) var(--type-body-size) / var(--type-body-lh) var(--type-body-family);
+
+  @media (--motion) {
+    scroll-behavior: smooth;
+  }
 }
 
 h1,
