@@ -1,6 +1,8 @@
 const fs = require('fs');
 const markdownIt = require('markdown-it');
-const markdownItAnchor = require('markdown-it-anchor');
+const markdownItAbbr = require('markdown-it-abbr');
+const markdownItAttrs = require('markdown-it-attrs');
+const markdownItDeflist = require('markdown-it-deflist');
 const path = require('path');
 const pluginNavigation = require('@11ty/eleventy-navigation');
 const pluginRss = require('@11ty/eleventy-plugin-rss');
@@ -48,6 +50,11 @@ module.exports = function(eleventyConfig) {
     html: true,
     breaks: true,
   });
+  markdownLibrary.use(markdownItAbbr);
+  markdownLibrary.use(markdownItAttrs, {
+    leftDelimiter: '{@',
+  });
+  markdownLibrary.use(markdownItDeflist);
   eleventyConfig.setLibrary('md', markdownLibrary);
 
   // Browsersync Overrides

@@ -55,3 +55,10 @@ The copyrights of all characters in the drawings belong to their original copyri
 
 - Email: <zacky@marchbox.com>
 - Twitter: [@marchbox](https://twitter.com/marchbox)
+
+
+## Subscribe {@#subscribe}
+
+- [All posts]({{'/feeds/all.xml'|url}}) (Atom)
+- [Articles only]({{'/feeds/articles.xml'|url}}) (Atom)
+- [Drawings only]({{'/feeds/drawings.xml'|url}}) (Atom)
