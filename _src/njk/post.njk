@@ -51,3 +51,15 @@ layout: base.njk
   {% endif %}
 </nav>
 {% endif %}
+
+<section aria-labelledby="heading-comments">
+  <h2 id="heading-comments">Comments</h2>
+  <form name="comment" netlify>
+    <ol>
+      <li><label>Name <input type="text" name="name" required></label></li>
+      <li><label>Email <input type="email" name="email"></label></li>
+      <li><label>Comment <textarea name="body"></textarea>
+    </ol>
+    <p><button type="submit">Submit</button></p>
+  </form>
+</section>
