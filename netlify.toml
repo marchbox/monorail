@@ -1,0 +1,33 @@
+# Redirects actual feed URLs to vanity ones.
+[[redirects]]
+  from = '/feeds/all.xml'
+  to = '/feed'
+  force = true
+  status = 301
+[[redirects]]
+  from = '/feeds/articles.xml'
+  to = '/articles/feed'
+  force = true
+  status = 301
+[[redirects]]
+  from = '/feeds/drawings.xml'
+  to = '/drawings/feed'
+  force = true
+  status = 301
+
+# Serves feed content from vanity feed URLs
+[[redirects]]
+  from = '/feed'
+  to = '/feeds/all.xml'
+  force = true
+  status = 200
+[[redirects]]
+  from = '/articles/feed'
+  to = '/feeds/articles.xml'
+  force = true
+  status = 200
+[[redirects]]
+  from = '/drawings/feed'
+  to = '/feeds/drawings.xml'
+  force = true
+  status = 200
