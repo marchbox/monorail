@@ -7,5 +7,5 @@ module.exports = function(dateObj) {
   let split = s.split('.');
   split.pop();
 
-  return split.join('') + '-0700';
+  return split.join('') + '-07:00';
 };
