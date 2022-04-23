@@ -4,7 +4,13 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{title or metadata.title}}</title>
   <subtitle>{{description or metadata.description}}</subtitle>
-  <link href="{{metadata.host}}{{permalink}}" rel="self"/>
+  {%- set feedLink -%}
+    {%- if permalink === '/feeds/all.xml' -%}/feed
+    {%- elif permalink === '/feeds/articles.xml' -%}/articles/feed
+    {%- elif permalink === '/feeds/drawings.xml' -%}/drawings/feed
+    {%- else -%}{{permalink}}{%- endif -%}
+  {%- endset -%}
+  <link href="{{metadata.host}}{{feedLink}}" rel="self"/>
   <link href="{{absoluteSiteUrl}}"/>
   <updated>{{feed_collection|latestCollectionItemDate|dateToRfc3339}}</updated>
   <id>{{absoluteSiteUrl}}</id>
