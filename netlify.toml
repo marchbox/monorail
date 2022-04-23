@@ -1,0 +1,4 @@
+[[redirects]]
+  from = '/feed'
+  to = '/feeds/all.xml'
+  status = 200!
