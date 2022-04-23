@@ -6,6 +6,7 @@
     date: data => data.drawing.date,
     title: data => data.drawing.title,
     caption: data => data.drawing.caption,
+    keyart: data => `/drawings/gallery/${data.key}.jpg`,
   },
   permalink: '/drawings/{{drawing.key}}/index.html',
   pagination: {

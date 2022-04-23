@@ -31,7 +31,7 @@
 
 {% set canonical = metadata.host %}
 {% if page.url !== '/404.html' %}
-  {% set canonical = canonical + page.url|url %}
+  {% set canonical = page.url|url|absoluteUrl(metadata.host) %}
 {% endif %}
 <meta name="canonical" content="{{canonical}}">
 <meta property="og:url" content="{{canonical}}">
@@ -39,16 +39,22 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="{{metadata.host}}/assets/og.png">
+
+{% set og_image -%}
+  {%- if keyart -%}{{keyart|url|absoluteUrl(metadata.host)}}
+  {%- else -%}{{'/assets/og.png'|url|absoluteUrl(metadata.host)}}
+  {%- endif -%}
+{%- endset %}
+<meta property="og:image" content="{{og_image}}">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 
 <link rel="alternate" type="application/rss+xml" title="All articles and drawings"
-    href="{{metadata.host}}/feed">
+    href="{{'/feed'|url|absoluteUrl(metadata.host)}}">
 <link rel="alternate" type="application/rss+xml" title="All articles"
-    href="{{metadata.host}}/articles/feed">
+    href="{{'/articles/feed'|url|absoluteUrl(metadata.host)}}">
 <link rel="alternate" type="application/rss+xml" title="All drawings"
-    href="{{metadata.host}}/drawings/feed">
+    href="{{'/drawings/feed'|url|absoluteUrl(metadata.host)}}">
 <link rel="icon" href="{{'/assets/favicon.png'|url}}">
 <link rel="icon" href="{{'/assets/favicon.svg'|url}}" type="image/svg+xml">
 <link rel="stylesheet" href="{{fonts.google|getFontUrl|safe}}">
