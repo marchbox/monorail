@@ -5,18 +5,18 @@
   <subtitle>{{description or metadata.description}}</subtitle>
   <link href="{{metadata.host}}/{{permalink}}" rel="self"/>
   <link href="{{metadata.host}}"/>
-  <updated>{{feed_collection|getNewestCollectionItemDate|dateToRfc3339}}</updated>
+  <updated>{{feed_collection|latestCollectionItemDate|dateToRfc3339}}</updated>
   <id>{{metadata.host}}</id>
   <author>
     <name>{{metadata.author.name}}</name>
     <email>{{metadata.author.email}}</email>
   </author>
-  {%- for post in feed_collection %}
+  {%- for post in feed_collection|sort(true,false,'data.date') %}
   {% set absolutePostUrl %}{{post.url|url|absoluteUrl(metadata.host)}}{% endset %}
   <entry>
     <title>{{post.data.title}}</title>
     <link href="{{absolutePostUrl}}"/>
-    <updated>{{post.date|dateToRfc3339}}</updated>
+    <updated>{{post.data.date|dateToRfc3339}}</updated>
     <id>{{absolutePostUrl}}</id>
     <content type="html">{{post.templateContent|htmlToAbsoluteUrls(absolutePostUrl)}}</content>
   </entry>

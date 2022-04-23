@@ -31,4 +31,4 @@ I’ve also developed interests and hobbies in many other things, like linguisti
 
 Hope you enjoy the ride.
 
-[1]:	%7B%7B'/drawings/'%7Curl%7D%7D
+[1]:	{{'/drawings/'|url}}

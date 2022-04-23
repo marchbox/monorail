@@ -5,13 +5,11 @@ const markdownItAttrs = require('markdown-it-attrs');
 const markdownItDeflist = require('markdown-it-deflist');
 const path = require('path');
 const pluginNavigation = require('@11ty/eleventy-navigation');
-const pluginRss = require('@11ty/eleventy-plugin-rss');
 const yaml = require('js-yaml');
 
 const OUTPUT_DIR = '_site';
 
 module.exports = function(eleventyConfig) {
-  eleventyConfig.addPlugin(pluginRss);
   eleventyConfig.addPlugin(pluginNavigation);
 
   eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
@@ -33,6 +31,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('imgUrl', require('./filters/img-url.js'));
   eleventyConfig.addFilter('listHead', require('./filters/list-head.js'));
   eleventyConfig.addFilter('listIncludes', require('./filters/list-includes.js'));
+
+  // Filters from @11ty/eleventy-plugin-rss with modifications.
+  eleventyConfig.addFilter('absoluteUrl', require('./filters/absolute-url.js'));
+  eleventyConfig.addFilter('latestCollectionItemDate', require('./filters/latest-collection-item-date.js'));
+  eleventyConfig.addFilter('dateToRfc3339', require('./filters/date-to-rfc3339.js'));
+  eleventyConfig.addNunjucksAsyncFilter('htmlToAbsoluteUrls', require('./filters/html-to-absolute-urls.js'));
 
   eleventyConfig.addPassthroughCopy('assets');
   eleventyConfig.addPassthroughCopy('*.txt');
