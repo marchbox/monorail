@@ -3,7 +3,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{title or metadata.title}}</title>
   <subtitle>{{description or metadata.description}}</subtitle>
-  <link href="{{metadata.host}}/{{permalink}}" rel="self"/>
+  <link href="{{metadata.host}}{{permalink}}" rel="self"/>
   <link href="{{metadata.host}}"/>
   <updated>{{feed_collection|latestCollectionItemDate|dateToRfc3339}}</updated>
   <id>{{metadata.host}}</id>
