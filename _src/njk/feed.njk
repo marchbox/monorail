@@ -14,7 +14,7 @@
   {%- for post in feed_collection %}
   {% set absolutePostUrl %}{{post.url|url|absoluteUrl(metadata.host)}}{% endset %}
   <entry>
-    <title>{{post.data.pageTitle or post.data.title}}</title>
+    <title>{{post.data.title}}</title>
     <link href="{{absolutePostUrl}}"/>
     <updated>{{post.date|dateToRfc3339}}</updated>
     <id>{{absolutePostUrl}}</id>

@@ -12,7 +12,7 @@
         <figcaption class="margin-trim surface">
           {% if is_featured %}
           <p class="drawing-caption">{{drawing.data.caption}}</p>
-          <p class="drawing-title" id="{{title_id}}">{{drawing.data.pageTitle}}</p>
+          <p class="drawing-title" id="{{title_id}}">{{drawing.data.title}}</p>
           <p class="drawing-date">
             <time datetime="{{drawing.date|attrDate}}">
               {{drawing.date|readableDate}}

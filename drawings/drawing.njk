@@ -4,8 +4,7 @@
   eleventyComputed: {
     key: data => data.drawing.key,
     date: data => data.drawing.date,
-    title: data => `${data.drawing.title} – Drawings`,
-    pageTitle: data => data.drawing.title,
+    title: data => data.drawing.title,
     caption: data => data.drawing.caption,
   },
   permalink: '/drawings/{{drawing.key}}/index.html',

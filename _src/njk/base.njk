@@ -8,6 +8,7 @@
 
 {% set title %}{% filter trim %}
   {% if is_home %}{{title|safe}}
+  {% elif page.url.startsWith('/drawings') %}{{(title + " – Drawings – " + metadata.title)|safe}}
   {% else %}{{(title + " – ")|safe if title}}{{metadata.title}}
   {% endif %}
 {% endfilter %}{% endset %}
