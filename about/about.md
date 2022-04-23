@@ -59,6 +59,6 @@ The copyrights of all characters in the drawings belong to their original copyri
 
 ## Subscribe {@#subscribe}
 
-- [All posts]({{'/feeds/all.xml'|url}}) (Atom)
-- [Articles only]({{'/feeds/articles.xml'|url}}) (Atom)
-- [Drawings only]({{'/feeds/drawings.xml'|url}}) (Atom)
+- [All posts]({{'/feed'|url}}) (Atom)
+- [Articles only]({{'/articles/feed'|url}}) (Atom)
+- [Drawings only]({{'/drawings/feed'|url}}) (Atom)

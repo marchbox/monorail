@@ -1,5 +1,19 @@
+# Redirects
+
 [[redirects]]
   from = '/feed'
   to = '/feeds/all.xml'
+  force = true
+  status = 200
+
+[[redirects]]
+  from = '/articles/feed'
+  to = '/feeds/articles.xml'
+  force = true
+  status = 200
+
+[[redirects]]
+  from = '/drawings/feed'
+  to = '/drawings/articles.xml'
   force = true
   status = 200
