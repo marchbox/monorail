@@ -7,6 +7,12 @@
   status = 200
 
 [[redirects]]
+  from = '/feeds/all.xml'
+  to = '/feed'
+  force = true
+  status = 301
+
+[[redirects]]
   from = '/articles/feed'
   to = '/feeds/articles.xml'
   force = true
