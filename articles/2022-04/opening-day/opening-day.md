@@ -7,7 +7,7 @@ tags:
   - web-design
 ---
 
-Welcome to my new personal website! It took me quite a while to overcome my procrastination and anxiety, but I finally finished building the first iteration of the theme, and I had so much fun doing it. As the site’s first article, I’ll talk about what I’m planning on posting here.
+Welcome to my new personal website! It took me quite a while, but I finally finished building the first iteration, and I had so much fun doing it. As the site’s first article, I’ll talk about what I’m planning on posting here.
 
 ^^^
 
@@ -19,7 +19,7 @@ But, better late than never. Two decades later, I’m still a web developer, and
 
 ## Drawings
 
-I’ve been doodling since I was two years old. I drew all over my textbooks, even in my notebooks for our weekly writing assignments. I’ve never had proper training. I used to think that allowed me to draw freely. But in the past few years, I hit a wall – I wanted to draw “perfectly” like a professional illustrator, but my lack of training dragged me down, I often relied on happy accidents to meet my standard. Eventually, the frustration built up, I stopped drawing, for years, until last January, when I became aware of my anxiety issues. One day, I decided to start drawing something without caring about perfection and polish. You can see all drawings in that series on the [Drawings page][1]. I will continue posting some of my old drawings and new ones as I go.
+I’ve been doodling since I was two years old. I drew all over my textbooks, even in my notebooks for our weekly writing assignments. I’ve never had proper training. I used to think that allowed me to draw freely. But in the recent years, I hit a wall—I wanted to draw “perfectly” like a professional illustrator, but my lack of training kept dragging me down, I often relied on happy accidents to achieve what I want. Eventually, the frustration built up, I stopped drawing, for years, until last January, when I became aware of my anxiety issues and started to look for solutions. One day, I decided to start drawing something without caring about perfection and polish, I had a blast for about 2 months. You can see all drawings in that series on the [Drawings page][1]. I will continue posting some of my old drawings and new ones as I go.
 
 ## Disney
 
@@ -27,7 +27,7 @@ I always think I am who I am because of 2 things: my mom and Disney. I grew up i
 
 ## Other things
 
-If you got this far, you probably read that I’m having some anxiety issues. Part of the reason that I built this website is for me to better deal with it. I want to have my own place to talk about things I’m interested in and care about. My therapist kept telling me to focus on things I can control, let go of things I can’t, and intentionally break my “things need to be perfect” mentality. I’m not a good writer, not to mention English isn’t my native language. But I’ll try to achieve something that can make me happy for the moment, and hopefully, it can help others along the way.
+I’ve also developed interests and hobbies in many other things, like linguistics, typography, travel, animations, and so on. I’m using this site to express my thoughts, experiences, and passions. It’s one way of dealing with my anxiety, I can build and write in the ways I want, and it helps me move my focus away from things I can’t control.
 
 Hope you enjoy the ride.
 
