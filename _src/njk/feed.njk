@@ -1,18 +1,19 @@
 {%- if feed_collection -%}
+{%- set absoluteSiteUrl %}{{'/'|url|absoluteUrl(metadata.host)}}{% endset -%}
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>{{title or metadata.title}}</title>
   <subtitle>{{description or metadata.description}}</subtitle>
   <link href="{{metadata.host}}{{permalink}}" rel="self"/>
-  <link href="{{metadata.host}}/"/>
+  <link href="{{absoluteSiteUrl}}"/>
   <updated>{{feed_collection|latestCollectionItemDate|dateToRfc3339}}</updated>
-  <id>{{metadata.host}}</id>
+  <id>{{absoluteSiteUrl}}</id>
   <author>
     <name>{{metadata.author.name}}</name>
     <email>{{metadata.author.email}}</email>
   </author>
   {%- for post in feed_collection|sort(true,false,'data.date') %}
-  {% set absolutePostUrl %}{{post.url|url|absoluteUrl(metadata.host)}}{% endset %}
+  {%- set absolutePostUrl %}{{post.url|url|absoluteUrl(metadata.host)}}{% endset -%}
   <entry>
     <title>{{post.data.title}}</title>
     <link href="{{absolutePostUrl}}"/>
