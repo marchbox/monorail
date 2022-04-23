@@ -1,4 +1,5 @@
 [[redirects]]
   from = '/feed'
   to = '/feeds/all.xml'
-  status = 200!
+  force = true
+  status = 200
