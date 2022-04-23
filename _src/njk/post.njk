@@ -52,9 +52,9 @@ layout: base.njk
 </nav>
 {% endif %}
 
-<section aria-labelledby="heading-comments">
+<section class="fenced" aria-labelledby="heading-comments">
   <h2 id="heading-comments">Comments</h2>
-  <form name="comment" netlify>
+  <form name="comment-{{date|attrDate}}-{{page.fileSlug}}" data-netlify="true">
     <ol>
       <li><label>Name <input type="text" name="name" required></label></li>
       <li><label>Email <input type="email" name="email"></label></li>
