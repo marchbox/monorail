@@ -18,6 +18,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.setDataDeepMerge(true);
 
   eleventyConfig.addShortcode('currentYear', require('./shortcodes/current-year.js'));
+  eleventyConfig.addShortcode('copyrightYear', require('./shortcodes/copyright-year.js'));
   eleventyConfig.addNunjucksAsyncShortcode('image', require('./shortcodes/image.js'));
   eleventyConfig.addNunjucksAsyncShortcode('drawingImage', require('./shortcodes/drawing-image.js'));
 

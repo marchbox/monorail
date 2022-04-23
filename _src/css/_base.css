@@ -61,7 +61,7 @@ button {
 :any-link {
   color: var(--color-fg-link);
   text-decoration-color: var(--color-link-decoration);
-  text-decoration-thickness: .25rem;
+  text-decoration-thickness: .25em;
   text-decoration-skip-ink: none;
   text-underline-thickness: .25rem;
 
@@ -71,7 +71,7 @@ button {
 
   @media (--dark) {
     text-decoration-skip-ink: initial;
-    text-decoration-thickness: .125rem;
+    text-decoration-thickness: .125em;
   }
 
   &:hover,

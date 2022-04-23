@@ -89,8 +89,12 @@
 
 <footer class="footer">
   <div class="fenced" role="none">
-    <p><a href="{{'/about/#subscribe'|url}}">Subscribe</a></p>
-    <p>©{% currentYear %} <a href="{{'/about'|url}}">Zacky Ma</a>. All Rights Reserved.</p>
+    <ul class="footer-links">
+      <li><a href="{{'/about/#subscribe'|url}}">Subscribe</a></li>
+      <li><a href="{{'/about/#contact'|url}}">Contact</a></li>
+      <li><a href="https://twitter.com/marchbox">@marchbox</a></li>
+    </ul>
+    <p>©{% copyrightYear %} <a href="{{'/about'|url}}">Zacky Ma</a></p>
   </div>
   <land-sidewalks />
 </footer>

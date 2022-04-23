@@ -436,6 +436,16 @@ main,
     text-align: center;
   }
 
+  & .footer-links {
+    display: flex;
+    gap: .5rem 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    list-style: none;
+    margin: 0 0 1rem;
+    padding: 0;
+  }
+
   & land-sidewalks {
     display: none;
 

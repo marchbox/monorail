@@ -51,7 +51,7 @@ The website is built with the Node.js-based static site generator, [Eleventy](ht
 The copyrights of all characters in the drawings belong to their original copyright owners, this includes but not limited to Disney, Disney/Pixar, Marvel, and Lucasfilm.
 
 
-## Contact
+## Contact {@#contact}
 
 - Email: <zacky@marchbox.com>
 - Twitter: [@marchbox](https://twitter.com/marchbox)
