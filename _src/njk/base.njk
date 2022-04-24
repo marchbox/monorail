@@ -27,7 +27,7 @@
 {% if description %}
 <meta name="description" content="{{description|safe}}">
 {% endif %}
-<meta property="og:description" content="{{metadata.description|safe}}">
+<meta property="og:description" content="{{description|safe}}">
 
 {% set canonical = metadata.host %}
 {% if page.url !== '/404.html' %}
