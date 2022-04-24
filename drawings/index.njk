@@ -1,18 +1,45 @@
----
-layout: base.njk
-override:tags: []
-title: Drawings
-eleventyNavigation:
-  key: Drawings
-  order: 3
+---js
+{
+  layout: 'base.njk',
+  'override:tags': [],
+  pagination: {
+    data: 'collections.drawing',
+    size: 12,
+    before: paginationData => paginationData
+        .reverse()
+        .slice(1),
+  },
+  eleventyComputed: {
+    title: data => {
+      let title = 'Drawings';
+      if (data.pagination.pageNumber > 0) {
+        title += `: Page ${data.pagination.pageNumber + 1}`;
+      }
+      return title;
+    }
+  },
+  eleventyNavigation: {
+    key: 'Drawings',
+    order: 3,
+  },
+  permalink: '/drawings/{% if pagination.pageNumber > 0 %}{{pagination.pageNumber + 1}}/{% endif %}index.html',
+}
 ---
 
 <div class="drawings margin-trim" role="none">
-  <h1 id="title">Drawings</h1>
+  <h1 id="title">{{title}}</h1>
 
-  <section class="drawings-gallery">
-    {% set drawing_list_collection = collections.drawing|reverse %}
-    {% set drawing_list_use_featured = true %}
-    {% include "_src/njk/drawing-list.njk" %}
+  <section class="drawings-gallery" aria-labelledby="title">
+    {% if pagination.pageNumber === 0 %}
+      {% set drawing_list_collection = collections.drawing|listTail(1) %}
+      {% set drawing_list_use_featured = true %}
+      {% include '_src/njk/drawing-list.njk' %}
+    {% endif %}
+
+    {% set drawing_list_collection = pagination.items %}
+    {% set drawing_list_use_featured = false %}
+    {% include '_src/njk/drawing-list.njk' %}
+
+    {% include '_src/njk/pagination.njk' %}
   </section>
 </div>

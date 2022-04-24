@@ -30,6 +30,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('attrDate', require('./filters/attr-date.js'));
   eleventyConfig.addFilter('imgUrl', require('./filters/img-url.js'));
   eleventyConfig.addFilter('listHead', require('./filters/list-head.js'));
+  eleventyConfig.addFilter('listTail', require('./filters/list-tail.js'));
   eleventyConfig.addFilter('listIncludes', require('./filters/list-includes.js'));
 
   // Filters from @11ty/eleventy-plugin-rss with modifications.

@@ -104,21 +104,29 @@ export default class extends HTMLElement {
       // Do nothing if the clicked target isn’t an <a> element, or
       // the <a> element links to an external URL.
       const aEl = evt.target?.closest('a');
-      if (!aEl || aEl?.host !== window.location.host || !this.isVisible) {
+      if (!aEl ||
+          aEl?.host !== window.location.host ||
+          (aEl?.pathname === '' && aEl?.hash)) {
         return;
       }
+
+      evt.preventDefault();
 
       // Do nothing if the <a> element links to the current page.
       if (aEl.pathname === window.location.pathname) {
         return;
       }
 
-      evt.preventDefault();
       this.depart(aEl.href);
     });
   }
 
   depart(destination) {
+    if (!this.isVisible) {
+      window.location.assign(destination);
+      return;
+    }
+
     window.addEventListener('pagehide', () => {
       // Restore the class names right before page unload so if a user use
       // browser back/forward cache, the navigation will be there.

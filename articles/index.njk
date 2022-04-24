@@ -1,18 +1,25 @@
 ---
 layout: base.njk
 override:tags: []
-title: Articles
+permalink: '/articles/{% if pagination.pageNumber > 0 %}{{pagination.pageNumber + 1}}/{% endif %}index.html'
+pagination:
+  data: collections.article
+  size: 10
 eleventyNavigation:
   key: Articles
   order: 2
+eleventyComputed:
+  title: 'Articles{% if pagination.pageNumber > 0 %}: Page {{pagination.pageNumber + 1}}{% endif %}'
 ---
 
 <div class="articles margin-trim" role="none">
   <h1 id="title">Articles</h1>
 
   <section class="article-list" role="none" aria-labelledby="title">
-    {% set article_list_collection = collections.article %}
+    {% set article_list_collection = pagination.items %}
     {% include "_src/njk/article-list.njk" %}
+
+    {% include '_src/njk/pagination.njk' %}
   </section>
 
   <aside>

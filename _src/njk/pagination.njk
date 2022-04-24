@@ -1,0 +1,7 @@
+{% if pagination and pagination.hrefs.length > 1 %}
+<nav aria-label="{{title}} pagination" class="pagination">
+  {% for href in pagination.hrefs %}
+  <a href="{{href|url}}"{% if href === page.url %} aria-current="page"{% endif %}>{{loop.index}}</a>
+  {% endfor %}
+</nav>
+{% endif %}
