@@ -78,3 +78,32 @@
     }
   }
 }
+
+.skip {
+  background-color: var(--color-blue-light);
+  block-size: 1px;
+  inline-size: 1px;
+  inset-block-start: .5rem;
+  inset-inline-start: 50%;
+  opacity: 0;
+  overflow: hidden;
+  padding-inline: .5rem;
+  position: absolute;
+  transform: translatex(-50%);
+  text-decoration: none;
+  z-index: var(--zindex-skip);
+
+  &:hover,
+  &:focus {
+    block-size: auto;
+    inline-size: auto;
+    opacity: 1;
+  }
+
+  @media (--dark) {
+    --color-fg-link: var(--color-bg);
+    --color-fg-link-preactive: var(--color-bg);
+
+    background-color: var(--color-nightlight);
+  }
+}

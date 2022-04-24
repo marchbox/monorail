@@ -108,15 +108,13 @@ export default class extends HTMLElement {
         return;
       }
 
-      evt.preventDefault();
-      const destUrl = aEl.href;
-
       // Do nothing if the <a> element links to the current page.
-      if (destUrl === window.location.href) {
+      if (aEl.pathname === window.location.pathname) {
         return;
       }
 
-      this.depart(destUrl);
+      evt.preventDefault();
+      this.depart(aEl.href);
     });
   }
 

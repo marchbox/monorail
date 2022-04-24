@@ -122,6 +122,7 @@ html {
 
   --ease-bouncing: cubic-bezier(.64,1.81,.71,1.64);
 
+  --zindex-skip: 1000;
   --zindex-logo: 10;
   --zindex-monorail: 2;
   --zindex-monorail-track: -1;

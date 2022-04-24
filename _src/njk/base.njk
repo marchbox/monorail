@@ -63,6 +63,8 @@
 
 <body>
 
+<a href="#content" class="skip">Skip to the content</a>
+
 <header class="header">
   <a class="logo" href="{{'/'|url}}" title="Return to the entrance">
     <div class="logo-img" aria-label="marchbox.com’s logo" role="img">
@@ -91,7 +93,7 @@
   </nav>
 </header>
 
-<main>{{content|safe}}</main>
+<main id="content">{{content|safe}}</main>
 
 <footer class="footer">
   <div class="fenced" role="none">
@@ -100,7 +102,7 @@
       <li><a href="{{'/about/#contact'|url}}">Contact</a></li>
       <li><a href="https://twitter.com/marchbox">@marchbox</a></li>
     </ul>
-    <p>©{% copyrightYear %} <a href="{{'/about'|url}}">Zacky Ma</a></p>
+    <p>©{% copyrightYear %} <a href="{{'/about/'|url}}">Zacky Ma</a></p>
   </div>
   <land-sidewalks />
 </footer>

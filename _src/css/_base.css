@@ -12,10 +12,6 @@ body {
 
 html {
   box-sizing: border-box;
-
-  @media (--motion) {
-    scroll-behavior: smooth;
-  }
 }
 
 body {
