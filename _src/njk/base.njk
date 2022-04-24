@@ -22,6 +22,7 @@
   {% elif page.excerpt %}{{page.excerpt}}
   {% elif intro %}{{intro}}
   {% elif caption %}{{caption}}
+  {% else %}{{metadata.description}}
   {% endif %}
 {% endfilter %}{% endset %}
 {% if description %}
