@@ -22,7 +22,7 @@ eleventyComputed:
   <section aria-labelledby="heading-articles" class="margin-trim">
     <h2 id="heading-articles">Recent articles</h2>
     <div class="article-list" role="none">
-      {% set article_list_collection = collections.article|listHead(5) %}
+      {% set article_list_collection = collections.article|reverse|listHead(5) %}
       {% set article_list_h_tag = 'h3' %}
       {% include "_src/njk/article-list.njk" %}
     </div>

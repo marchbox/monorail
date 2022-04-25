@@ -10,9 +10,10 @@ module.exports = function(api) {
     if (archives.has(key)) {
       archives.get(key).articles.push(article);
     } else {
+      date.setUTCDate(1);
       archives.set(key, {
         href: `/articles/${year}-${(month + 1).toString().padStart(2, '0')}`,
-        date: new Date(date).setUTCDate(1),
+        date,
         articles: [article],
       });
     }
