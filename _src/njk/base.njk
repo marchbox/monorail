@@ -18,11 +18,11 @@
 <script>document.documentElement.classList.add('js')</script>
 
 {% set description %}{% filter trim %}
-  {% if is_home %}{{metadata.description}}
-  {% elif page.excerpt %}{{page.excerpt}}
-  {% elif intro %}{{intro}}
-  {% elif caption %}{{caption}}
-  {% else %}{{metadata.description}}
+  {% if is_home %}{{metadata.description|safe}}
+  {% elif page.excerpt %}{{page.excerpt|safe}}
+  {% elif intro %}{{intro|safe}}
+  {% elif caption %}{{caption|safe}}
+  {% else %}{{metadata.description|safe}}
   {% endif %}
 {% endfilter %}{% endset %}
 {% if description %}

@@ -1,0 +1,5 @@
+{
+  "rules": {
+    "no-raw-characters": ["warning", {"relaxed": true}]
+  }
+}
