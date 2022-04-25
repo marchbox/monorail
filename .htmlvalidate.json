@@ -1,5 +1,5 @@
 {
   "rules": {
-    "no-raw-characters": ["warning", {"relaxed": true}]
+    "no-raw-characters": ["warn", {"relaxed": true}]
   }
 }
