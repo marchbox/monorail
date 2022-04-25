@@ -104,9 +104,14 @@ export default class extends HTMLElement {
       // Do nothing if the clicked target isn’t an <a> element, or
       // the <a> element links to an external URL.
       const aEl = evt.target?.closest('a');
-      if (!aEl ||
-          aEl?.host !== window.location.host ||
-          (aEl?.pathname === '' && aEl?.hash)) {
+      if (
+        // Click didn’t happen on an <a> element.
+        !aEl ||
+        // The link is an external link.
+        aEl?.host !== window.location.host ||
+        // The link is an anchor link on the current page.
+        (aEl?.pathname === window.location.pathname && aEl?.hash)
+      ) {
         return;
       }
 
