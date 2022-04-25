@@ -5,7 +5,10 @@
     'drawing': true,
     'drawing-featured': is_featured
   }|classes %}
-  <article class="{{classes}}" aria-labelledby="{{title_id}}">
+  <article class="{{classes}}"
+      {% if is_featured %} aria-labelledby="{{title_id}}"
+      {% else %} aria-label="{{drawing.data.title}}"
+      {% endif %}>
     <a href="{{drawing.url}}">
       <figure>
         {% drawingImage drawing.data %}
