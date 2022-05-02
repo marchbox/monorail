@@ -10,7 +10,7 @@
   {% set prevPageTitle =
       paginationConfig.prevPageTitle or ('Page ' + pagination.pageNumber) %}
   <a href="{{pagination.href.previous}}" class="pagination-prev"
-      title="Previous page ({{prevPageTitle}})">
+      title="Previous page ({{prevPageTitle}})" rel="prev">
     <span role="none">Previous:</span>
     <strong>{{prevPageTitle}}</strong>
   </a>
@@ -34,7 +34,7 @@
   {% set nextPageTitle =
       paginationConfig.nextPageTitle or ('Page ' + (pagination.pageNumber + 2)) %}
   <a href="{{pagination.href.next}}" class="pagination-next"
-      title="Next page ({{nextPageTitle}})">
+      title="Next page ({{nextPageTitle}})" rel="next">
     <span role="none">Next:</span>
     <strong>{{nextPageTitle}}</strong>
   </a>
