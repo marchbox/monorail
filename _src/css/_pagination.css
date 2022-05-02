@@ -8,10 +8,6 @@
   inline-size: 100%;
   justify-content: space-between;
   margin-block: 3rem;
-
-  &.pagination-reversed {
-    flex-direction: row-reverse;
-  }
 }
 
 .pagination-next,
@@ -93,8 +89,7 @@
   }
 }
 
-.pagination-prev,
-.pagination-reversed .pagination-next {
+.pagination-prev {
   --translate-x: 50%;
 
   grid-template:
@@ -110,8 +105,7 @@
   }
 }
 
-.pagination-next,
-.pagination-reversed .pagination-prev {
+.pagination-next {
   --translate-x: -50%;
 
   grid-template:

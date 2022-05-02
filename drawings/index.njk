@@ -6,7 +6,6 @@
     data: 'collections.drawing',
     size: 12,
     before: paginationData => paginationData
-        .reverse()
         .slice(1),
   },
   eleventyComputed: {
@@ -32,7 +31,7 @@
   <section class="drawings-gallery" aria-labelledby="title">
     {% if pagination.pageNumber === 0 %}
       {% set drawingListConfig = {
-        collection: collections.drawing|listTail(1),
+        collection: collections.drawing|listHead(1),
         useFeatured: true
       } %}
       {% include '_src/njk/drawing-list.njk' %}
