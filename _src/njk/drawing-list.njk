@@ -1,21 +1,21 @@
-{% for drawing in drawing_list_collection %}
-  {% set title_id = 'drawing-' + drawing.data.key %}
-  {% set is_featured = loop.first and drawing_list_use_featured %}
+{% for drawing in drawingListConfig.collection %}
+  {% set titleId = 'drawing-' + drawing.data.key %}
+  {% set isFeatured = loop.first and drawingListConfig.useFeatured %}
   {% set classes = {
     'drawing': true,
-    'drawing-featured': is_featured
+    'drawing-featured': isFeatured
   }|classes %}
   <article class="{{classes}}"
-      {% if is_featured %} aria-labelledby="{{title_id}}"
+      {% if isFeatured %} aria-labelledby="{{titleId}}"
       {% else %} aria-label="{{drawing.data.title}}"
       {% endif %}>
     <a href="{{drawing.url}}">
       <figure>
         {% drawingImage drawing.data %}
         <figcaption class="margin-trim surface">
-          {% if is_featured %}
+          {% if isFeatured %}
           <p class="drawing-caption">{{drawing.data.caption}}</p>
-          <p class="drawing-title" id="{{title_id}}">{{drawing.data.title}}</p>
+          <p class="drawing-title" id="{{titleId}}">{{drawing.data.title}}</p>
           <p class="drawing-date">
             <time datetime="{{drawing.date|attrDate}}">
               {{drawing.data.date|readableDate}}

@@ -10,24 +10,27 @@ Pagination:
 #}
 
 {% if pagination and pagination.hrefs.length > 1 %}
-{% set pagination_label = pagination_label or (title + ' pagination') %}
-<nav aria-label="{{pagination_label}}" class="{{{
+
+{% set paginationLabel = paginationConfig.label or (title + ' pagination') %}
+<nav aria-label="{{paginationLabel}}" class="{{{
       'pagination': true,
-      'pagination-reversed': pagination_is_reversed,
-      'fenced': pagination_is_fenced
+      'pagination-reversed': paginationConfig.isReversed,
+      'fenced': paginationConfig.isFenced
     }|classes}}">
+  {% set emptyLabel = 'The end' if paginationConfig.isReversed else 'More to come…' %}
   {% if pagination.href.previous %}
-  {% set pagination_prev_page_title = pagination_prev_page_title or ('Page ' + pagination.pageNumber) %}
+  {% set prevPageTitle =
+      paginationConfig.prevPageTitle or ('Page ' + pagination.pageNumber) %}
   <a href="{{pagination.href.previous}}" class="pagination-prev"
-      title="Previous page ({{pagination_prev_page_title}})">
+      title="Previous page ({{prevPageTitle}})">
     <span role="none">Previous:</span>
-    <strong>{{pagination_prev_page_title}}</strong>
+    <strong>{{prevPageTitle}}</strong>
   </a>
   {% else %}
-  <span aria-hidden="true" class="pagination-prev">More to come…</span>
+  <span aria-hidden="true" class="pagination-prev">{{emptyLabel}}</span>
   {% endif %}
 
-  {% if not pagination_hide_pages %}
+  {% if not paginationConfig.hidePages %}
   <div class="pagination-pages">
     {% for href in pagination.hrefs %}
     <a href="{{href|url}}" aria-label="Page {{loop.index}}"
@@ -38,15 +41,18 @@ Pagination:
   </div>
   {% endif %}
 
+  {% set emptyLabel = 'More to come…' if paginationConfig.isReversed else 'The end' %}
   {% if pagination.href.next %}
-  {% set pagination_next_page_title = pagination_next_page_title or ('Page ' + (pagination.pageNumber + 2)) %}
+  {% set nextPageTitle =
+      paginationConfig.nextPageTitle or ('Page ' + (pagination.pageNumber + 2)) %}
   <a href="{{pagination.href.next}}" class="pagination-next"
-      title="Next page ({{pagination_next_page_title}})">
+      title="Next page ({{nextPageTitle}})">
     <span role="none">Next:</span>
-    <strong>{{pagination_next_page_title}}</strong>
+    <strong>{{nextPageTitle}}</strong>
   </a>
   {% else %}
-  <span class="pagination-next" aria-hidden="true">The end</span>
+  <span class="pagination-next" aria-hidden="true">{{emptyLabel}}</span>
   {% endif %}
 </nav>
+
 {% endif %}

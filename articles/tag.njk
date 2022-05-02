@@ -13,7 +13,9 @@ eleventyComputed:
 <div class="articles margin-trim" role="none">
   <h1>Articles: {{tag.tag|postTagName}}</h1>
   <div class="articles-list" role="none">
-    {% set article_list_collection = collections[tag.tag] %}
+    {% set articleListConfig = {
+      collection: collections[tag.tag]
+    } %}
     {% include "_src/njk/article-list.njk" %}
   </div>
 </div>

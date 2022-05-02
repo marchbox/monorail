@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-{% set is_home = page.url === '/' %}
+{% set isHome = page.url === '/' %}
 
 <html lang="en">
 
@@ -7,7 +7,7 @@
 <meta charset="utf-8">
 
 {% set title %}{% filter trim %}
-  {% if is_home %}{{title|safe}}
+  {% if isHome %}{{title|safe}}
   {% elif page.url.startsWith('/drawings/') and page.fileSlug !== 'drawings' %}{{(title + " – Drawings – " + metadata.title)|safe}}
   {% else %}{{(title + " – ")|safe if title}}{{metadata.title}}
   {% endif %}
@@ -18,7 +18,7 @@
 <script>document.documentElement.classList.add('js')</script>
 
 {% set description %}{% filter trim %}
-  {% if is_home %}{{metadata.description|safe}}
+  {% if isHome %}{{metadata.description|safe}}
   {% elif page.excerpt %}{{page.excerpt|safe}}
   {% elif intro %}{{intro|safe}}
   {% elif caption %}{{caption|safe}}
@@ -41,12 +41,12 @@
 <meta property="og:type" content="website">
 <meta property="og:locale" content="en">
 
-{% set og_image -%}
+{% set ogImage -%}
   {%- if keyart -%}{{keyart|url|absoluteUrl(metadata.host)}}
   {%- else -%}{{'/assets/og.png'|url|absoluteUrl(metadata.host)}}
   {%- endif -%}
 {%- endset %}
-<meta property="og:image" content="{{og_image}}">
+<meta property="og:image" content="{{ogImage}}">
 
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 

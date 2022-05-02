@@ -1,10 +1,10 @@
-{% for article in article_list_collection %}
+{% for article in articleListConfig.collection %}
 <article>
   <header>
-    {% set h_tag = article_list_h_tag or 'h2' %}
-    <{{h_tag}}>
+    {% set hTag = articleListConfig.hTag or 'h2' %}
+    <{{hTag}}>
       <a href="{{article.url|url}}">{{article.data.title}}</a>
-    </{{h_tag}}>
+    </{{hTag}}>
     <div class="post-meta" role="none">
       <p><time datetime="{{article.date|attrDate}}">{{article.date|readableDate}}</time></p>
     </div>

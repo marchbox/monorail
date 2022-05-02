@@ -31,13 +31,17 @@
 
   <section class="drawings-gallery" aria-labelledby="title">
     {% if pagination.pageNumber === 0 %}
-      {% set drawing_list_collection = collections.drawing|listTail(1) %}
-      {% set drawing_list_use_featured = true %}
+      {% set drawingListConfig = {
+        collection: collections.drawing|listTail(1),
+        useFeatured: true
+      } %}
       {% include '_src/njk/drawing-list.njk' %}
     {% endif %}
 
-    {% set drawing_list_collection = pagination.items %}
-    {% set drawing_list_use_featured = false %}
+    {% set drawingListConfig = {
+      collection: pagination.items,
+      useFeatured: false
+    } %}
     {% include '_src/njk/drawing-list.njk' %}
   </section>
 

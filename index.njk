@@ -22,8 +22,10 @@ eleventyComputed:
   <section aria-labelledby="heading-articles" class="margin-trim">
     <h2 id="heading-articles">Recent articles</h2>
     <div class="article-list" role="none">
-      {% set article_list_collection = collections.article|reverse|listHead(5) %}
-      {% set article_list_h_tag = 'h3' %}
+      {% set articleListConfig = {
+        collection: collections.article|reverse|listHead(5),
+        hTag: 'h3'
+      } %}
       {% include "_src/njk/article-list.njk" %}
     </div>
     <p><a href="{{'/articles/'|url}}" class="readmore">Read more articles</a></p>
@@ -32,7 +34,9 @@ eleventyComputed:
   <section aria-labelledby="heading-drawings" class="margin-trim">
     <h2 id="heading-drawings">Recent drawings</h2>
     <div class="drawing-gallery" role="none">
-      {% set drawing_list_collection = collections.drawing|reverse|listHead(1) %}
+      {% set drawingListConfig = {
+        collection: collections.drawing|reverse|listHead(1)
+      } %}
       {% include "_src/njk/drawing-list.njk" %}
     </div>
     <p><a href="{{'/drawings/'|url}}" class="readmore">View more drawings</a></p>

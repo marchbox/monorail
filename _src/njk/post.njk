@@ -31,12 +31,14 @@ layout: base.njk
 </article>
 
 {% if tags and tags|listIncludes('drawing') and pagination %}
-{% set pagination_label = 'More drawings' %}
-{% set pagination_is_reversed = true %}
-{% set pagination_is_fenced = true %}
-{% set pagination_hide_pages = true %}
-{% set pagination_next_page_title = pagination.page.next.title %}
-{% set pagination_prev_page_title = pagination.page.previous.title %}
+  {% set paginationConfig = {
+    label: 'More drawings',
+    isReversed: true,
+    isFenced: true,
+    hidePages: true,
+    nextPageTitle: pagination.page.next.title,
+    prevPageTitle: pagination.page.previous.title
+  } %}
 
-{% include '_src/njk/pagination.njk' %}
+  {% include '_src/njk/pagination.njk' %}
 {% endif %}

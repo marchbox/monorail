@@ -1,4 +1,4 @@
-{%- if feed_collection -%}
+{%- if feedConfig.collection -%}
 {%- set absoluteSiteUrl %}{{'/'|url|absoluteUrl(metadata.host)}}{% endset -%}
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
@@ -12,13 +12,13 @@
   {%- endset -%}
   <link href="{{metadata.host}}{{feedLink}}" rel="self"/>
   <link href="{{absoluteSiteUrl}}"/>
-  <updated>{{feed_collection|latestCollectionItemDate|dateToRfc3339}}</updated>
+  <updated>{{feedConfig.collection|latestCollectionItemDate|dateToRfc3339}}</updated>
   <id>{{absoluteSiteUrl}}</id>
   <author>
     <name>{{metadata.author.name}}</name>
     <email>{{metadata.author.email}}</email>
   </author>
-  {%- for post in feed_collection|sort(true,false,'data.date') %}
+  {%- for post in feedConfig.collection|sort(true,false,'data.date') %}
   {%- set absolutePostUrl %}{{post.url|url|absoluteUrl(metadata.host)}}{% endset -%}
   <entry>
     <title>{{post.data.title}}</title>

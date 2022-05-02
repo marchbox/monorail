@@ -1,5 +1,7 @@
 ---
 permalink: /feeds/all.xml
 ---
-{%- set feed_collection = collections.feed|reverse -%}
+{%- set feedConfig = {
+  collection: collections.feed|reverse 
+} -%}
 {% include '_src/njk/feed.njk' %}

@@ -4,5 +4,7 @@ description: Articles from marchbox.com
 eleventyComputed:
   title: "{{metadata.title}} (Articles)"
 ---
-{%- set feed_collection = collections.article|reverse -%}
+{%- set feedConfig = {
+  collection: collections.article|reverse
+} -%}
 {% include '_src/njk/feed.njk' %}
