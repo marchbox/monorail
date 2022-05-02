@@ -1,12 +1,7 @@
-{#
-
-# Pagination
-
-#}
-
 {% if pagination and pagination.hrefs.length > 1 %}
 
 {% set paginationLabel = paginationConfig.label or (title + ' pagination') %}
+{% include '_src/svg/flag.svg' %}
 <nav aria-label="{{paginationLabel}}" class="{{{
       'pagination': true,
       'fenced': paginationConfig.isFenced
@@ -28,7 +23,8 @@
     {% for href in pagination.hrefs %}
     <a href="{{href|url}}" aria-label="Page {{loop.index}}"
         {% if href === page.url %} aria-current="page"{% endif %}>
-      {{loop.index}}
+      <svg viewBox="0 0 31 35" aria-hidden="true"><use href="#flag" /></svg>
+      <span role="none">{{loop.index}}</span>
     </a>
     {% endfor %}
   </div>
