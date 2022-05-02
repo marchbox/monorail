@@ -250,14 +250,15 @@
     }
 
     & span {
-      display: grid;
+      align-items: center;
+      display: flex;
       line-height: 1;
       margin:
           var(--pagination-flag-offset-block-start)
           var(--pagination-flag-offset-inline-end)
           var(--pagination-flag-offset-block-end)
           var(--pagination-flag-offset-inline-start);
-      place-items: center;
+      justify-content: center;
     }
   }
 }
