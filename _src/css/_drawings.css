@@ -37,7 +37,7 @@
   }
 
   & img {
-    --border-width: .1875rem;
+    --border-width: .125rem;
 
     aspect-ratio: 1 / 1;
     block-size: auto;

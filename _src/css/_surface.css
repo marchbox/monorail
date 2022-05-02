@@ -1,6 +1,6 @@
 .surface {
   --bg: var(--color-bg-surface);
-  --border-width: .1875rem;
+  --border-width: .125rem;
   --shadow-offset: .32rem;
   --inset-shadow-offset: calc(var(--shadow-offset) - var(--border-width));
 

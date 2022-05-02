@@ -13,7 +13,7 @@
       d="M3 31.642L18.78 6v13.5l72.44-3.774L93.732 6 107 27.663 93.731 48v-8.4l-74.952 2.653V48L3 31.642z"/>
   <path
       stroke="var(--sign-stroke,#333)"
-      stroke-width="3"
+      stroke-width="2"
       stroke-linejoin="round"
       stroke-linecap="round"
       stroke-dasharray="var(--sign-stroke-dasharray,0)"
