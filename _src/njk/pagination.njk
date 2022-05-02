@@ -1,10 +1,52 @@
+{#
+
+Pagination:
+
+- n = current page;
+- z = last page
+- m = how many pages around the current page to display, must be even
+- general: [prev] [1] … [n - m/2] [n - m/2 + 1] [n] [n + m/2 - 1] [n + m/2] … [z] [next]
+
+#}
+
 {% if pagination and pagination.hrefs.length > 1 %}
-<nav aria-label="{{title}} pagination" class="pagination">
-  {% for href in pagination.hrefs %}
-  <a href="{{href|url}}" aria-label="Page {{loop.index}}"
-      {% if href === page.url %} aria-current="page"{% endif %}>
-    {{loop.index}}
+{% set pagination_label = pagination_label or (title + ' pagination') %}
+<nav aria-label="{{pagination_label}}" class="{{{
+      'pagination': true,
+      'pagination-reversed': pagination_is_reversed,
+      'fenced': pagination_is_fenced
+    }|classes}}">
+  {% if pagination.href.previous %}
+  {% set pagination_prev_page_title = pagination_prev_page_title or ('Page ' + pagination.pageNumber) %}
+  <a href="{{pagination.href.previous}}" class="pagination-prev"
+      title="Previous page ({{pagination_prev_page_title}})">
+    <span role="none">Previous:</span>
+    <strong>{{pagination_prev_page_title}}</strong>
   </a>
-  {% endfor %}
+  {% else %}
+  <span aria-hidden="true" class="pagination-prev">More to come…</span>
+  {% endif %}
+
+  {% if not pagination_hide_pages %}
+  <div class="pagination-pages">
+    {% for href in pagination.hrefs %}
+    <a href="{{href|url}}" aria-label="Page {{loop.index}}"
+        {% if href === page.url %} aria-current="page"{% endif %}>
+      {{loop.index}}
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if pagination.href.next %}
+  {% set pagination_next_page_title = pagination_next_page_title or ('Page ' + (pagination.pageNumber + 2)) %}
+  <a href="{{pagination.href.next}}" class="pagination-next"
+      title="Next page ({{pagination_next_page_title}})">
+    <span role="none">Next:</span>
+    <strong>{{pagination_next_page_title}}</strong>
+  </a>
+  {% else %}
+  <span class="pagination-next" aria-hidden="true">The end</span>
+  {% endif %}
 </nav>
 {% endif %}

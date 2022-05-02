@@ -19,9 +19,9 @@ eleventyComputed:
   <section class="article-list" role="none" aria-labelledby="title">
     {% set article_list_collection = pagination.items %}
     {% include "_src/njk/article-list.njk" %}
-
-    {% include '_src/njk/pagination.njk' %}
   </section>
+
+  {% include '_src/njk/pagination.njk' %}
 
   <aside>
     <section class="surface margin-trim">

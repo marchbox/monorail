@@ -31,23 +31,12 @@ layout: base.njk
 </article>
 
 {% if tags and tags|listIncludes('drawing') and pagination %}
-<nav class="drawing-pagination fenced" aria-label="More drawings">
-  {% if pagination.page.next.title %}
-  <a href="{{pagination.href.next}}" class="drawing-pagination-next">
-    Next:
-    <strong>{{pagination.page.next.title}}</strong>
-  </a>
-  {% else %}
-  <span class="drawing-pagination-next">More to come…</span>
-  {% endif %}
+{% set pagination_label = 'More drawings' %}
+{% set pagination_is_reversed = true %}
+{% set pagination_is_fenced = true %}
+{% set pagination_hide_pages = true %}
+{% set pagination_next_page_title = pagination.page.next.title %}
+{% set pagination_prev_page_title = pagination.page.previous.title %}
 
-  {% if pagination.page.previous.title %}
-  <a href="{{pagination.href.previous}}" class="drawing-pagination-prev">
-    Previous:
-    <strong>{{pagination.page.previous.title}}</strong>
-  </a>
-  {% else %}
-  <span class="drawing-pagination-prev">The end</span>
-  {% endif %}
-</nav>
+{% include '_src/njk/pagination.njk' %}
 {% endif %}

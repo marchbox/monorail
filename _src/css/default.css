@@ -1,9 +1,15 @@
+/* Basics */
 @import '_fonts';
 @import '_config';
 @import '_base';
 @import '_layout';
-@import '_common';
 
+/* Elements */
+@import '_common';
+@import '_surface';
+@import '_pagination';
+
+/* Pages */
 @import '_entrance';
 @import '_post';
 @import '_articles';

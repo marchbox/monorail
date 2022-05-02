@@ -1,0 +1,50 @@
+.surface {
+  --bg: var(--color-bg-surface);
+  --border-width: .1875rem;
+  --shadow-offset: .32rem;
+  --inset-shadow-offset: calc(var(--shadow-offset) - var(--border-width));
+
+  background-color: var(--bg);
+  border: var(--border-width) solid var(--color-fg);
+  box-shadow:
+      var(--shadow-offset) var(--shadow-offset) 0 var(--bg),
+      inset var(--inset-shadow-offset) var(--inset-shadow-offset) 0 var(--color-bg);
+  padding: 1.2rem;
+  position: relative;
+  text-shadow: .125rem .0625rem 0 var(--color-bg);
+
+  @media (--dark) {
+    --border-width: 0;
+
+    background-color: var(--color-bg);
+    box-shadow: none;
+    color: var(--color-fg);
+    text-shadow: none;
+  }
+
+  &::after {
+    --border-color: var(--color-nightlight);
+
+    border: .125rem dotted var(--border-color);
+    content: none;
+    filter: drop-shadow(0 0 .25rem var(--border-color));
+    inset: -.125rem;
+    position: absolute;
+    pointer-events: none;
+
+    @media (--dark) {
+      content: '';
+    }
+  }
+
+  & a {
+    --color-fg-link-preactive: var(--color-fg-link);
+    --color-link-decoration-preactive: hsl(0 100% 100% / .8);
+
+    text-shadow: none;
+
+    @media (--dark) {
+      --color-link-decoration-preactive: inherit;
+    }
+  }
+}
