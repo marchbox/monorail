@@ -35,7 +35,7 @@ eleventyComputed:
     <h2 id="heading-drawings">Recent drawings</h2>
     <div class="drawing-gallery" role="none">
       {% set drawingListConfig = {
-        collection: collections.drawing|reverse|listHead(1)
+        collection: collections.drawing|reverse|listTail(1)
       } %}
       {% include "_src/njk/drawing-list.njk" %}
     </div>
