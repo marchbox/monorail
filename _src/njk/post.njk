@@ -16,7 +16,7 @@ layout: base.njk
       <ul class="post-tags">
         {% for tag in tagList %}
         <li>
-          <a href="{{'/articles/tag/'+tag|url}}"
+          <a href="{{'/articles/tag/'+tag|url}}" rel="tag"
               title="Articles tagged with “{{tag|postTagName}}”">
             {{tag|postTagName}}
           </a>

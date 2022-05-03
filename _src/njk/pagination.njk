@@ -10,7 +10,7 @@
   {% set prevPageTitle =
       paginationConfig.prevPageTitle or ('Page ' + pagination.pageNumber) %}
   <a href="{{pagination.href.previous}}" class="pagination-prev"
-      title="Previous page ({{prevPageTitle}})">
+      title="Previous page ({{prevPageTitle}})" rel="prev">
     <span role="none">Previous:</span>
     <strong>{{prevPageTitle}}</strong>
   </a>
@@ -21,7 +21,7 @@
   {% if not paginationConfig.hidePages %}
   <div class="pagination-pages">
     {% for href in pagination.hrefs %}
-    <a href="{{href|url}}" aria-label="Page {{loop.index}}"
+    <a href="{{href|url}}" title="Page {{loop.index}}"
         {% if href === page.url %} aria-current="page"{% endif %}>
       <svg viewBox="0 0 31 35" aria-hidden="true"><use href="#flag" /></svg>
       <span role="none">{{loop.index}}</span>
@@ -34,7 +34,7 @@
   {% set nextPageTitle =
       paginationConfig.nextPageTitle or ('Page ' + (pagination.pageNumber + 2)) %}
   <a href="{{pagination.href.next}}" class="pagination-next"
-      title="Next page ({{nextPageTitle}})">
+      title="Next page ({{nextPageTitle}})" rel="next">
     <span role="none">Next:</span>
     <strong>{{nextPageTitle}}</strong>
   </a>
