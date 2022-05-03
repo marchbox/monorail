@@ -12,6 +12,7 @@
   {%- endset -%}
   <link href="{{metadata.host}}{{feedLink}}" rel="self"/>
   <link href="{{absoluteSiteUrl}}"/>
+  <icon>{{metadata.host}}{{'/assets/favicon.png'|url}}</icon>
   <updated>{{feedConfig.collection|latestCollectionItemDate|dateToRfc3339}}</updated>
   <id>{{absoluteSiteUrl}}</id>
   <author>
