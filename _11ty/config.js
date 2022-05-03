@@ -39,7 +39,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('dateToRfc3339', require('./filters/date-to-rfc3339.js'));
   eleventyConfig.addNunjucksAsyncFilter('htmlToAbsoluteUrls', require('./filters/html-to-absolute-urls.js'));
 
-  eleventyConfig.addPassthroughCopy('assets');
+  eleventyConfig.addPassthroughCopy({
+    '_assets': '/',
+  });
   eleventyConfig.addPassthroughCopy('*.txt');
   eleventyConfig.addPassthroughCopy('(about|articles|drawings)/**/*.(jpg|png)');
 
