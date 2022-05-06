@@ -40,7 +40,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addNunjucksAsyncFilter('htmlToAbsoluteUrls', require('./filters/html-to-absolute-urls.js'));
 
   eleventyConfig.addPassthroughCopy({
-    '_assets': '/',
+    '_static': '/',
   });
   eleventyConfig.addPassthroughCopy('*.txt');
   eleventyConfig.addPassthroughCopy('(about|articles|drawings)/**/*.(jpg|png)');
