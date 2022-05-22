@@ -45,3 +45,10 @@
   to = '/feeds/drawings.xml'
   force = true
   status = 200
+
+# Keep old URLs alive.
+[[redirects]]
+  from = '/drawings/american-chavez'
+  to = '/drawings/america-chavez'
+  force = true
+  status = 301
