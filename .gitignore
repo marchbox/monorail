@@ -5,6 +5,7 @@ node_modules/
 .env
 .env.test
 .*.swp
+.vscode/
 _site/
 _tmp/
 *.plist
