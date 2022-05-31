@@ -13,7 +13,7 @@ module.exports = function(api) {
       const archiveDate = new Date(date);
       archiveDate.setUTCDate(1);
       archives.set(key, {
-        href: `/articles/${year}-${(month + 1).toString().padStart(2, '0')}`,
+        href: `/articles/${year}-${(month + 1).toString().padStart(2, '0')}/`,
         date: archiveDate,
         articles: [article],
       });

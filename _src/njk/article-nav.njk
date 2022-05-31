@@ -1,0 +1,30 @@
+<aside>
+  <section class="surface margin-trim">
+    <h2>Tags</h2>
+    <ul>
+      {% for tag in collections.articlesTags %}
+      <li>
+        <a href="{{tag.href|url}}"
+            {% if tag.href === page.url %} aria-current="page"{% endif %}
+            title="Articles tagged with “{{tag.tag|postTagName}}”">
+          {{tag.tag|postTagName}} ({{collections[tag.tag].length}})
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  <section class="surface margin-trim">
+    <h2>Archives</h2>
+    <ul>
+      {% for archive in collections.articlesArchives %}
+      <li>
+        <a href="{{archive.href|url}}"
+            {% if archive.href === page.url %} aria-current="page"{% endif %}
+            title="Articles written in {{archive.date|readableYearMonth}}">
+          {{archive.date|readableYearMonth}} ({{archive.articles.length}})
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+</aside>

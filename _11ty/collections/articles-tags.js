@@ -11,7 +11,7 @@ module.exports = function(api) {
         if (!refSet.has(tag)) {
           refSet.add(tag);
           tags.push({
-            href: `/articles/tag/${tag}`,
+            href: `/articles/tag/${tag}/`,
             tag,
           });
         }

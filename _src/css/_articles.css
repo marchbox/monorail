@@ -41,10 +41,15 @@
     & li {
       margin-block: .5rem;
     }
+
+    & a[aria-current] {
+      font-weight: 700;
+      text-decoration: none;
+    }
   }
 }
 
-.article-list {
+.articles-list {
   display: flex;
   flex-direction: column;
   gap: 5rem;

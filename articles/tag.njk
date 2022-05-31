@@ -14,8 +14,10 @@ eleventyComputed:
   <h1>Articles: {{tag.tag|postTagName}}</h1>
   <div class="articles-list" role="none">
     {% set articleListConfig = {
-      collection: collections[tag.tag]
+      collection: collections[tag.tag]|reverse
     } %}
     {% include "_src/njk/article-list.njk" %}
   </div>
+
+  {% include '_src/njk/article-nav.njk' %}
 </div>
