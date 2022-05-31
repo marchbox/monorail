@@ -5,6 +5,13 @@
 
   & header {
     margin-block-end: 4rem;
+
+    @media (--md) {
+      margin-inline: calc(50% - min(50vw, 30rem));
+      padding-inline:
+          var(--page-padding-inline-start)
+          var(--page-padding-inline-end);
+    }
   }
 }
 

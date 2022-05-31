@@ -28,6 +28,10 @@ h3 {
   font-weight: var(--fw);
   line-height: var(--lh);
   margin-block: 2em 1em;
+
+  & :any-link {
+    font-weight: inherit;
+  }
 }
 
 h1 {
@@ -115,6 +119,7 @@ pre {
   }
 
   & code {
+    background-color: transparent;
     display: block;
     font-size: var(--type-code-block-size);
     font-weight: var(--type-code-block-weight);
@@ -123,10 +128,13 @@ pre {
 }
 
 code {
+  background-color: var(--color-bg-code);
+  border-radius: .5rem;
   color: var(--color-fg-code);
   font-family: var(--type-code-family);
   font-size: var(--type-code-size);
   font-weight: var(--type-code-weight);
+  padding-inline: .25rem;
 }
 
 figure {
