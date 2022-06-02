@@ -37,3 +37,43 @@
       local('MonoLisa-BoldItalic'),
       url(/fonts/monolisa-bolditalic.woff2) format('woff2');
 }
+
+@font-face {
+  font-family: dyslexie;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Dyslexie Regular'),
+      local('Dyslexie-Regular'),
+      url(/fonts/dyslexie-regular.woff) format('woff');
+}
+
+@font-face {
+  font-family: dyslexie;
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: local('Dyslexie Regular Italic'),
+      local('Dyslexie-RegularItalic'),
+      url(/fonts/dyslexie-regularitalic.woff) format('woff');
+}
+
+@font-face {
+  font-family: dyslexie;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Dyslexie Bold'),
+      local('Dyslexie-Bold'),
+      url(/fonts/dyslexie-bold.woff) format('woff');
+}
+
+@font-face {
+  font-family: dyslexie;
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: local('Dyslexie Bold Italic'),
+      local('Dyslexie-BoldItalic'),
+      url(/fonts/dyslexie-bolditalic.woff) format('woff');
+}
