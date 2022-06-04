@@ -50,7 +50,7 @@
     }
   }
 
-  & .article-list {
+  & .articles-list {
     gap: 2rem;
     grid-area: articles;
     margin-block: 2rem;

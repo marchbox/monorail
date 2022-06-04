@@ -21,7 +21,7 @@ eleventyComputed:
 
   <section aria-labelledby="heading-articles" class="margin-trim">
     <h2 id="heading-articles">Recent articles</h2>
-    <div class="article-list" role="none">
+    <div class="articles-list" role="none">
       {% set articleListConfig = {
         collection: collections.article|reverse|listHead(5),
         hTag: 'h3'
