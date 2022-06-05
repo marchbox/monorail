@@ -28,7 +28,7 @@ I designed the website logo as the old Disneyland park entrance sign.
 The navigation in the header is a tribute to my favorite [Disney.com design (circa the early 2000s)](https://www.webdesignmuseum.org/gallery/disney-2001 "Link to Web Design Museum"): the main navigation was a monorail referencing the famous Disney Park monorail systems. I thought it was a clever idea for the brand continuation to bring the Disney magic from the real world to the online world.
 
 <figure>
-  <img src="{{'disneycom-2001.jpg'|url|imgUrl(page)}}" alt="">
+  <img src="{{'disneycom-2001.jpg'|url|imgUrl(page)}}" alt="A screenshot of disney.com in 2006. The webpage has a dark space blue background and starts, the navigation is a artistic representation of the famous Disney World monorail train, each train car is a link to a section of the website.">
   <figcaption>
     A later iteration of the design in 2006, the best I could find.
     (Source: <a href="https://www.webdesignmuseum.org/gallery/disney-2001">Web Design Museum</a>)
