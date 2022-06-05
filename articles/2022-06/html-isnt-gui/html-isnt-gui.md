@@ -48,8 +48,8 @@ The above code usually outputs the following HTML code:
 
 The problem with this mindset is that you are only developing for visual users. The code could confuse visually impaired users because `<div>`’s don’t have semantic meanings by default, a spacer doesn’t mean anything in the auditory context, and `<span class="type-bold">` doesn’t convey any importance of the marked content. This mindset also mixes document structure with presentation, resulting in maintenance issues down the road.
 
-When we transitioned away from table layouts, the main idea was a separation of concerns: HTML handles the content structure, CSS handles the presentation, and JavaScript handles the behavior. The separation keeps HTML as a clean content-focused interface, and it makes many design changes easy to implement (by [modifying CSS only](#)).
+When we transitioned away from table layouts, the main idea was a separation of concerns: HTML handles the content structure, CSS handles the presentation, and JavaScript handles the behavior. The separation keeps HTML as a clean content-focused interface, and it makes many design changes easy to implement (by [modifying CSS only](http://www.csszengarden.com "CSS Zen Garden")).
 
 ## Conclusion
 
-Web development is all about making the design accessible to everyone. Use your technical expertise to enhance the design mockups and make them work beyond the visual context. If you haven’t, I highly recommend reading (or re-read) [A Dao of Web Design](#).
+Web development is all about making the design accessible to everyone. Use your technical expertise to enhance the design mockups and make them work beyond the visual context. If you haven’t, I highly recommend reading (or re-read) [A Dao of Web Design](https://alistapart.com/article/dao).
