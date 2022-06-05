@@ -42,9 +42,7 @@ The dark mode design is inspired by Disneyland’s classic [Main Street Electric
 
 ## The assets
 
-The monospace fonts used in all code samples belong to the font family called [Mono Lisa](https://monolisa.dev). I was going to use [Source Code Pro](https://fonts.google.com/specimen/Source+Code+Pro) to be consistent with the body type ([Source Sans Pro](https://fonts.google.com/specimen/Source+Sans+Pro)) and heading type ([Source Serif Pro](https://fonts.google.com/specimen/Source+Serif+Pro)). But I do find Mono Lisa’s larger counter and taller x-height design more appealing and legible.
-
-The primary logotype (“MarchBox”) uses [Parkly](https://simplebits.com/collections/fonts/products/parkly-font), made by the great [SimpleBits](https://simplebits.com). I like that each letter has friendly rounded edges while maintaining a square shape, the friendliness fits the Disneyland vibe, and the square shape fits the logo design. Plus, *the name*! The secondary logotype uses [Asap Condensed](https://fonts.google.com/specimen/Asap+Condensed).
+The monospace fonts used in all code samples belong to the font family called [Mono Lisa](https://monolisa.dev). The primary logotype (“MarchBox”) uses [Parkly](https://simplebits.com/collections/fonts/products/parkly-font), made by the great [SimpleBits](https://simplebits.com). I like that each letter has friendly rounded edges while maintaining a square shape, the friendliness fits the Disneyland vibe, and the square shape fits the logo design. Plus, *the name*! The secondary logotype uses [Asap Condensed](https://fonts.google.com/specimen/Asap+Condensed).
 
 The website is built with the Node.js-based static site generator, [Eleventy](https://11ty.dev). I like its simplicity and flexibility.
 
