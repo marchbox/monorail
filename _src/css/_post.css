@@ -13,6 +13,10 @@
           var(--page-padding-inline-end);
     }
   }
+
+  & figcaption {
+    text-align: center;
+  }
 }
 
 .post-meta {

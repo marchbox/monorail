@@ -18,5 +18,12 @@ module.exports = function(api) {
       });
   });
 
-  return tags;
+  return tags.sort((a, b) => {
+    if (a.tag < b.tag) {
+      return -1;
+    } else if (a.tag > b.tag) {
+      return 1;
+    }
+    return 0;
+  });
 };
