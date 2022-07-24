@@ -12,6 +12,18 @@ const OUTPUT_DIR = '_site';
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
 
+  /* Markdown Overrides */
+  let markdownLibrary = markdownIt({
+    html: true,
+    breaks: true,
+  });
+  markdownLibrary.use(markdownItAbbr);
+  markdownLibrary.use(markdownItAttrs, {
+    leftDelimiter: '{@',
+  });
+  markdownLibrary.use(markdownItDeflist);
+  eleventyConfig.setLibrary('md', markdownLibrary);
+
   eleventyConfig.addDataExtension('yaml', contents => yaml.load(contents));
   eleventyConfig.setDataDeepMerge(true);
 
@@ -32,6 +44,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter('listHead', require('./filters/list-head.js'));
   eleventyConfig.addFilter('listTail', require('./filters/list-tail.js'));
   eleventyConfig.addFilter('listIncludes', require('./filters/list-includes.js'));
+  eleventyConfig.addFilter('md', content => markdownLibrary.render(content));
 
   // Filters from @11ty/eleventy-plugin-rss with modifications.
   eleventyConfig.addFilter('absoluteUrl', require('./filters/absolute-url.js'));
@@ -52,18 +65,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addCollection('articlesArchives', require('./collections/articles-archives.js'));
 
   eleventyConfig.addWatchTarget('./**/*.yaml');
-
-  /* Markdown Overrides */
-  let markdownLibrary = markdownIt({
-    html: true,
-    breaks: true,
-  });
-  markdownLibrary.use(markdownItAbbr);
-  markdownLibrary.use(markdownItAttrs, {
-    leftDelimiter: '{@',
-  });
-  markdownLibrary.use(markdownItDeflist);
-  eleventyConfig.setLibrary('md', markdownLibrary);
 
   // Browsersync Overrides
   eleventyConfig.setBrowserSyncConfig({

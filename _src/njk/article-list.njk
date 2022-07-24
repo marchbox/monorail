@@ -10,7 +10,7 @@
     </div>
   </header>
   <p>
-    {{article.data.page.excerpt}}
+    {{article.data.page.excerpt|md|safe}}
     <a href="{{article.url|url}}"
         title="Continue reading article “{{article.data.title}}”">
       Continue reading
