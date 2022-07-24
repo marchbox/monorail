@@ -24,7 +24,7 @@ The chosen character must be one that is commonly used as a “letter” in any 
 Because this is about text processing, I thought I should explore my options with Regular Expression first. And luckily, I found [Unicode property escapes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes). Here is my code:
 
 ```js
-function getMonogram(name) {
+function genAvatar(name) {
   try {
     // Match General_Category=Letter
     const match = name.match(/\p{L}/u);
