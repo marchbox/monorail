@@ -171,4 +171,4 @@ If you are interested in the new implementation, [here is the source code](https
 
 ## Conclusion
 
-I think `DOMTokenList` is a very useful interface, especially for custom elements. When developers use our custom elements, they should feel familiar with the APIs like writing HTML code, and making some custom element properties as `DOMTokenList` would help with that. I wish we could get a better way to create `DOMTokenList`s in the future, maybe something like `document.createDOMTokenList()`?
+I think `DOMTokenList` is a very useful interface, especially for custom elements. When developers use our custom elements, they should feel familiar with the APIs like writing HTML code, and making some custom element properties as `DOMTokenList` would help with that. I wish we could get a better way to create `DOMTokenList`s in the future, maybe something like `element.createDOMTokenList()`?
