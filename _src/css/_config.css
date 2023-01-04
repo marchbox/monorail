@@ -39,7 +39,7 @@ html {
   --type-caption-weight: 600;
 
   --type-code-family: 'monolisa', monospace;
-  --type-code-size: .9rem;
+  --type-code-size: .8em;
   --type-code-weight: 600;
   --type-code-block-size: .8rem;
   --type-code-block-lh: 1.4;
@@ -90,9 +90,11 @@ html {
   --color-tree-wood: var(--color-fg);
 
   @media (--dark) {
+    --type-code-weight: 400;
+
     --color-bg: hsl(0 0% 4%);
     --color-bg-surface: transparent;
-    --color-bg-code: hsl(0 0% 24%);
+    --color-bg-code: hsl(0 0% 18%);
     --color-bg-tag: var(--color-yellow-medium);
     --color-fg: hsl(0 0% 96%);
     --color-fg-code: var(--color-teal-medium);
