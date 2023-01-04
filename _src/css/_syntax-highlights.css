@@ -10,11 +10,11 @@ https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+ja
 .token.prolog,
 .token.doctype,
 .token.cdata {
-	color: #7D8B99;
+  color: #7D8B99;
 }
 
 .token.punctuation {
-	color: #5F6364;
+  color: #5F6364;
 }
 
 .token.property,
@@ -25,7 +25,7 @@ https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+ja
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: #c92c2c;
+  color: #c92c2c;
 }
 
 .token.selector,
@@ -35,15 +35,15 @@ https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+ja
 .token.function,
 .token.builtin,
 .token.inserted {
-	color: #2f9c0a;
+  color: #2f9c0a;
 }
 
 .token.operator,
 .token.entity,
 .token.url,
 .token.variable {
-	color: #a67f59;
-	background: rgba(255, 255, 255, 0.5);
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
 
   @media (--dark) {
     background: transparent;
@@ -54,37 +54,37 @@ https://prismjs.com/download.html#themes=prism-coy&languages=markup+css+clike+ja
 .token.attr-value,
 .token.keyword,
 .token.class-name {
-	color: #1990b8;
+  color: #1990b8;
 }
 
 .token.regex,
 .token.important {
-	color: #e90;
+  color: #e90;
 }
 
 .language-css .token.string,
 .style .token.string {
-	color: #a67f59;
-	background: rgba(255, 255, 255, 0.5);
+  color: #a67f59;
+  background: rgba(255, 255, 255, 0.5);
 }
 
 .token.important {
-	font-weight: normal;
+  font-weight: normal;
 }
 
 .token.bold {
-	font-weight: bold;
+  font-weight: bold;
 }
 .token.italic {
-	font-style: italic;
+  font-style: italic;
 }
 
 .token.entity {
-	cursor: help;
+  cursor: help;
 }
 
 .token.namespace {
-	opacity: .7;
+  opacity: .7;
 }
 
 @media (--dark) {
