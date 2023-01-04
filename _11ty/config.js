@@ -3,14 +3,15 @@ const markdownIt = require('markdown-it');
 const markdownItAbbr = require('markdown-it-abbr');
 const markdownItAttrs = require('markdown-it-attrs');
 const markdownItDeflist = require('markdown-it-deflist');
-const path = require('path');
 const pluginNavigation = require('@11ty/eleventy-navigation');
+const syntaxHighlight = require("@11ty/eleventy-plugin-syntaxhighlight");
 const yaml = require('js-yaml');
 
 const OUTPUT_DIR = '_site';
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginNavigation);
+  eleventyConfig.addPlugin(syntaxHighlight);
 
   /* Markdown Overrides */
   let markdownLibrary = markdownIt({
