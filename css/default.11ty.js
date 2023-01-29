@@ -30,7 +30,7 @@ module.exports = class {
     return {
       permalink: `css/${FILE_NAME}`,
       rawFilePath,
-      rawCss: await fs.readFileSync(rawFilePath),
+      rawCss: fs.readFileSync(rawFilePath),
     };
   }
 
@@ -38,6 +38,10 @@ module.exports = class {
     return await postcss([
         require('postcss-import'),
         require('postcss-preset-env')(POSTCSS_PRESET_ENV_CONFIG),
+        require('postcss-dark-theme-class')({
+          darkSelector: '.g-night',
+          lightSelector: '.g-day',
+        }),
         require('cssnano')({
           preset: 'default',
         }),

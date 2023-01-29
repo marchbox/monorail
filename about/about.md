@@ -53,7 +53,6 @@ The copyrights of all characters in the drawings belong to their original copyri
 
 - Email: <zacky@marchbox.com>
 - Mastodon: [@zacky@marchbox.com](https://m.marchbox.com/@zacky)
-- Twitter: [@marchbox](https://twitter.com/marchbox)
 
 
 ## Subscribe {@#subscribe}

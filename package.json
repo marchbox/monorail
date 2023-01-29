@@ -38,6 +38,7 @@
     "markdown-it-deflist": "^2.1.0",
     "md5": "^2.3.0",
     "postcss": "^8.3.0",
+    "postcss-dark-theme-class": "^0.7.3",
     "postcss-import": "^14.0.2",
     "postcss-preset-env": "^7.2.3",
     "posthtml": "^0.16.6",

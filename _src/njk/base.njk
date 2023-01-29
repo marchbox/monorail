@@ -6,25 +6,37 @@
 <head>
 <meta charset="utf-8">
 
-{% set title %}{% filter trim %}
+{% set title %}{% filter trim %}{% filter striptags %}
   {% if isHome %}{{title|safe}}
   {% elif page.url.startsWith('/drawings/') and page.fileSlug !== 'drawings' %}{{(title + " – Drawings – " + metadata.title)|safe}}
   {% else %}{{(title + " – ")|safe if title}}{{metadata.title}}
   {% endif %}
-{% endfilter %}{% endset %}
+{% endfilter %}{% endfilter %}{% endset %}
 <title>{{title|safe}}</title>
 <meta property="og:title" content="{{title|safe}}">
 
-<script>document.documentElement.classList.add('js')</script>
+<script>
+(function (docEl, glockenspiel) {
+  const classes = ['js']
+  if(glockenspiel) {
+    classes.push(glockenspiel);
+  }
+  docEl.classList.add(...classes);
+})(document.documentElement, localStorage.getItem('glockenspiel'))
+</script>
 
-{% set description %}{% filter trim %}
+{# TODO: Enable this when PWA is completed.
+<link rel="manifest" href="{{'/manifest.json'|url}}">
+#}
+
+{% set description %}{% filter trim %}{% filter striptags %}
   {% if isHome %}{{metadata.description|safe}}
-  {% elif page.excerpt %}{{page.excerpt|safe}}
+  {% elif page.excerpt %}{{page.excerpt|md|safe}}
   {% elif intro %}{{intro|safe}}
   {% elif caption %}{{caption|safe}}
   {% else %}{{metadata.description|safe}}
   {% endif %}
-{% endfilter %}{% endset %}
+{% endfilter %}{% endfilter %}{% endset %}
 {% if description %}
 <meta name="description" content="{{description|safe}}">
 {% endif %}
@@ -77,6 +89,7 @@
       {% include '_src/svg/logo.svg' %}
     </div>
   </a>
+  <land-glockenspiel></land-glockenspiel>
   <nav class="nav" is="land-monorail" aria-label="main navigation">
     <div class="monorail-station" role="none">
       <div class="monorail-train" role="none">
@@ -107,7 +120,6 @@
       <li><a href="{{'/about/#subscribe'|url}}">Subscribe</a></li>
       <li><a href="{{'/about/#contact'|url}}">Contact</a></li>
       <li><a rel="me" href="https://m.marchbox.com/@zacky">@zacky@marchbox.com</a></li>
-      <li><a rel="me" href="https://twitter.com/marchbox">@marchbox</a></li>
     </ul>
     <p>©{% copyrightYear %} <a href="{{'/about/'|url}}">Zacky Ma</a></p>
   </div>
