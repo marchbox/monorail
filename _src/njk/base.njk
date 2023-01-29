@@ -6,25 +6,25 @@
 <head>
 <meta charset="utf-8">
 
-{% set title %}{% filter trim %}
+{% set title %}{% filter trim %}{% filter striptags %}
   {% if isHome %}{{title|safe}}
   {% elif page.url.startsWith('/drawings/') and page.fileSlug !== 'drawings' %}{{(title + " – Drawings – " + metadata.title)|safe}}
   {% else %}{{(title + " – ")|safe if title}}{{metadata.title}}
   {% endif %}
-{% endfilter %}{% endset %}
+{% endfilter %}{% endfilter %}{% endset %}
 <title>{{title|safe}}</title>
 <meta property="og:title" content="{{title|safe}}">
 
 <script>document.documentElement.classList.add('js')</script>
 
-{% set description %}{% filter trim %}
+{% set description %}{% filter trim %}{% filter striptags %}
   {% if isHome %}{{metadata.description|safe}}
-  {% elif page.excerpt %}{{page.excerpt|safe}}
+  {% elif page.excerpt %}{{page.excerpt|md|safe}}
   {% elif intro %}{{intro|safe}}
   {% elif caption %}{{caption|safe}}
   {% else %}{{metadata.description|safe}}
   {% endif %}
-{% endfilter %}{% endset %}
+{% endfilter %}{% endfilter %}{% endset %}
 {% if description %}
 <meta name="description" content="{{description|safe}}">
 {% endif %}
@@ -77,6 +77,7 @@
       {% include '_src/svg/logo.svg' %}
     </div>
   </a>
+  <land-glokenspiel></land-glokenspiel>
   <nav class="nav" is="land-monorail" aria-label="main navigation">
     <div class="monorail-station" role="none">
       <div class="monorail-train" role="none">

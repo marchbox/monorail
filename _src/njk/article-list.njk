@@ -9,8 +9,8 @@
       <p><time datetime="{{article.date|attrDate}}">{{article.date|readableDate}}</time></p>
     </div>
   </header>
+  {{article.data.page.excerpt|md|safe}}
   <p>
-    {{article.data.page.excerpt|md|safe}}
     <a href="{{article.url|url}}"
         title="Continue reading article “{{article.data.title}}”">
       Continue reading
