@@ -70,8 +70,8 @@ input:checked ~ .moon {
 
 const template = `
   <div class="container">
-    <label for="night">Night mode?</label>
     <input type="checkbox" id="night" name="night">
+    <label for="night">Night mode?</label>
     <div class="icon sun">${sun}</div>
     <div class="icon moon">${moon}</div>
   </div>
