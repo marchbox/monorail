@@ -6,14 +6,14 @@
 <head>
 <meta charset="utf-8">
 
-{% set title %}{% filter trim %}{% filter striptags %}
+{% set title %}{% filter trim %}
   {% if isHome %}{{title|safe}}
   {% elif page.url.startsWith('/drawings/') and page.fileSlug !== 'drawings' %}{{(title + " – Drawings – " + metadata.title)|safe}}
-  {% else %}{{(title + " – ")|safe if title}}{{metadata.title}}
+  {% else %}{{(title + " – ")|safe if title}}{{metadata.title|safe}}
   {% endif %}
-{% endfilter %}{% endfilter %}{% endset %}
-<title>{{title|safe}}</title>
-<meta property="og:title" content="{{title|safe}}">
+{% endfilter %}{% endset %}
+<title>{{title|striptags|safe}}</title>
+<meta property="og:title" content="{{title|striptags|safe}}">
 
 <script>
 (function (docEl, glockenspiel) {
@@ -29,14 +29,14 @@
 <link rel="manifest" href="{{'/manifest.json'|url}}">
 #}
 
-{% set description %}{% filter trim %}{% filter striptags %}
+{% set description %}{% filter trim %}
   {% if isHome %}{{metadata.description|safe}}
-  {% elif page.excerpt %}{{page.excerpt|md|safe}}
+  {% elif page.excerpt %}{{page.excerpt|md|striptags|safe}}
   {% elif intro %}{{intro|safe}}
   {% elif caption %}{{caption|safe}}
   {% else %}{{metadata.description|safe}}
   {% endif %}
-{% endfilter %}{% endfilter %}{% endset %}
+{% endfilter %}{% endset %}
 {% if description %}
 <meta name="description" content="{{description|safe}}">
 {% endif %}
