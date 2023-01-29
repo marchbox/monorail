@@ -1,6 +1,26 @@
 @font-face {
   font-family: monolisa;
   font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: local('MonoLisa Light'),
+      local('MonoLisa-Light'),
+      url(/fonts/monolisa-light.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: local('MonoLisa Light Italic'),
+      local('MonoLisa-LightItalic'),
+      url(/fonts/monolisa-lightitalic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: normal;
   font-weight: 400;
   font-display: swap;
   src: local('MonoLisa Regular'),
@@ -16,6 +36,46 @@
   src: local('MonoLisa Regular Italic'),
       local('MonoLisa-RegularItalic'),
       url(/fonts/monolisa-regularitalic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: local('MonoLisa Medium'),
+      local('MonoLisa-Medium'),
+      url(/fonts/monolisa-medium.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: local('MonoLisa Medium Italic'),
+      local('MonoLisa-MediumItalic'),
+      url(/fonts/monolisa-mediumitalic.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: local('MonoLisa SemiBold'),
+      local('MonoLisa-SemiBold'),
+      url(/fonts/monolisa-semibold.woff2) format('woff2');
+}
+
+@font-face {
+  font-family: monolisa;
+  font-style: italic;
+  font-weight: 600;
+  font-display: swap;
+  src: local('MonoLisa SemiBold Italic'),
+      local('MonoLisa-SemiBoldItalic'),
+      url(/fonts/monolisa-semibolditalic.woff2) format('woff2');
 }
 
 @font-face {
