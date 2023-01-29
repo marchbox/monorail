@@ -109,6 +109,20 @@ main,
   }
 }
 
+land-glockenspiel {
+  position: absolute;
+  inset: 1.5rem 1.5rem auto auto;
+
+  @media (--nav-md) {
+    align-self: start;
+    grid-column: 3 / -2;
+    grid-row: 1 / 2;
+    justify-self: end;
+    margin-inline-end: 1.5rem;
+    position: static;
+  }
+}
+
 .nav {
   --monorail-track-outline-style: solid;
 
@@ -358,7 +372,7 @@ main,
       --border-color: var(--color-monorail-car-outline);
 
       border:
-          .125rem 
+          .125rem
           var(--monorail-car-outline-style)
           var(--border-color);
       inset: 0;
