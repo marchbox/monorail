@@ -94,6 +94,7 @@ main,
   }
 
   & .logo-img {
+    aspect-ratio: 470 / 277;
     display: block;
     block-size: 6rem;
 
