@@ -1,18 +1,16 @@
 export default class Ben {
   constructor() {
-    this.#init();
+    this.#handleNavigateEvent();
   }
 
-  #init() {
+  #handleNavigateEvent() {
     navigation.addEventListener('navigate', evt => {
       if (!evt.canIntercept || evt.hashChange ||
-          evt.downloadRequest !== null ||
-          evt.formData !== null) {
-        return;
-      }
-
-      if (evt.destination.sameDocument) {
-        evt.preventDefault();
+          evt.downloadRequest !== null || evt.formData !== null ||
+          evt.destination.sameDocument) {
+        if (evt.destination.sameDocument) {
+          evt.preventDefault();
+        }
         return;
       }
 

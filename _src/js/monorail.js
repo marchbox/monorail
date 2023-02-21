@@ -47,7 +47,6 @@ export default class extends HTMLElement {
       return;
     }
 
-    // this.decorate();
     this.activeCarEl = this.trainEl.querySelector(`.${ClassName.ACTIVE}`);
 
     this.isVisible = true;
