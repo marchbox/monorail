@@ -1,4 +1,10 @@
+import {ClassName} from './monorail';
+
 export default class Ben {
+  get monorailEl() {
+    return document.querySelector('land-monorail');
+  }
+
   constructor() {
     this.#handleNavigateEvent();
   }
@@ -17,8 +23,16 @@ export default class Ben {
       evt.intercept({
         handler: async () => {
           try {
+            // Depart the monorail
+            this.monorailEl?.classList?.remove?.(ClassName.ARRIVE);
+            this.monorailEl?.classList?.add?.(ClassName.DEPART);
+
             const page = await this.#fetchPage(evt.destination.url);
             this.#renderPage(page);
+
+            // Arrive the monorail
+            this.monorailEl?.classList?.remove?.(ClassName.DEPART);
+            this.monorailEl?.classList?.add?.(ClassName.ARRIVE);
           } catch (err) {
             throw err;
           }

@@ -4,7 +4,7 @@ import {
   whenElementTransitionEnd,
 } from './utils';
 
-const ClassName = {
+export const ClassName = {
   // When component is ready.
   ACTION: 'action',
 
