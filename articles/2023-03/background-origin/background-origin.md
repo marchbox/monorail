@@ -1,7 +1,7 @@
 ---
 title: Gradient background with transparent borders
 tags:
-  - webdesign
+  - web-design
   - css
 date: 2023-03-17
 ---
