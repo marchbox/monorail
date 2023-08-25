@@ -42,12 +42,11 @@
 {% endif %}
 <meta property="og:description" content="{{description|safe}}">
 
-{% set canonical = metadata.host %}
 {% if page.url !== '/404.html' %}
-  {% set canonical = page.url|url|absoluteUrl(metadata.host) %}
-{% endif %}
-<meta name="canonical" content="{{canonical}}">
+{% set canonical = page.url|url|absoluteUrl(metadata.host) %}
+<link rel="canonical" href="{{canonical}}">
 <meta property="og:url" content="{{canonical}}">
+{% endif %}
 
 <meta name="twitter:card" content="summary_large_image">
 <meta property="og:type" content="website">
