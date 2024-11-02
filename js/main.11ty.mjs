@@ -3,7 +3,7 @@ import path from 'node:path';
 import inlineSvg from 'rollup-plugin-inline-svg';
 import md5 from 'md5';
 import {rollup} from 'rollup';
-import {terser} from 'rollup-plugin-terser';
+import terser from '@rollup/plugin-terser';
 import {nodeResolve as resolve} from '@rollup/plugin-node-resolve';
 import {babel} from '@rollup/plugin-babel';
 
