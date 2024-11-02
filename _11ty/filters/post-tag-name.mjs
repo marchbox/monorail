@@ -5,6 +5,6 @@ const TagName = new Map([
   ['web-components', 'Web Components'],
 ]);
 
-module.exports = function(tag) {
+export default function(tag) {
   return TagName.get(tag) || tag;
 }

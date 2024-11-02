@@ -1,8 +1,8 @@
-const htmlmin = require('html-minifier');
+import htmlmin from 'html-minifier';
 
-module.exports = function(content, outputPath) {
-  if (outputPath && outputPath.endsWith('.html')) {
-    let minified = htmlmin.minify(content, {
+export default function(content, outputPath) {
+  if (outputPath?.endsWith('.html')) {
+    return htmlmin.minify(content, {
       caseSensitive: true,
       removeComments: true,
       collapseWhitespace: true,
@@ -12,7 +12,6 @@ module.exports = function(content, outputPath) {
       minifyJS: true,
       minifyCSS: true,
     });
-    return minified;
   }
 
   return content;

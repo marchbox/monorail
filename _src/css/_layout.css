@@ -234,7 +234,7 @@ land-glockenspiel {
     --monorail-engine-offset-end: 0rem;
   }
 
-  @nest .js & {
+  .js & {
     @media (--motion) {
       opacity: 0;
       transform: translatex(var(--monorail-train-length, 100%));
@@ -257,12 +257,12 @@ land-glockenspiel {
     --monorail-engine-transform: translate(-.125rem,-.125rem);
   }
 
-  @nest .action & {
+  .action & {
     opacity: 1;
     transform: none;
   }
 
-  @nest .depart & {
+  .depart & {
     @media (--motion) {
       transform: translatex(calc(-1 * var(--monorail-train-length, 100%)));
 
@@ -305,7 +305,7 @@ land-glockenspiel {
   position: relative;
   text-decoration: none;
 
-  @nest .arrive & {
+  .arrive & {
     @media (--nav-sm) {
       scroll-snap-align: center;
     }

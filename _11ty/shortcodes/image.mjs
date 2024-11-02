@@ -1,6 +1,6 @@
-const image = require('@11ty/eleventy-img');
+import image from '@11ty/eleventy-img';
 
-module.exports = async function(src, alt, widths, sizes) {
+export default async function(src, alt, widths, sizes) {
   const urlPath = src.replace(src.split('/').pop(), '');
 
   const metadata = await image(`.${src}`, {
@@ -21,4 +21,4 @@ module.exports = async function(src, alt, widths, sizes) {
   };
 
   return image.generateHTML(metadata, attrs);
-};
+}

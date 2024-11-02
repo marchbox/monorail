@@ -1,6 +1,6 @@
-const posthtml = require('posthtml');
-const urls = require('posthtml-urls')
-const absoluteUrl = require('./absolute-url');
+import posthtml from 'posthtml';
+import urls from 'posthtml-urls'
+import absoluteUrl from './absolute-url.mjs';
 
 async function convert(htmlContent, base, processOptions = {}) {
   if(!base) {
@@ -9,9 +9,9 @@ async function convert(htmlContent, base, processOptions = {}) {
   }
 
   const options = {
-    eachURL: function(url) {
+    eachURL(url) {
       return absoluteUrl(url.trim(), base);
-    }
+    },
   };
   const modifier = posthtml().use(urls(options));
   const result = await modifier.process(htmlContent, processOptions);
@@ -19,7 +19,7 @@ async function convert(htmlContent, base, processOptions = {}) {
   return result.html;
 }
 
-module.exports = function(htmlContent, base, callback) {
+export default function(htmlContent, base, callback) {
   if(!htmlContent) {
     callback(null, '');
     return;
@@ -30,6 +30,7 @@ module.exports = function(htmlContent, base, callback) {
     closingSingleTag: 'slash',
   });
 
-  convert(htmlContent, base, posthtmlOptions)
-      .then(html => callback(null, html));
-};
+  convert(htmlContent, base, posthtmlOptions).then(html => {
+    callback(null, html);
+  });
+}

@@ -1,6 +1,7 @@
-module.exports = function(date) {
+export default function(date) {
   return new Intl.DateTimeFormat('en', {
-      dateStyle: 'long',
+      year: 'numeric',
+      month: 'long',
       timeZone: 'UTC',
     }).format(date);
 };

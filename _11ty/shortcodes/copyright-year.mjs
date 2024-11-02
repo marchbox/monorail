@@ -1,6 +1,6 @@
 const START_YEAR = 2022;
 
-module.exports = function() {
+export default function() {
   const currentYear = new Date().getFullYear();
 
   return currentYear > START_YEAR ?

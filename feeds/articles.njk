@@ -3,6 +3,8 @@ permalink: /feeds/articles.xml
 description: Articles from marchbox.com
 eleventyComputed:
   title: "{{metadata.title}} (Articles)"
+eleventyImport:
+  collections: ['article']
 ---
 {%- set feedConfig = {
   collection: collections.article|reverse

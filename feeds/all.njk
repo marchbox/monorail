@@ -1,5 +1,7 @@
 ---
 permalink: /feeds/all.xml
+eleventyImport:
+  collections: ['feed']
 ---
 {%- set feedConfig = {
   collection: collections.feed|reverse 

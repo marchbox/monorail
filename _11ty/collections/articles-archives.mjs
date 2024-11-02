@@ -1,7 +1,7 @@
-module.exports = function(api) {
+export default function(api) {
   const archives = new Map();
 
-  api.getFilteredByGlob('articles/**/*.md').forEach(article => {
+  for (const article of api.getFilteredByGlob('articles/**/*.md')) {
     const date = article.date;
     const year = date.getUTCFullYear();
     const month = date.getUTCMonth();
@@ -18,15 +18,15 @@ module.exports = function(api) {
         articles: [article],
       });
     }
-  });
+  };
 
-  return Array.from(archives.values()).sort((a, b) => {
-    a = a.date;
-    b = b.date;
+  return Array.from(archives.values()).sort((_a, _b) => {
+    const a = _a.date;
+    const b = _b.date;
     if (a.getUTCFullYear() === b.getUTCFullYear()) {
       return a.getUTCMonth() - b.getUTCMonth();
-    } else {
-      return a.getUTCFullYear() - b.getUTCFullYear();
     }
+    
+    return a.getUTCFullYear() - b.getUTCFullYear();
   }).reverse();
 };

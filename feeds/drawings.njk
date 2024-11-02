@@ -3,6 +3,8 @@ permalink: /feeds/drawings.xml
 description: Drawings from marchbox.com
 eleventyComputed:
   title: "{{metadata.title}} (Drawings)"
+eleventyImport:
+  collections: ['drawing']
 ---
 {%- set feedConfig = {
   collection: collections.drawing|reverse

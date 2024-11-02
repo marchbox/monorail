@@ -1,3 +1,3 @@
-module.exports = function(date) {
+export default function(date) {
   return `${date.getFullYear()}-${date.getMonth() + 1}-${date.getDate()}`;
 };

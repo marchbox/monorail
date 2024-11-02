@@ -1,9 +1,9 @@
 .post {
-  & h1 {
+  h1 {
     margin-block-end: 2rem;
   }
 
-  & header {
+  header {
     margin-block-end: 4rem;
 
     @media (--md) {
@@ -14,13 +14,13 @@
     }
   }
 
-  & figcaption {
+  figcaption {
     text-align: center;
   }
 }
 
 .post-meta {
-  @nest .post & {
+  .post & {
     align-items: center;
     display: flex;
     flex-wrap: wrap;
@@ -28,11 +28,11 @@
     justify-content: center;
   }
 
-  & p {
+  p {
     margin: 0;
   }
 
-  & time {
+  time {
     font-size: var(--type-caption-size);
     font-weight: var(--type-caption-weight);
     line-height: var(--type-caption-lh);
@@ -41,7 +41,7 @@
 }
 
 .post-tags {
-  @nest ul& {
+  ul& {
     display: flex;
     flex-flow: row wrap;
     gap: .5rem;
@@ -50,7 +50,7 @@
     padding: 0;
   }
 
-  & a {
+  a {
     background-color: var(--color-bg-tag);
     border-radius: 1rem;
     color: var(--color-fg-tag) !important;

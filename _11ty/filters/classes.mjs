@@ -1,4 +1,4 @@
-module.exports = function(obj) {
+export default function(obj) {
   return Object
     .entries(obj)
     .filter(c => Boolean(c[1]))
