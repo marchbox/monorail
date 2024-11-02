@@ -7,7 +7,7 @@ tags:
 date: 2023-01-04
 ---
 
-[`DOMTokenList`](https://github.com/marchbox/intl-elements) is a built-in DOM interface that represents a set of string tokens. If you are familiar with `classList`, you are already familiar with it. In a recent project, I wanted to make a custom element property as a `DOMTokenList`, here’s what I learned.
+[`DOMTokenList`](https://developer.mozilla.org/en-US/docs/Web/API/DOMTokenList) is a built-in DOM interface that represents a set of string tokens. If you are familiar with `classList`, you are already familiar with it. In a recent project, I wanted to make a custom element property as a `DOMTokenList`, here’s what I learned.
 
 ^^^
 
