@@ -1,11 +1,11 @@
-const fs = require('fs-extra');
-const inlineSvg = require('rollup-plugin-inline-svg');
-const md5 = require('md5');
-const path = require('path');
-const rollup = require('rollup');
-const {terser} = require('rollup-plugin-terser');
-const {nodeResolve: resolve} = require('@rollup/plugin-node-resolve');
-const {babel} = require('@rollup/plugin-babel');
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import inlineSvg from 'rollup-plugin-inline-svg';
+import md5 from 'md5';
+import {rollup} from 'rollup';
+import {terser} from 'rollup-plugin-terser';
+import {nodeResolve as resolve} from '@rollup/plugin-node-resolve';
+import {babel} from '@rollup/plugin-babel';
 
 const BABEL_CONFIG = {
   presets: [
@@ -23,13 +23,16 @@ const INLINESVG_CONFIG = {
   removeSVGTagAttrs: false,
 };
 
-module.exports = class {
+export default class {
   async data() {
-    const rawFilePath = path.join(__dirname, `../_src/js/main.js`);
+    const rawFilePath = path.join(
+      import.meta.dirname,
+      '../_src/js/main.js',
+    );
 
     return {
-      permalink: `js/main.js`,
-      rawCode: fs.readFileSync(rawFilePath, 'utf8'),
+      permalink: 'js/main.js',
+      rawCode: await fs.readFile(rawFilePath, 'utf8'),
       rawFilePath,
     };
   }
@@ -50,12 +53,15 @@ module.exports = class {
       plugins: [terser()],
     };
 
-    const bundle = await rollup.rollup(inputOpts);
+    const bundle = await rollup(inputOpts);
     const generated = await bundle.generate(outputOpts);
     const js = generated.output[0].code;
 
-    fs.outputFileSync(path.join(__dirname, `../_tmp/jsVersion`),
-        md5(js), 'utf8');
+    const versionFilePath = path.join(
+      import.meta.dirname,
+      '../_tmp/jsVersion',
+    );
+    await fs.writeFile(versionFilePath, md5(js), 'utf8');
 
     return js;
   }

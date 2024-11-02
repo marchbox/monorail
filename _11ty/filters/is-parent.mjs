@@ -1,3 +1,3 @@
-module.exports = function(nav, page) {
+export default function(nav, page) {
   return nav.url !== '/' && page.url.includes(nav.url);
 };

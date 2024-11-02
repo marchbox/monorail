@@ -1,6 +1,6 @@
-const image = require('./image.js');
+import image from './image.mjs';
 
-module.exports = async function(drawing) {
+export default async function(drawing) {
   if (!drawing.key) {
     return '';
   }
@@ -9,5 +9,5 @@ module.exports = async function(drawing) {
   const widths = [600, 1240];
   const sizes = '(max-width: 300px) 300px, 620px';
 
-  return image(src, alt, widths, sizes);
-};
+  return await image(src, alt, widths, sizes);
+}
