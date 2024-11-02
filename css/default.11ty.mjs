@@ -52,11 +52,13 @@ export default class {
       ])
       .process(rawCss, {from: rawFilePath})
       .then(async ({css}) => {
-        const versionFilePath = path.join(
-          import.meta.dirname,
-          '../_tmp/cssVersion',
-        );
-        await fs.writeFile(versionFilePath, md5(css), 'utf8');
+        const versionFilePath = path.join(import.meta.dirname, '../_tmp');
+        try {
+          await fs.access(versionFilePath);
+        } catch {
+          await fs.mkdir(versionFilePath);
+        }
+        await fs.writeFile(`${versionFilePath}/cssVersion`, md5(css), 'utf8');
         return css;
       });
   }

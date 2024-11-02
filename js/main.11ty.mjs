@@ -57,11 +57,13 @@ export default class {
     const generated = await bundle.generate(outputOpts);
     const js = generated.output[0].code;
 
-    const versionFilePath = path.join(
-      import.meta.dirname,
-      '../_tmp/jsVersion',
-    );
-    await fs.writeFile(versionFilePath, md5(js), 'utf8');
+    const versionFilePath = path.join(import.meta.dirname, '../_tmp');
+    try {
+      await fs.access(versionFilePath);
+    } catch {
+      await fs.mkdir(versionFilePath);
+    }
+    await fs.writeFile(`${versionFilePath}/jsVersion`, md5(js), 'utf8');
 
     return js;
   }
