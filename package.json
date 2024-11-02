@@ -1,7 +1,8 @@
 {
+  "name": "marchbox-monorail",
   "private": true,
   "engines": {
-    "node": "17"
+    "node": ">=20"
   },
   "scripts": {
     "start": "npx @11ty/eleventy --serve --config=./_11ty/config.js",
