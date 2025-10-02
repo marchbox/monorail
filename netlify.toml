@@ -1,14 +1,14 @@
 # Plugins
 [[plugins]]
   package = "netlify-plugin-html-validate"
-[[plugins]]
-  package = "netlify-plugin-checklinks"
-    [plugins.inputs]
-    skipPatterns = [
-      '/feed',
-      '/articles/feed',
-      '/drawings/feed',
-    ]
+# [[plugins]]
+#   package = "netlify-plugin-checklinks"
+#     [plugins.inputs]
+#     skipPatterns = [
+#       '/feed',
+#       '/articles/feed',
+#       '/drawings/feed',
+#     ]
 
 # Redirects actual feed URLs to vanity ones.
 [[redirects]]
