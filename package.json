@@ -6,7 +6,7 @@
     "node": ">=22"
   },
   "scripts": {
-    "start": "npx @11ty/eleventy --serve --config=./_11ty/config.mjs",
+    "dev": "npx @11ty/eleventy --serve --config=./_11ty/config.mjs",
     "build": "npx @11ty/eleventy --config=./_11ty/config.mjs",
     "build:prod": "npx @11ty/eleventy --config=./_11ty/config.mjs",
     "debug": "DEBUG=* npx @11ty/eleventy"
