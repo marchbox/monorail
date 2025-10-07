@@ -5,7 +5,7 @@ export default async function(drawing) {
     return '';
   }
   const src = `/drawings/gallery/${drawing.key}.jpg`;
-  const alt = drawing.title || '';
+  const alt = drawing.alt || drawing.title || '';
   const widths = [600, 1240];
   const sizes = '(max-width: 300px) 300px, 620px';
 
