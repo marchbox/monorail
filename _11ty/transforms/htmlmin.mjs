@@ -1,4 +1,4 @@
-import htmlmin from 'html-minifier';
+import htmlmin from 'html-minifier-next';
 
 export default function(content, outputPath) {
   if (outputPath?.endsWith('.html')) {
