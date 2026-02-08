@@ -1,18 +1,15 @@
-import {
-  render,
-} from './utils';
+import moon from "../svg/moon.svg";
+import sun from "../svg/sun.svg";
+import { render } from "./utils.js";
 
-import sun from '../svg/sun.svg';
-import moon from '../svg/moon.svg';
-
-const LOCAL_STORAGE_KEY = 'glockenspiel';
+const LOCAL_STORAGE_KEY = "glockenspiel";
 const Classes = {
-  DAY: 'g-day',
-  NIGHT: 'g-night',
+	DAY: "g-day",
+	NIGHT: "g-night",
 };
 const Titles = {
-  DAY: 'Change to night mode? Your preference will be remembered.',
-  NIGHT: 'Change to day mode? Your preference will be remembered.',
+	DAY: "Change to night mode? Your preference will be remembered.",
+	NIGHT: "Change to day mode? Your preference will be remembered.",
 };
 
 const styles = `
@@ -78,36 +75,38 @@ const template = `
 `;
 
 export default class Glockenspiel extends HTMLElement {
-  shadow;
-  isNight = false;
+	shadow;
+	isNight = false;
 
-  constructor() {
-    super();
+	constructor() {
+		super();
 
-    const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
-    this.isNight = stored ?
-        stored === Classes.NIGHT :
-        matchMedia('(prefers-color-scheme: dark)').matches;
+		const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
+		this.isNight = stored
+			? stored === Classes.NIGHT
+			: matchMedia("(prefers-color-scheme: dark)").matches;
 
-    this.shadow = this.attachShadow({mode: 'open'});
-  }
+		this.shadow = this.attachShadow({ mode: "open" });
+	}
 
-  connectedCallback() {
-    render(this.shadow, template, styles)
+	connectedCallback() {
+		render(this.shadow, template, styles);
 
-    const container = this.shadow.querySelector('.container');
-    container.title = this.isNight ? Titles.NIGHT : Titles.DAY;
+		const container = this.shadow.querySelector(".container");
+		container.title = this.isNight ? Titles.NIGHT : Titles.DAY;
 
-    const checkbox = this.shadow.querySelector('input');
-    checkbox.checked = this.isNight;
+		const checkbox = this.shadow.querySelector("input");
+		checkbox.checked = this.isNight;
 
-    checkbox.addEventListener('change', () => {
-      this.isNight = checkbox.checked;
-      localStorage.setItem(LOCAL_STORAGE_KEY,
-          this.isNight ? Classes.NIGHT : Classes.DAY)
-      document.documentElement.classList.toggle(Classes.DAY, !this.isNight);
-      document.documentElement.classList.toggle(Classes.NIGHT, this.isNight);
-      container.title = this.isNight ? Titles.NIGHT : Titles.DAY;
-    });
-  };
+		checkbox.addEventListener("change", () => {
+			this.isNight = checkbox.checked;
+			localStorage.setItem(
+				LOCAL_STORAGE_KEY,
+				this.isNight ? Classes.NIGHT : Classes.DAY,
+			);
+			document.documentElement.classList.toggle(Classes.DAY, !this.isNight);
+			document.documentElement.classList.toggle(Classes.NIGHT, this.isNight);
+			container.title = this.isNight ? Titles.NIGHT : Titles.DAY;
+		});
+	}
 }

@@ -443,6 +443,22 @@ land-glockenspiel {
     grid-row: 1 / -1;
   }
 
+  land-sidewalks {
+	  .container {
+	    display: grid;
+	    grid: inherit;
+	    grid-column: 1 / -1;
+	  }
+
+		.sidewalk-start {
+	    grid-column: 1 / 2;
+	  }
+
+	  .sidewalk-end {
+	    grid-column: -2 / -1;
+    }
+  }
+
   & .fenced {
     margin-inline-start: var(--page-padding-inline-start);
     margin-inline-end: var(--page-padding-inline-end);
@@ -459,38 +475,6 @@ land-glockenspiel {
     list-style: none;
     margin: 0 0 1rem;
     padding: 0;
-  }
-
-  & land-sidewalks {
-    display: none;
-
-    @media (min-width: 22.5rem) {
-      border-block-end: 2px solid var(--color-horizon);
-      display: grid;
-      grid: inherit;
-      grid-column: 1 / -1;
-      position: relative;
-      z-index: var(--zindex-sidewalks);
-    }
-
-    @media (--dark) {
-      border-block-end-style: dotted;
-      filter: drop-shadow(0 0 .25rem var(--color-nightlight));
-    }
-
-    &::part(container) {
-      display: grid;
-      grid: inherit;
-      grid-column: 1 / -1;
-    }
-
-    &::part(sidewalk-start) {
-      grid-column: 1 / 2;
-    }
-
-    &::part(sidewalk-end) {
-      grid-column: -2 / -1;
-    }
   }
 }
 
