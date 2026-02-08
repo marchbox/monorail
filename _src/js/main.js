@@ -1,20 +1,24 @@
-import "regenerator-runtime/runtime";
-import "@ungap/custom-elements-builtin";
-
 import Glockenspiel from "./glockenspiel.js";
-import Monorail from "./monorail.js";
 import Tulgeywood from "./tulgeywood.js";
-import { whenDocumentComplete, whenDocumentReady } from "./utils.js";
 
-whenDocumentReady().then(() => {
-	if ("customElements" in window) {
-		customElements.define("land-glockenspiel", Glockenspiel);
-		customElements.define("land-tulgeywood", Tulgeywood);
+customElements.define("land-glockenspiel", Glockenspiel);
+customElements.define("land-tulgeywood", Tulgeywood);
+
+// Center the active monorail car after animation. This can be removed after
+// `scroll-start-target` is supported.
+window.addEventListener("pagereveal", async (evt) => {
+	const activeMonorailCar = document.querySelector(".monorail-car.active");
+
+	if (!activeMonorailCar || !evt.viewTransition) {
+		return;
 	}
-});
 
-whenDocumentComplete().then(() => {
-	if ("customElements" in window) {
-		customElements.define("land-monorail", Monorail, { extends: "nav" });
+	try {
+		await evt.viewTransition.finished;
+	} finally {
+		activeMonorailCar.scrollIntoView({
+			block: "nearest",
+			inline: "center",
+		});
 	}
 });
