@@ -33,6 +33,7 @@
     "@rollup/plugin-terser": "^0.4.4",
     "cssnano": "^7.0.6",
     "fs-extra": "^11.2.0",
+    "html-minifier-next": "^5.0.3",
     "js-yaml": "^4.1.0",
     "markdown-it": "^14.1.0",
     "markdown-it-abbr": "^2.0.0",
@@ -47,9 +48,5 @@
     "posthtml-urls": "^1.0.0",
     "rollup": "^4.24.3",
     "rollup-plugin-inline-svg": "^3.0.3"
-  },
-  "dependencies": {
-    "@ungap/custom-elements-builtin": "^0.6.5",
-    "html-minifier-next": "^5.0.3"
   }
 }

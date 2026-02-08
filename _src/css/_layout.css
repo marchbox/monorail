@@ -318,15 +318,12 @@ land-glockenspiel {
 .monorail-car {
 	margin: 0 var(--monorail-car-gap);
 	position: relative;
+	scroll-snap-align: center;
 	text-decoration: none;
 
-	.arrive & {
-		@media (--nav-sm) {
-			scroll-snap-align: center;
-		}
-	}
-
 	&.active {
+		scroll-start-target: auto;
+
 		&::before {
 			border-block-start: 0.125rem var(--monorail-car-outline-style)
 				var(--color-monorail-car-active-outline);
