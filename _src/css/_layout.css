@@ -211,6 +211,36 @@ land-glockenspiel {
   }
 }
 
+@keyframes monorail-arrival {
+  from {
+    translate: max(100%, 100vi) 0;
+  }
+}
+
+@keyframes monorail-departure {
+  to {
+    translate: min(-100%, -100vi) 0;
+  }
+}
+
+@media (--motion) {
+  ::view-transition-group(*) {
+    animation-duration: .72s;
+    animation-delay: .48s;
+  }
+
+  ::view-transition-old(monorail) {
+    animation-name: monorail-departure;
+    animation-timing-function: ease-in;
+    animation-delay: 0s;
+  }
+
+  ::view-transition-new(monorail) {
+    animation-name: monorail-arrival;
+    animation-timing-function: ease-out;
+  }
+}
+
 .monorail-train {
   --monorail-engine-offset-start: var(--page-padding-inline-start);
   --monorail-engine-offset-end: var(--page-padding-inline-end);
