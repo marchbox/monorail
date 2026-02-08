@@ -222,6 +222,7 @@ land-glockenspiel {
 
   display: flex;
   position: relative;
+  view-transition-name: monorail;
   z-index: var(--zindex-monorail);
 
   @media (--nav-sm) {
@@ -234,48 +235,11 @@ land-glockenspiel {
     --monorail-engine-offset-end: 0rem;
   }
 
-  .js & {
-    @media (--motion) {
-      opacity: 0;
-      transform: translatex(var(--monorail-train-length, 100%));
-      transition: transform .72s cubic-bezier(.15,.76,.32,.89);
-
-      @supports (transform: translatex(max(var(--foo), 100vw))) {
-        transform: translatex(max(var(--monorail-train-length, 100%), 100vw));
-      }
-    }
-
-    @media (--nav-md) and (--motion) {
-      transform: translatex(100vw);
-    }
-  }
-
   @media (--dark) {
     --monorail-car-outline-style: dotted;
     --monorail-engine-outline-dasharray: .05 4;
     --monorail-engine-outline-filter: drop-shadow(0 0 .25rem var(--color-monorail-car-outline));
     --monorail-engine-transform: translate(-.125rem,-.125rem);
-  }
-
-  .action & {
-    opacity: 1;
-    transform: none;
-  }
-
-  .depart & {
-    @media (--motion) {
-      transform: translatex(calc(-1 * var(--monorail-train-length, 100%)));
-
-      @supports (transform: translatex(min(var(--foo), -100vw))) {
-        transform: translatex(min(calc(-1 * var(--monorail-train-length, 100%)), -100vw));
-      }
-
-      transition: transform .48s cubic-bezier(.6,-.01,1,.37);
-    }
-
-    @media (--nav-md) and (--motion) {
-      transform: translatex(-100vw);
-    }
   }
 }
 
