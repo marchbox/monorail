@@ -16,8 +16,8 @@ export default async function(src, alt, widths, sizes) {
   const attrs = {
     alt,
     sizes,
-    loading: 'lazy',
-    decoding: 'async',
+    // loading: 'lazy',
+    // decoding: 'async',
   };
 
   return image.generateHTML(metadata, attrs);
