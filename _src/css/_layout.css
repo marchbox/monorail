@@ -226,8 +226,19 @@ land-glockenspiel {
 @media (--motion) {
   ::view-transition-group(*) {
     animation-duration: .72s;
-    animation-delay: .48s;
+    animation-delay: .72s;
   }
+
+  ::view-transition-group(monorail),
+  ::view-transition-image-pair(monorail) {
+  	animation-duration: 0s;
+  }
+
+  ::view-transition-old(monorail),
+  ::view-transition-new(monorail) {
+    animation-duration: .72s;
+    animation-delay: .72s;
+	}
 
   ::view-transition-old(monorail) {
     animation-name: monorail-departure;
